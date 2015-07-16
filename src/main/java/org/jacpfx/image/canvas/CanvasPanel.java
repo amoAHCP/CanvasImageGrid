@@ -117,7 +117,6 @@ public class CanvasPanel extends Canvas {
         final AtomicBoolean skip = new AtomicBoolean(true);
         final AtomicReference<Double> lastFactor = new AtomicReference<>(new Double(1d));
         this.setOnZoom(handler -> {
-            handler.consume();
             double zoomFactor = zoomFactorProperty.doubleValue();
             double zoomFactorTmp = inRange(handler.getTotalZoomFactor() * zoomFactor);
             if (lastFactor.get() != zoomFactorTmp && skip.get()) {
@@ -125,6 +124,7 @@ public class CanvasPanel extends Canvas {
             }
             lastFactor.set(zoomFactorProperty.doubleValue());
             skip.set(!skip.get());
+            handler.consume();
         });
 
     }
@@ -186,7 +186,7 @@ public class CanvasPanel extends Canvas {
     private void renderCanvas(final List<RowContainer> containers, GraphicsContext gc, final double start, final double end, final double offset) {
         setCacheHint(CacheHint.SPEED);
         gc.clearRect(0, 0, getWidth(), getHeight());
-        containers.forEach(container -> container.
+        containers.forEach(container -> container.     // TODO test rows with parallel stream
                         getImages().
                         stream().
                         filter(imgElem -> {
