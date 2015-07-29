@@ -1,8 +1,17 @@
 package org.jacpfx.image.canvas;
 
+import javafx.scene.SnapshotParameters;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 
+import java.io.IOException;
+import java.lang.ref.SoftReference;
 import java.nio.file.Path;
+import java.util.Map;
 
 /**
  * Created by amo on 11.04.14.
@@ -44,10 +53,7 @@ public class ImageContainer implements Cloneable {
      * the path to image
      */
     private Path imagePath;
-    /**
-     * the image (maxHight * 2)
-     */
-    private Image image;
+
     /**
      * The image creation factory
      */
@@ -64,7 +70,20 @@ public class ImageContainer implements Cloneable {
     /**
      * position in row
      */
-    private int position=0;
+    private int position = 0;
+
+    /**
+     * The last position for drawing
+     */
+    private double lastDrawingStartPosition;
+
+    /**
+     * the image ref (maxHight * 2)
+     */
+    private transient SoftReference<Image> imageRef = new SoftReference<Image>(null);
+    private transient SoftReference<Image> imageRefOrig = new SoftReference<Image>(null);
+
+    private boolean selected;
 
     public ImageContainer(Path imagePath, ImageFactory factory, double maxHight, double maxWidth) {
         this.imagePath = imagePath;
@@ -72,22 +91,70 @@ public class ImageContainer implements Cloneable {
         this.maxHight = maxHight;
         this.maxWidth = maxWidth;
         if (this.imagePath != null) {
+
             try {
-                image = this.factory.createImage(this.imagePath, maxWidth, maxHight);
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            if (image != null) {
-                endX = image.getWidth();
-                endY = image.getHeight();
+                final Map.Entry<Double, Double> entry = factory.getImageSize(imagePath, maxHight);
+                endX = entry.getKey() ;
+                endY = entry.getValue();
                 this.landsScape = endX > endY;
-
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
 
     }
+    // TODO add offMemory cache: https://github.com/RuedigerMoeller/fast-serialization/blob/master/src/main/java/org/nustaq/offheap/FSTAsciiStringOffheapMap.java
 
+    public void drawImageToCanvas(GraphicsContext gc, double start) {
+        lastDrawingStartPosition = start;
+        if (imageRef.get() == null) {
+
+            try {
+                final Image img = factory.createImage(imagePath, maxWidth, maxHight);
+                img.progressProperty().addListener((ov, oldVal, newVal) -> {
+                    if (newVal.doubleValue() >= 1.0) {
+                        gc.save();
+                        final Image image = factory.postProcess(img,maxHight,maxWidth);
+                        gc.drawImage(image, getStartX(), start, getScaledX(), getScaledY());
+                        imageRef = new SoftReference<Image>(image);
+                        gc.restore();
+
+                    }
+
+                });
+                if (img.getProgress() >= 1.0) {
+                    gc.save();
+                    gc.drawImage(img, getStartX(), start, getScaledX(), getScaledY());
+                    gc.restore();
+                    imageRef = new SoftReference<Image>(img);
+                }
+            } catch (Exception
+                    e) {
+                e.printStackTrace();
+            }
+            if(imageRef.get() == null)imageRef = new SoftReference<Image>(new Rectangle(getScaledX(), getScaledY()).snapshot(new SnapshotParameters(), null));
+        }
+        gc.drawImage(imageRef.get(), getStartX(), start, getScaledX(), getScaledY());
+    }
+
+
+    public void drawSelectedImageOnConvas(GraphicsContext gc) {
+        if(!selected){
+            imageRefOrig =  new SoftReference<Image>(imageRef.get());
+            ImageView view = new ImageView(imageRef.get());
+            view.setEffect(new DropShadow(20, 10, 10, Color.GRAY));
+            final Image imageEffect = view.snapshot(null,null);
+            gc.drawImage(imageEffect, getStartX(), lastDrawingStartPosition, getScaledX(), getScaledY());
+            imageRef = new SoftReference<Image>(imageEffect);
+            selected = true;
+        } else {
+            imageRef = new SoftReference<Image>(imageRefOrig.get());
+            drawImageToCanvas(gc,lastDrawingStartPosition);
+            imageRefOrig =  new SoftReference<Image>(null);
+            selected = false;
+        }
+
+    }
 
     public double getStartX() {
         return startX;
@@ -105,29 +172,11 @@ public class ImageContainer implements Cloneable {
         this.startY = startY;
     }
 
-    public double getEndX() {
-        return endX;
-    }
-
-    public void setEndX(double endX) {
-        this.endX = endX;
-    }
 
     public double getEndY() {
         return endY;
     }
 
-    public void setEndY(double endY) {
-        this.endY = endY;
-    }
-
-    public boolean isLandsScape() {
-        return landsScape;
-    }
-
-    public void setLandsScape(boolean landsScape) {
-        this.landsScape = landsScape;
-    }
 
     public double getScaleFactor() {
         return scaleFactor;
@@ -147,9 +196,8 @@ public class ImageContainer implements Cloneable {
         return this.scaledY;
     }
 
-
-    public Image getScaledImage() {
-        return this.image;
+    public boolean isSelected() {
+        return selected;
     }
 
     public Path getImagePath() {
@@ -176,7 +224,6 @@ public class ImageContainer implements Cloneable {
                 ", landsScape=" + landsScape +
                 ", scaleFactor=" + scaleFactor +
                 ", imagePath=" + imagePath +
-                ", image=" + image +
                 ", factory=" + factory +
                 ", maxHight=" + maxHight +
                 ", maxWidth=" + maxWidth +
@@ -188,6 +235,10 @@ public class ImageContainer implements Cloneable {
         this.startX = 0d;
         this.startY = 0d;
         return this;
+    }
+
+    public void clearImageRef() {
+        imageRef.clear();
     }
 
     public Object clone() {

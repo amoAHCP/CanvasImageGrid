@@ -1,6 +1,5 @@
 package org.jacpfx.image.canvas;
 
-import javafx.scene.image.PixelWriter;
 import javafx.scene.image.WritableImage;
 
 import java.util.ArrayList;
@@ -54,26 +53,6 @@ public class RowContainer {
         this.row =null;
     }
 
-    @Deprecated
-    //WritableImage img = container.getRow();
-    //gc.drawImage(img,0d,container.getRowStartHight()+ offset,container.getMaxWitdht(),container.getRowEndHight()-container.getRowStartHight());
-    public WritableImage getRow() {
-        if(row==null) {
-            double hight = rowEndHight - rowStartHight;
-            row = new WritableImage(
-                    Double.valueOf(maxWitdht).intValue(),
-                    Double.valueOf(hight).intValue());
-            final PixelWriter pixelWriter = row.getPixelWriter();
-            this.images.parallelStream().forEach(img -> pixelWriter.setPixels(Double.valueOf(img.getStartX()).intValue()
-                    , 0
-                    , Double.valueOf(img.getScaledX()).intValue()
-                    , Double.valueOf(img.getScaledY()).intValue()
-                    , img.getScaledImage().getPixelReader(), 0, 0));
-        }
-
-
-         return row;
-    }
 
     @Override
     public String toString() {

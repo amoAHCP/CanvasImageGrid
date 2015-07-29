@@ -10,6 +10,7 @@ import java.nio.file.Path;
 public class DefaultImageFactory implements ImageFactory {
     @Override
     public Image createImage(Path imagePath,double maxWidth, double maxHight) throws Exception{
-        return new Image(imagePath.toFile().toURI().toURL().toExternalForm(),0d,maxHight*2,true,false);
+        return new Image(imagePath.toFile().toURI().toURL().toExternalForm(),0d,maxHight*2,true,false,true);
+
     }
 }

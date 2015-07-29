@@ -28,8 +28,8 @@ public class ApplicationMain extends Application {
         launch(args);
     }
 
-    private static final double MAX_HIGHT = 200d;
-    private static final double MAX_WIDTH = 200d;
+    private static final double MAX_HIGHT = 150;
+    private static final double MAX_WIDTH = 150;
     private static final int HIGHT = 790;
     private static final int WIDTH = 590;
     private static final double PADDING = 5;
@@ -38,18 +38,24 @@ public class ApplicationMain extends Application {
     public void start(Stage stage) throws Exception {
         long startTime = System.currentTimeMillis();
 
-        //Path rootFolder = FileSystems.getDefault().getPath("/home/pi/bilder/");
         Path rootFolder = FileSystems.getDefault().getPath("/Users/amo/Pictures/April_Mai/");
         final List<Path> subfolders = getSubfolders(rootFolder).parallelStream().filter(file -> file.toString().endsWith("jpg")).sequential().collect(Collectors.toList());
         StackPane root = new StackPane();
         Scene scene = new Scene(root, HIGHT,WIDTH);
 
         ImageFactory factory = new DefaultImageFactory();
-        List<ImageContainer> all = subfolders.parallelStream().map(path -> getConatiner(path, factory)).collect(Collectors.toList());
         long endTime = System.currentTimeMillis();
-        System.out.println("Total execution time: " + (endTime-startTime) + "ms");
+        System.out.println("Total execution time: " + (endTime - startTime) + "ms");
+        CanvasPanel canvas = CanvasPanel.createCanvasPanel().
+                imagePath(subfolders).
+                imageFactory(factory).
+                width(WIDTH).
+                hight(HIGHT).
+                padding(PADDING).
+                lineBreakLimit(0.1d).
+                maxImageWidth(MAX_WIDTH).
+                maxImageHight(MAX_HIGHT);
 
-        CanvasPanel canvas = new CanvasPanel(HIGHT,WIDTH, PADDING, 0.1d,MAX_HIGHT, MAX_HIGHT);
         root.getChildren().add(canvas);
 
         canvas.widthProperty().bind(root.widthProperty().subtract(10));
@@ -60,7 +66,7 @@ public class ApplicationMain extends Application {
 
         stage.show();
 
-        canvas.getChildren().addAll(all);
+        //canvas.getChildren().addAll(all);
 
 
     }

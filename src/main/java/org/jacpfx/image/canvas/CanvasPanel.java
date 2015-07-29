@@ -9,6 +9,7 @@ import javafx.scene.CacheHint;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -53,7 +54,87 @@ public class CanvasPanel extends Canvas {
         registerChildListener(this.getGraphicsContext2D());
         registerLineBreakThresholdProperty(this.getGraphicsContext2D());
         registerScrollProperty(this.getGraphicsContext2D());
+        setCache(true);
     }
+
+    private CanvasPanel(int x, int y, double padding, double lineBreakLimit, double maxHight, double maxWidth, final List<Path> imageFolder, final ImageFactory factory) {
+        super(x, y);
+
+        final List<ImageContainer> all = imageFolder.parallelStream().map(path -> getConatiner(path, factory, maxHight, maxWidth)).collect(Collectors.toList());
+
+        getChildren().addAll(all);
+
+
+        paddingProperty.set(padding);
+        maxImageHightProperty.set(maxHight);
+        maxImageWidthProperty.set(maxWidth);
+        lineBreakThresholdProperty.set(lineBreakLimit);
+        registerScroll();
+        registerZoom();
+        registerScale(this.getGraphicsContext2D());
+        registerMaxHightListener(this.getGraphicsContext2D());
+        registerZoomListener(this.getGraphicsContext2D());
+        registerPaddingListener(this.getGraphicsContext2D());
+        registerChildListener(this.getGraphicsContext2D());
+        registerLineBreakThresholdProperty(this.getGraphicsContext2D());
+        registerScrollProperty(this.getGraphicsContext2D());
+
+        setOnMouseClicked(event -> children.forEach(image -> {
+            final double tmpY = image.getStartY() + image.getScaledY();
+            final double tmpX = image.getStartX() + image.getScaledX();
+            boolean xCoord = image.getStartX() < event.getX() && tmpX > event.getX();
+            boolean yCoord = image.getStartY() < event.getY() - offset && tmpY > event.getY() - offset;
+            if (yCoord && xCoord) {
+                image.drawSelectedImageOnConvas(this.getGraphicsContext2D());
+            } else if (image.isSelected()) {
+                image.drawSelectedImageOnConvas(this.getGraphicsContext2D());
+            }
+
+        }));
+    }
+
+
+    private ImageContainer getConatiner(Path path, ImageFactory factory, double maxHight, double maxWidth) {
+        return new ImageContainer(path, factory, maxHight, maxWidth);
+    }
+
+
+    interface ImagePathBuilder {
+        FactoryBuilder imagePath(final List<Path> imageFolder);
+    }
+
+    interface FactoryBuilder {
+        WidthBuilder imageFactory(ImageFactory factory);
+    }
+
+    interface WidthBuilder {
+        HightBuilder width(int width);
+    }
+
+    interface HightBuilder {
+        PaddingBuilder hight(int hight);
+    }
+
+    interface PaddingBuilder {
+        LineBreakLimitBuilder padding(double padding);
+    }
+
+    interface LineBreakLimitBuilder {
+        MaxImageWidthBuilder lineBreakLimit(double lineBreakLimit);
+    }
+
+    interface MaxImageWidthBuilder {
+        MaxImageHightBuilder maxImageWidth(double maxImageWidth);
+    }
+
+    interface MaxImageHightBuilder {
+        CanvasPanel maxImageHight(double maxImageHight);
+    }
+
+    public static ImagePathBuilder createCanvasPanel() {
+        return imagePath -> imageFactory -> width -> hight -> padding -> lineBreakLimit -> maxImageWidth -> maxImageHight -> new CanvasPanel(width, hight, padding, lineBreakLimit, maxImageHight, maxImageWidth, imagePath, imageFactory);
+    }
+
 
     public ObservableList<ImageContainer> getChildren() {
         return children;
@@ -115,7 +196,7 @@ public class CanvasPanel extends Canvas {
     private void registerZoom() {
             // Todo change to zoomListener
         final AtomicBoolean skip = new AtomicBoolean(true);
-        final AtomicReference<Double> lastFactor = new AtomicReference<>(new Double(1d));
+        final AtomicReference<Double> lastFactor = new AtomicReference<>(1d);
         this.setOnZoom(handler -> {
             double zoomFactor = zoomFactorProperty.doubleValue();
             double zoomFactorTmp = inRange(handler.getTotalZoomFactor() * zoomFactor);
@@ -185,25 +266,32 @@ public class CanvasPanel extends Canvas {
 
     private void renderCanvas(final List<RowContainer> containers, GraphicsContext gc, final double start, final double end, final double offset) {
         setCacheHint(CacheHint.SPEED);
+        gc.save();
         gc.clearRect(0, 0, getWidth(), getHeight());
         containers.forEach(container -> container.     // TODO test rows with parallel stream
                         getImages().
                         stream().
-                        filter(imgElem -> {
-                            final double tmp = imgElem.getStartY() + imgElem.getScaledY();
-                            return tmp > start && tmp < end;
-                        }).
+                        parallel().
+                        filter(imgElem -> filterImagesVisible(start, end, imgElem)).
+                        sequential().
                         forEach(c ->
-                                        gc.drawImage(c.getScaledImage(), c.getStartX(), container.getRowStartHight() + offset, c.getScaledX(), c.getScaledY())
+                                        //gc.drawImage(c.getScaledImage(), c.getStartX(), container.getRowStartHight() + offset, c.getScaledX(), c.getScaledY())
+                                        c.drawImageToCanvas(gc, container.getRowStartHight() + offset)
                         )
         );
+        // gc.applyEffect(new DropShadow(20, 10, 10, Color.GRAY));
+        gc.restore();
         setCacheHint(CacheHint.DEFAULT);
+    }
+
+    private boolean filterImagesVisible(double start, double end, ImageContainer imgElem) {
+        final double tmp = imgElem.getStartY() + imgElem.getScaledY();
+        return tmp > start && tmp < end;
     }
 
 
     private List<RowContainer> getLines(final double padding, final double maxHight, final List<ImageContainer> all) {
-        final double maxWidth = this.widthProperty().doubleValue();
-        final List<RowContainer> rows = createRows(maxWidth, maxHight, all);
+        final List<RowContainer> rows = createRows(this.widthProperty().doubleValue(), maxHight, all);
         return normalizeRows(rows, padding);
 
     }
