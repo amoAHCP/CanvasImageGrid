@@ -5,7 +5,6 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
-import javafx.scene.CacheHint;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 
@@ -39,12 +38,23 @@ public class CanvasPanel extends Canvas {
     private List<RowContainer> containers = Collections.emptyList();
     private final ObservableList<ImageContainer> children = FXCollections.observableList(new ArrayList<>());
 
-    public CanvasPanel(int x, int y, double padding,double lineBreakLimit ,double maxHight, double maxWidth) {
+
+
+    private SelectionListener selectionListener = (x, y, images) -> {
+    };
+
+
+    private CanvasPanel(int x, int y, double padding, double lineBreakLimit, double maxHight, double maxWidth, final List<Path> imageFolder, final ImageFactory factory, SelectionListener selectionListener) {
         super(x, y);
-        paddingProperty.set(padding);
-        maxImageHightProperty.set(maxHight);
-        maxImageWidthProperty.set(maxWidth);
-        lineBreakThresholdProperty.set(lineBreakLimit);
+
+
+        this.paddingProperty.set(padding);
+        this.maxImageHightProperty.set(maxHight);
+        this.maxImageWidthProperty.set(maxWidth);
+        this.lineBreakThresholdProperty.set(lineBreakLimit);
+        this.selectionListener = selectionListener;
+
+        addImages(maxHight, maxWidth, imageFolder, factory);
         registerScroll();
         registerZoom();
         registerScale(this.getGraphicsContext2D());
@@ -54,51 +64,12 @@ public class CanvasPanel extends Canvas {
         registerChildListener(this.getGraphicsContext2D());
         registerLineBreakThresholdProperty(this.getGraphicsContext2D());
         registerScrollProperty(this.getGraphicsContext2D());
-        setCache(true);
-    }
+        registerMouseClickListener(selectionListener);
 
-    private CanvasPanel(int x, int y, double padding, double lineBreakLimit, double maxHight, double maxWidth, final List<Path> imageFolder, final ImageFactory factory) {
-        super(x, y);
-
-        final List<ImageContainer> all = imageFolder.parallelStream().map(path -> getConatiner(path, factory, maxHight, maxWidth)).collect(Collectors.toList());
-
-        getChildren().addAll(all);
-
-
-        paddingProperty.set(padding);
-        maxImageHightProperty.set(maxHight);
-        maxImageWidthProperty.set(maxWidth);
-        lineBreakThresholdProperty.set(lineBreakLimit);
-        registerScroll();
-        registerZoom();
-        registerScale(this.getGraphicsContext2D());
-        registerMaxHightListener(this.getGraphicsContext2D());
-        registerZoomListener(this.getGraphicsContext2D());
-        registerPaddingListener(this.getGraphicsContext2D());
-        registerChildListener(this.getGraphicsContext2D());
-        registerLineBreakThresholdProperty(this.getGraphicsContext2D());
-        registerScrollProperty(this.getGraphicsContext2D());
-
-        setOnMouseClicked(event -> children.forEach(image -> {
-            final double tmpY = image.getStartY() + image.getScaledY();
-            final double tmpX = image.getStartX() + image.getScaledX();
-            boolean xCoord = image.getStartX() < event.getX() && tmpX > event.getX();
-            boolean yCoord = image.getStartY() < event.getY() - offset && tmpY > event.getY() - offset;
-            if (yCoord && xCoord) {
-                image.drawSelectedImageOnConvas(this.getGraphicsContext2D());
-            } else if (image.isSelected()) {
-                image.drawSelectedImageOnConvas(this.getGraphicsContext2D());
-            }
-
-        }));
     }
 
 
-    private ImageContainer getConatiner(Path path, ImageFactory factory, double maxHight, double maxWidth) {
-        return new ImageContainer(path, factory, maxHight, maxWidth);
-    }
-
-
+     // Builder
     interface ImagePathBuilder {
         FactoryBuilder imagePath(final List<Path> imageFolder);
     }
@@ -128,12 +99,43 @@ public class CanvasPanel extends Canvas {
     }
 
     interface MaxImageHightBuilder {
-        CanvasPanel maxImageHight(double maxImageHight);
+        SelectionListenerBuilder maxImageHight(double maxImageHight);
+    }
+
+    interface SelectionListenerBuilder {
+        CanvasPanel selectionListener(final SelectionListener listener);
     }
 
     public static ImagePathBuilder createCanvasPanel() {
-        return imagePath -> imageFactory -> width -> hight -> padding -> lineBreakLimit -> maxImageWidth -> maxImageHight -> new CanvasPanel(width, hight, padding, lineBreakLimit, maxImageHight, maxImageWidth, imagePath, imageFactory);
+        return imagePath -> imageFactory -> width -> hight -> padding -> lineBreakLimit -> maxImageWidth -> maxImageHight -> selectionListsner -> new CanvasPanel(width, hight, padding, lineBreakLimit, maxImageHight, maxImageWidth, imagePath, imageFactory, selectionListsner);
     }
+
+    private void registerMouseClickListener(SelectionListener selectionListener) {
+        setOnMouseClicked(event -> children.forEach(image -> {
+            final double tmpY = image.getStartY() + image.getScaledY();
+            final double tmpX = image.getStartX() + image.getScaledX();
+            boolean xCoord = image.getStartX() < event.getX() && tmpX > event.getX();
+            boolean yCoord = image.getStartY() < event.getY() - offset && tmpY > event.getY() - offset;
+            if (yCoord && xCoord) {
+                image.drawSelectedImageOnConvas(this.getGraphicsContext2D());
+                selectionListener.selected(event.getX(), event.getY(), image);
+            } else if (image.isSelected()) {
+                image.drawSelectedImageOnConvas(this.getGraphicsContext2D());
+            }
+
+        }));
+    }
+
+    private void addImages(double maxHight, double maxWidth, List<Path> imageFolder, ImageFactory factory) {
+        final List<ImageContainer> all = imageFolder.parallelStream().map(path -> getConatiner(path, factory, maxHight, maxWidth)).collect(Collectors.toList());
+        getChildren().addAll(all);
+    }
+
+
+    private ImageContainer getConatiner(Path path, ImageFactory factory, double maxHight, double maxWidth) {
+        return new ImageContainer(path, factory, maxHight, maxWidth);
+    }
+
 
 
     public ObservableList<ImageContainer> getChildren() {
@@ -151,7 +153,7 @@ public class CanvasPanel extends Canvas {
     }
 
     private void registerPaddingListener(final GraphicsContext gc) {
-       paddingProperty.addListener(change ->
+        paddingProperty.addListener(change ->
                         containers = paintImages(gc, children)
         );
     }
@@ -194,7 +196,7 @@ public class CanvasPanel extends Canvas {
     }
 
     private void registerZoom() {
-            // Todo change to zoomListener
+        // Todo change to zoomListener
         final AtomicBoolean skip = new AtomicBoolean(true);
         final AtomicReference<Double> lastFactor = new AtomicReference<>(1d);
         this.setOnZoom(handler -> {
@@ -227,7 +229,6 @@ public class CanvasPanel extends Canvas {
     }
 
 
-
     private double inRange(final double val) {
         if (val > 1.5d) {
             return 1.5d;
@@ -245,16 +246,16 @@ public class CanvasPanel extends Canvas {
 
     private double computeMaxRowHight(final List<RowContainer> containers) {
         final RowContainer lastElement = !containers.isEmpty() ? containers.get(containers.size() - 1) : null;
-        return lastElement != null?lastElement.getRowEndHight():0d;
+        return lastElement != null ? lastElement.getRowEndHight() : 0d;
     }
 
     private List<RowContainer> paintImages(final GraphicsContext gc, final List<ImageContainer> all) {
         if (all == null || all.isEmpty()) return Collections.emptyList();
         final List<RowContainer> containers = createContainer(all);
         final double allRowHight = computeMaxRowHight(containers);
-        currentMaxHight = (allRowHight - this.getHeight())+(paddingProperty.getValue()/2);
+        currentMaxHight = (allRowHight - this.getHeight()) + (paddingProperty.getValue() / 2);
         final double currentZoom = zoomFactorProperty.doubleValue();
-        if(currentZoom<1d) offset=offset*currentZoom;
+        if (currentZoom < 1d) offset = offset * currentZoom;
         final double start = offset * -1;
         final double end = start + this.getHeight() + (this.getHeight() * clippingOffset);
 
@@ -265,7 +266,6 @@ public class CanvasPanel extends Canvas {
     }
 
     private void renderCanvas(final List<RowContainer> containers, GraphicsContext gc, final double start, final double end, final double offset) {
-        setCacheHint(CacheHint.SPEED);
         gc.save();
         gc.clearRect(0, 0, getWidth(), getHeight());
         containers.forEach(container -> container.     // TODO test rows with parallel stream
@@ -281,7 +281,6 @@ public class CanvasPanel extends Canvas {
         );
         // gc.applyEffect(new DropShadow(20, 10, 10, Color.GRAY));
         gc.restore();
-        setCacheHint(CacheHint.DEFAULT);
     }
 
     private boolean filterImagesVisible(double start, double end, ImageContainer imgElem) {
@@ -417,17 +416,17 @@ public class CanvasPanel extends Canvas {
                     {
                         if (scale) img.setScaleFactor(img.getScaleFactor() * scaleFactorNew);
                     }).
-                    reduce(firstElement,
-                            (a, b) -> {
-                                b.setStartX(a.getScaledX() + padding + a.getStartX());
-                                b.setPosition(a.getPosition() + 1);
-                                return b;
-                            }
-                    );
+                    reduce(firstElement,(a,b)->normalizeImageContainer(a,b,padding));
         });
 
 
         return row;
+    }
+
+    private ImageContainer normalizeImageContainer(ImageContainer a, ImageContainer b, double padding) {
+        b.setStartX(a.getScaledX() + padding + a.getStartX());
+        b.setPosition(a.getPosition() + 1);
+        return b;
     }
 
 
@@ -437,6 +436,7 @@ public class CanvasPanel extends Canvas {
         firstImage.setPosition(1);
         return firstImage;
     }
+
     /**
      * Set image padding (Hgap and VGap)
      *
@@ -513,6 +513,7 @@ public class CanvasPanel extends Canvas {
 
     /**
      * The line break threshold property
+     *
      * @return the Double property
      */
     public DoubleProperty lineBreakThresholdPropertyProperty() {
@@ -520,7 +521,8 @@ public class CanvasPanel extends Canvas {
     }
 
     /**
-     *  Set the line break threshold property
+     * Set the line break threshold property
+     *
      * @param lineBreakThresholdProperty
      */
     public void setLineBreakThresholdProperty(double lineBreakThresholdProperty) {
@@ -529,6 +531,7 @@ public class CanvasPanel extends Canvas {
 
     /**
      * The scroll property to trigger scrolling
+     *
      * @return The scroll property
      */
     public DoubleProperty scrollPropertyProperty() {
@@ -537,6 +540,7 @@ public class CanvasPanel extends Canvas {
 
     /**
      * Set the scroll property value
+     *
      * @param scrollProperty
      */
     public void setScrollProperty(double scrollProperty) {
