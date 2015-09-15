@@ -5,7 +5,6 @@ import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -21,7 +20,7 @@ import java.util.stream.Collectors;
 /**
  * Created by amo on 11.04.14.
  */
-public class ApplicationMainSingleWindow extends Application {
+public class ApplicationMainSingleWindowFPS extends Application {
 
 
     /**
@@ -48,9 +47,12 @@ public class ApplicationMainSingleWindow extends Application {
         final List<Path> subfolders = getSubfolders(rootFolder).parallelStream().filter(file -> file.toString().endsWith("jpg")).sequential().collect(Collectors.toList());
 
         VBox main = new VBox();
+        VBox imageBox = new VBox();
+        imageBox.setStyle("-fx-background-color: gainsboro");
         StackPane root = new StackPane();
-        VBox.setVgrow(root, Priority.ALWAYS);
         Scene scene = new Scene(main, WIDTH, HIGHT);
+        imageBox.setPrefHeight(80);
+        root.setPrefHeight(1024);
 
 
         ImageFactory factory = new DefaultImageFactory();
@@ -58,7 +60,7 @@ public class ApplicationMainSingleWindow extends Application {
         System.out.println("Total execution time: " + (endTime - startTime) + "ms");
 
 
-        main.getChildren().addAll(root);
+        main.getChildren().addAll(imageBox, root);
         stage.setTitle(getClass().getSimpleName());
         stage.setScene(scene);
 
@@ -73,23 +75,31 @@ public class ApplicationMainSingleWindow extends Application {
                 maxImageWidth(MAX_WIDTH).
                 maxImageHight(MAX_HIGHT).
                 selectionListener((x, y, image) -> {
-                    if (image.length == 1) {
+                    /*if (image.length == 1) {
                         ImageContainer myImage = image[0];
-                        System.out.println("selected image: "+myImage.getImagePath().toString());
-                    }
+                        try {
+                            Image i = new Image(myImage.getImagePath().toFile().toURI().toURL().toExternalForm(), imageBox.getWidth(), imageBox.getHeight(), true, false, false);
+                            ImageView view = new ImageView(i);
+
+                            imageBox.getChildren().setAll(view);
+                        } catch (MalformedURLException e) {
+                            e.printStackTrace();
+                        }
+                    }*/
                 });
 
 
         canvas.widthProperty().bind(root.widthProperty().subtract(10));
         canvas.heightProperty().bind(root.heightProperty().subtract(10));
-
         fpsLabel = new Label("FPS:");
-        fpsLabel.setStyle("-fx-font-size: 1em;-fx-text-fill: white;");
-
+        fpsLabel.setStyle("-fx-font-size: 5em;-fx-text-fill: red;");
+        fpsLabel.setOnMouseClicked((event)->{
+            tracker.resetAverageFPS();
+        });
 
         createPerformanceTracker(scene);
-        root.getChildren().addAll(canvas, fpsLabel);
-
+        imageBox.getChildren().add(fpsLabel);
+        root.getChildren().addAll(canvas);
 
 
 
@@ -104,6 +114,7 @@ public class ApplicationMainSingleWindow extends Application {
             @Override
             public void handle(long now)
             {
+
                 float fps = getFPS();
                 fpsLabel.setText(String.format("Current frame rate: %.0f fps", fps));
 
@@ -116,7 +127,7 @@ public class ApplicationMainSingleWindow extends Application {
     private float getFPS()
     {
         float fps = tracker.getAverageFPS();
-        tracker.resetAverageFPS();
+        //tracker.resetAverageFPS();
         return fps;
     }
 
