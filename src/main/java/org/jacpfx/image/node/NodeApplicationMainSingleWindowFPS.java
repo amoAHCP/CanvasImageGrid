@@ -3,6 +3,7 @@ package org.jacpfx.image.node;
 import com.sun.javafx.perf.PerformanceTracker;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
+import javafx.scene.CacheHint;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -18,6 +19,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 
 /**
@@ -36,17 +38,19 @@ public class NodeApplicationMainSingleWindowFPS extends Application {
     private static final double MAX_HIGHT = 150;
     private static final double MAX_WIDTH = 150;
     private static final int HIGHT = 1024;
-    private static final int WIDTH = 790;
+    private static final int WIDTH = 710;
     private static final double PADDING = 5;
     private Label fpsLabel;
     private PerformanceTracker tracker;
+
+    private AtomicLong counter = new AtomicLong(0);
 
     @Override
     public void start(Stage stage) throws Exception {
         System.setProperty("javafx.animation.fullspeed", "true");
         long startTime = System.currentTimeMillis();
 
-        Path rootFolder = FileSystems.getDefault().getPath("/Users/amo/Pictures/April_Mai/");
+        Path rootFolder = FileSystems.getDefault().getPath("/Users/amo/Pictures/demo/");
         final List<Path> subfolders = getSubfolders(rootFolder).parallelStream().filter(file -> file.toString().endsWith("jpg")).sequential().collect(Collectors.toList());
 
         VBox main = new VBox();
@@ -84,7 +88,7 @@ public class NodeApplicationMainSingleWindowFPS extends Application {
         container.setFitToHeight(true);
         container.setFitToWidth(true);
         fpsLabel = new Label("FPS:");
-        fpsLabel.setOnMouseClicked((event)->{
+        fpsLabel.setOnMouseClicked((event) -> {
             tracker.resetAverageFPS();
         });
         fpsLabel.setStyle("-fx-font-size: 5em;-fx-text-fill: red;");
@@ -94,7 +98,14 @@ public class NodeApplicationMainSingleWindowFPS extends Application {
         createPerformanceTracker(scene);
         imageBox.getChildren().add(fpsLabel);
         root.getChildren().addAll(container);
+        root.setCache(true);
+        root.setCacheHint(CacheHint.SPEED);
 
+        container.setCache(true);
+        container.setCacheHint(CacheHint.SPEED);
+
+        canvas.setCache(true);
+        canvas.setCacheHint(CacheHint.SPEED);
 
     }
 
@@ -106,7 +117,7 @@ public class NodeApplicationMainSingleWindowFPS extends Application {
             public void handle(long now) {
 
                 float fps = getFPS();
-                fpsLabel.setText(String.format("Current frame rate: %.0f fps", fps));
+                fpsLabel.setText(String.format("Current fps: %.0f fps", fps));
 
             }
         };
@@ -116,7 +127,10 @@ public class NodeApplicationMainSingleWindowFPS extends Application {
 
     private float getFPS() {
         float fps = tracker.getAverageFPS();
-        //tracker.resetAverageFPS();
+        if(counter.incrementAndGet()%100==0) {
+            tracker.resetAverageFPS();
+            counter.set(0);
+        }
         return fps;
     }
 

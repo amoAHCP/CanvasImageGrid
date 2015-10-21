@@ -15,6 +15,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 
 /**
@@ -33,17 +34,19 @@ public class ApplicationMainSingleWindowFPS extends Application {
     private static final double MAX_HIGHT = 150;
     private static final double MAX_WIDTH = 150;
     private static final int HIGHT = 1024;
-    private static final int WIDTH = 790;
+    private static final int WIDTH = 710;
     private static final double PADDING = 5;
     private Label fpsLabel;
     private PerformanceTracker tracker;
+
+    private AtomicLong counter = new AtomicLong(0);
 
     @Override
     public void start(Stage stage) throws Exception {
         System.setProperty("javafx.animation.fullspeed", "true");
         long startTime = System.currentTimeMillis();
 
-        Path rootFolder = FileSystems.getDefault().getPath("/Users/amo/Pictures/April_Mai/");
+        Path rootFolder = FileSystems.getDefault().getPath("/Users/amo/Pictures/demo/");
         final List<Path> subfolders = getSubfolders(rootFolder).parallelStream().filter(file -> file.toString().endsWith("jpg")).sequential().collect(Collectors.toList());
 
         VBox main = new VBox();
@@ -75,17 +78,7 @@ public class ApplicationMainSingleWindowFPS extends Application {
                 maxImageWidth(MAX_WIDTH).
                 maxImageHight(MAX_HIGHT).
                 selectionListener((x, y, image) -> {
-                    /*if (image.length == 1) {
-                        ImageContainer myImage = image[0];
-                        try {
-                            Image i = new Image(myImage.getImagePath().toFile().toURI().toURL().toExternalForm(), imageBox.getWidth(), imageBox.getHeight(), true, false, false);
-                            ImageView view = new ImageView(i);
 
-                            imageBox.getChildren().setAll(view);
-                        } catch (MalformedURLException e) {
-                            e.printStackTrace();
-                        }
-                    }*/
                 });
 
 
@@ -93,13 +86,18 @@ public class ApplicationMainSingleWindowFPS extends Application {
         canvas.heightProperty().bind(root.heightProperty().subtract(10));
         fpsLabel = new Label("FPS:");
         fpsLabel.setStyle("-fx-font-size: 5em;-fx-text-fill: red;");
-        fpsLabel.setOnMouseClicked((event)->{
+        fpsLabel.setOnMouseClicked((event) -> {
             tracker.resetAverageFPS();
         });
 
         createPerformanceTracker(scene);
         imageBox.getChildren().add(fpsLabel);
         root.getChildren().addAll(canvas);
+       // root.setCache(true);
+       // root.setCacheHint(CacheHint.SPEED);
+
+        //canvas.setCache(true);
+       // canvas.setCacheHint(CacheHint.SPEED);
 
 
 
@@ -116,7 +114,7 @@ public class ApplicationMainSingleWindowFPS extends Application {
             {
 
                 float fps = getFPS();
-                fpsLabel.setText(String.format("Current frame rate: %.0f fps", fps));
+                fpsLabel.setText(String.format("Current fps: %.0f fps", fps));
 
             }
         };
@@ -127,7 +125,11 @@ public class ApplicationMainSingleWindowFPS extends Application {
     private float getFPS()
     {
         float fps = tracker.getAverageFPS();
-        //tracker.resetAverageFPS();
+        if(counter.incrementAndGet()%100==0) {
+            tracker.resetAverageFPS();
+            //counter.set(0);
+        }
+
         return fps;
     }
 

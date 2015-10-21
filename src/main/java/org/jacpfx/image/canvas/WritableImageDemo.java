@@ -255,6 +255,7 @@ public class WritableImageDemo extends Application {
     }
 
     private void copy() {
+        final long startTime = System.currentTimeMillis();
         PixelReader reader = src.getPixelReader();
         PixelWriter writer = dest.getPixelWriter();
         WritablePixelFormat<IntBuffer> format
@@ -281,6 +282,9 @@ public class WritableImageDemo extends Application {
             writer.setArgb(x, y, argb);
             }
         }
+        final long stopTime = System.currentTimeMillis();
+        final long elapsedTime = stopTime - startTime;
+        System.out.println("copy time : "+elapsedTime);
     }
 
 

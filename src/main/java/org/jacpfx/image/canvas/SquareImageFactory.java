@@ -1,11 +1,9 @@
 package org.jacpfx.image.canvas;
 
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.image.*;
 
 import java.io.IOException;
+import java.nio.ByteBuffer;
 import java.nio.file.Path;
 import java.util.Map;
 
@@ -14,38 +12,44 @@ import java.util.Map;
  */
 public class SquareImageFactory implements ImageFactory {
     @Override
-    public Image createImage(Path imagePath,double maxWidth, double maxHight) throws Exception{
-        return new Image(imagePath.toFile().toURI().toURL().toExternalForm(),0d,maxHight*2,true,false,true);
+    public Image createImage(Path imagePath, double maxWidth, double maxHight) throws Exception {
+        return new Image(imagePath.toFile().toURI().toURL().toExternalForm(), 0d, maxHight * 2, true, false, true);
 
     }
+
     @Override
-    public Image postProcess(Image image,double maxHight, double maxWidth) {
-        ImageView maskView = new ImageView();
-        maskView.setPreserveRatio(true);
-        maskView.setFitWidth(maxWidth);
-        maskView.setSmooth(false);
-        maskView.setImage(image);
-        maskView.setClip(initLayer(image, Color.WHITE, 1.0,maxHight,maxWidth));
+    public Image postProcess(Image src, double maxHight, double maxWidth) {
+        final PixelReader reader = src.getPixelReader();
+        WritablePixelFormat<ByteBuffer> format = WritablePixelFormat.getByteBgraPreInstance();
 
-        return maskView.snapshot(null, null);
-    }
+        final int width = (int) src.getWidth();
+        final int height = (int) src.getHeight();
+        WritableImage dest = null;
+        if (width > height) {
+            byte[] rowBuffer = new byte[height * width * 4]; // * 3 to hold RGB
 
-    private Rectangle initLayer(Image image, Color color, double opacity,double maxHight, double maxWidth) {
-        Rectangle rectangle = null;
-        if (image.getWidth() > image.getHeight()) {
-            rectangle = new Rectangle(maxWidth / 4, 0, maxHight, maxHight);
+            reader.getPixels(width / 4, 0, height, height, format, rowBuffer, 0, width * 4);
+            dest = new WritableImage(height, height);
+            final PixelWriter writer = dest.getPixelWriter();
+            writer.setPixels(0, 0, height, height, format, rowBuffer, 0, width * 4);
         } else {
-            rectangle = new Rectangle(0, maxHight / 4, maxWidth, maxWidth);
+            byte[] rowBuffer = new byte[height * width * 4]; // * 3 to hold RGB
+
+            reader.getPixels(0, height / 4, width, width, format, rowBuffer, 0, width * 4);
+            dest = new WritableImage(width, width);
+            final PixelWriter writer = dest.getPixelWriter();
+            writer.setPixels(0, 0, width, width, format, rowBuffer, 0, width * 4);
         }
 
-        rectangle.setFill(color);
-        rectangle.setOpacity(opacity);
-        return rectangle;
+        final ImageView originalView = new ImageView(dest);
+        return originalView.snapshot(null, null);
     }
 
+
+
     @Override
-    public Map.Entry<Double,Double> getImageSize(Path imagePath,double maxHight) throws IOException {
-        return new Map.Entry<Double,Double>(){
+    public Map.Entry<Double, Double> getImageSize(Path imagePath, double maxHight) throws IOException {
+        return new Map.Entry<Double, Double>() {
 
             @Override
             public Double getKey() {

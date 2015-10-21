@@ -39,7 +39,7 @@ public class NodePanel extends FlowPane {
 
     private List<RowNodeContainer> containers = Collections.emptyList();
     private final ObservableList<ImageNodeContainer> children = FXCollections.observableList(new ArrayList<>());
-
+    List<ImageView> reduce;
 
     private NodeSelectionListener selectionListener = (x, y, images) -> {
     };
@@ -48,7 +48,7 @@ public class NodePanel extends FlowPane {
     private NodePanel(int x, int y, double padding, double lineBreakLimit, double maxHight, double maxWidth, final List<Path> imageFolder, final ImageFactory factory, NodeSelectionListener selectionListener) {
         super(x, y);
 
-
+        this.setPrefWrapLength(padding);
         this.paddingProperty.set(padding);
         this.maxImageHightProperty.set(maxHight);
         this.maxImageWidthProperty.set(maxWidth);
@@ -60,6 +60,7 @@ public class NodePanel extends FlowPane {
         addImages(maxHight, maxWidth, imageFolder, factory);
        // registerScroll();
         registerZoom();
+        registerZoomListener();
        // registerScale();
         // registerScale(this.getGraphicsContext2D());
         // registerMaxHightListener(this.getGraphicsContext2D());
@@ -147,7 +148,16 @@ public class NodePanel extends FlowPane {
 
     private void registerZoomListener() {
         zoomFactorProperty.addListener(change ->
-                        containers = paintImages(children)
+                {
+                    if (reduce!=null){
+                        reduce.forEach(imageView -> {
+                            final double height = imageView.getImage().getHeight();
+                            final double width = imageView.getImage().getWidth();
+                            imageView.setFitWidth(width*zoomFactorProperty.get());
+                            imageView.setFitHeight(height*zoomFactorProperty.get());
+                        });
+                    }
+                }
         );
     }
 
@@ -271,7 +281,7 @@ public class NodePanel extends FlowPane {
     private void renderCanvas(final List<RowNodeContainer> containers, final double start, final double end, final double offset) {
         getChildren().clear();
 
-        final List<ImageView> reduce = containers
+        reduce = containers
                 .stream()
                 .map(container -> container.     // TODO test rows with parallel stream
                         getImages())

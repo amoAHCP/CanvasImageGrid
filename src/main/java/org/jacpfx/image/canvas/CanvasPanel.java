@@ -35,6 +35,7 @@ public class CanvasPanel extends Canvas {
     private final DoubleProperty scrollProperty = new SimpleDoubleProperty();
     private final DoubleProperty lineBreakThresholdProperty = new SimpleDoubleProperty();
 
+
     private List<RowContainer> containers = Collections.emptyList();
     private final ObservableList<ImageContainer> children = FXCollections.observableList(new ArrayList<>());
 
@@ -167,8 +168,9 @@ public class CanvasPanel extends Canvas {
     private void registerScrollProperty(final GraphicsContext gc) {
         scrollProperty.addListener((observableValue, oldScrollDeltaY, newsScrollDeltaY) -> {
             lastOffset = offset;
-            if (lastOffset * -1 <= currentMaxHight || (lastOffset + newsScrollDeltaY.doubleValue()) * -1 < currentMaxHight)
-                offset = offset + newsScrollDeltaY.doubleValue();
+            final double scrollDeltaY = newsScrollDeltaY.doubleValue();
+            if (lastOffset * -1 <= currentMaxHight || (lastOffset + scrollDeltaY) * -1 < currentMaxHight)
+                offset = offset + scrollDeltaY;
 
             final double start = offset * -1;
 
@@ -176,7 +178,8 @@ public class CanvasPanel extends Canvas {
                 offset = 0d;
 
             if (start <= currentMaxHight) {
-                final double end = start + this.getHeight() + (this.getHeight() * clippingOffset);
+                final double height = this.getHeight();
+                final double end = start + height + (height * clippingOffset);
                 renderCanvas(this.containers, gc, start, end, offset);
             }
 
@@ -265,22 +268,19 @@ public class CanvasPanel extends Canvas {
         return containers;
     }
 
-    private void renderCanvas(final List<RowContainer> containers, GraphicsContext gc, final double start, final double end, final double offset) {
-        gc.save();
+    private void renderCanvas(final List<RowContainer> containers, final GraphicsContext gc, final double start, final double end, final double offset) {
+
         gc.clearRect(0, 0, getWidth(), getHeight());
-        containers.forEach(container -> container.     // TODO test rows with parallel stream
+        containers.forEach(container -> container.
                         getImages().
                         stream().
                         parallel().
                         filter(imgElem -> filterImagesVisible(start, end, imgElem)).
                         sequential().
                         forEach(c ->
-                                        //gc.drawImage(c.getScaledImage(), c.getStartX(), container.getRowStartHight() + offset, c.getScaledX(), c.getScaledY())
                                         c.drawImageToCanvas(gc, container.getRowStartHight() + offset)
                         )
         );
-        // gc.applyEffect(new DropShadow(20, 10, 10, Color.GRAY));
-        gc.restore();
     }
 
     private boolean filterImagesVisible(double start, double end, ImageContainer imgElem) {
