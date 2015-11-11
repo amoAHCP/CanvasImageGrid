@@ -40,14 +40,12 @@ public class CanvasPanel extends Canvas {
     private final ObservableList<ImageContainer> children = FXCollections.observableList(new ArrayList<>());
 
 
-
     private SelectionListener selectionListener = (x, y, images) -> {
     };
 
 
     private CanvasPanel(int x, int y, double padding, double lineBreakLimit, double maxHight, double maxWidth, final List<Path> imageFolder, final ImageFactory factory, SelectionListener selectionListener) {
         super(x, y);
-
 
         this.paddingProperty.set(padding);
         this.maxImageHightProperty.set(maxHight);
@@ -70,7 +68,7 @@ public class CanvasPanel extends Canvas {
     }
 
 
-     // Builder
+    // Builder
     interface ImagePathBuilder {
         FactoryBuilder imagePath(final List<Path> imageFolder);
     }
@@ -138,7 +136,6 @@ public class CanvasPanel extends Canvas {
     }
 
 
-
     public ObservableList<ImageContainer> getChildren() {
         return children;
     }
@@ -169,19 +166,18 @@ public class CanvasPanel extends Canvas {
         scrollProperty.addListener((observableValue, oldScrollDeltaY, newsScrollDeltaY) -> {
             lastOffset = offset;
             final double scrollDeltaY = newsScrollDeltaY.doubleValue();
-            if (lastOffset * -1 <= currentMaxHight || (lastOffset + scrollDeltaY) * -1 < currentMaxHight)
-                offset = offset + scrollDeltaY;
+            final double offsetNew = lastOffset + scrollDeltaY;
+            if (offsetNew * -1 < currentMaxHight)
+                offset = offsetNew;
 
             final double start = offset * -1;
 
             if (offset > 0d)
                 offset = 0d;
 
-            if (start <= currentMaxHight) {
-                final double height = this.getHeight();
-                final double end = start + height + (height * clippingOffset);
-                renderCanvas(this.containers, gc, start, end, offset);
-            }
+            final double height = this.getHeight();
+            final double end = start + height + (height * clippingOffset);
+            renderCanvas(this.containers, gc, start, end, offset);
 
         });
 
@@ -271,6 +267,9 @@ public class CanvasPanel extends Canvas {
     private void renderCanvas(final List<RowContainer> containers, final GraphicsContext gc, final double start, final double end, final double offset) {
 
         gc.clearRect(0, 0, getWidth(), getHeight());
+
+        //  gc.setFill(Color.GREEN);
+        // gc.fillRoundRect(0, 0, getWidth(),getHeight(), 0, 0);
         containers.forEach(container -> container.
                         getImages().
                         stream().
@@ -374,7 +373,7 @@ public class CanvasPanel extends Canvas {
         if (row.getImages().isEmpty()) return;
         final double v = padding / 2;
         row.getImages().forEach(img -> img.setStartY(v));
-        final Optional<ImageContainer> first = row.getImages().stream().findFirst();
+        final Optional<ImageContainer> first = Optional.ofNullable(row.getImages().size() > 1 ? row.getImages().get(0) : null);
         // all images are normalized, take first and set row hight
         first.ifPresent(firstElement -> {
             row.setRowStartHight(v);
@@ -386,7 +385,7 @@ public class CanvasPanel extends Canvas {
     private void normalizeHight(final RowContainer row, final double padding, final double maxHight) {
         if (row.getImages().isEmpty()) return;
         row.getImages().forEach(img -> img.setStartY(maxHight));
-        final Optional<ImageContainer> first = row.getImages().stream().findFirst();
+        final Optional<ImageContainer> first = Optional.ofNullable(row.getImages().size() > 1 ? row.getImages().get(0) : null);
 
         // all images are normalized, take first and set row hight
         first.ifPresent(firstElement -> {
@@ -400,23 +399,20 @@ public class CanvasPanel extends Canvas {
 
     private RowContainer normalizeWidth(final RowContainer row, final double padding) {
         if (row.getImages().isEmpty()) return row;
-        final double max = row.getMaxWitdht();
+        final double max = getWidth();
+        final int amount = row.getImages().size();
         final double length = row.getImages().stream().map(ImageContainer::getScaledX).reduce(0d, (a, b) -> a + b);
-        final double amount = row.getImages().size();
-        final double paddingAll = (amount + 2) * padding;
-        final double scaleFactorNew = (max / (length + paddingAll)) * 1.02;
-        boolean scale = row.getImages().size() > 2;
-        final Optional<ImageContainer> first = row.getImages().stream().findFirst();
+        final double scaleFactorNew = max / (length + (padding * (amount - 1)));
+        boolean scale = amount >= 1;
+        final Optional<ImageContainer> first = Optional.ofNullable(scale ? row.getImages().get(0) : null);
         first.ifPresent(fe -> {
-            final ImageContainer firstElement = handleFirstImage(fe, padding, scaleFactorNew, scale);
+            final ImageContainer firstElement = handleFirstImage(fe, scaleFactorNew);
             row.getImages().
                     stream().
-                    filter(i -> i != firstElement).
+                    skip(1).
                     peek(img ->
-                    {
-                        if (scale) img.setScaleFactor(img.getScaleFactor() * scaleFactorNew);
-                    }).
-                    reduce(firstElement,(a,b)->normalizeImageContainer(a,b,padding));
+                            img.setScaleFactor(img.getScaleFactor() * scaleFactorNew)).
+                    reduce(firstElement, (a, b) -> normalizeImageContainer(a, b, padding));
         });
 
 
@@ -430,9 +426,8 @@ public class CanvasPanel extends Canvas {
     }
 
 
-    private ImageContainer handleFirstImage(final ImageContainer firstImage, final double padding, final double scaleFactorNew, final boolean scale) {
-        if (scale) firstImage.setScaleFactor(firstImage.getScaleFactor() * scaleFactorNew);
-        firstImage.setStartX(padding / 2);
+    private ImageContainer handleFirstImage(final ImageContainer firstImage, final double scaleFactorNew) {
+        firstImage.setScaleFactor(firstImage.getScaleFactor() * scaleFactorNew);
         firstImage.setPosition(1);
         return firstImage;
     }

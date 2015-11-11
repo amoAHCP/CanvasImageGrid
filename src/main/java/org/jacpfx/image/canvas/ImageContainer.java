@@ -105,7 +105,7 @@ public class ImageContainer implements Cloneable {
     }
     // TODO add offMemory cache: https://github.com/RuedigerMoeller/fast-serialization/blob/master/src/main/java/org/nustaq/offheap/FSTAsciiStringOffheapMap.java
 
-    public void drawImageToCanvas(GraphicsContext gc, double start) {
+    public void drawImageToCanvas(final GraphicsContext gc, final double start) {
         lastDrawingStartPosition = start;
         if (imageRef.get() == null) {
 
@@ -113,18 +113,16 @@ public class ImageContainer implements Cloneable {
                 final Image img = factory.createImage(imagePath, maxWidth, maxHight);
                 img.progressProperty().addListener((ov, oldVal, newVal) -> {
                     if (newVal.doubleValue() >= 1.0) {
-                        gc.save();
                         final Image image = factory.postProcess(img,maxHight,maxWidth);
-                        gc.drawImage(image, getStartX(), start, getScaledX(), getScaledY());
+                        gc.drawImage(image, getStartX(), lastDrawingStartPosition, getScaledX(), getScaledY());
                         imageRef = new SoftReference<Image>(image);
-                        gc.restore();
 
                     }
 
                 });
                 if (img.getProgress() >= 1.0) {
                     gc.save();
-                    gc.drawImage(img, getStartX(), start, getScaledX(), getScaledY());
+                    gc.drawImage(img, getStartX(), lastDrawingStartPosition, getScaledX(), getScaledY());
                     gc.restore();
                     imageRef = new SoftReference<Image>(img);
                 }
@@ -175,6 +173,10 @@ public class ImageContainer implements Cloneable {
 
     public double getEndY() {
         return endY;
+    }
+
+    public double getEndX() {
+        return endX;
     }
 
 
