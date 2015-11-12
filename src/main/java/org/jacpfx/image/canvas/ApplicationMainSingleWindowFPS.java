@@ -31,8 +31,8 @@ public class ApplicationMainSingleWindowFPS extends Application {
         launch(args);
     }
 
-    private static final double MAX_HIGHT = 150;
-    private static final double MAX_WIDTH = 150;
+    private static final double MAX_HIGHT = 200;
+    private static final double MAX_WIDTH = 200;
     private static final int HIGHT = 1024;
     private static final int WIDTH = 710;
     private static final double PADDING = 5;
@@ -59,6 +59,7 @@ public class ApplicationMainSingleWindowFPS extends Application {
 
 
         ImageFactory factory = new DefaultImageFactory();
+        //ImageFactory factory = new SquareImageFactory();
         long endTime = System.currentTimeMillis();
         System.out.println("Total execution time: " + (endTime - startTime) + "ms");
 
@@ -68,33 +69,38 @@ public class ApplicationMainSingleWindowFPS extends Application {
         stage.setScene(scene);
 
         stage.show();
+
+
         CanvasPanel canvas = CanvasPanel.createCanvasPanel().
                 imagePath(subfolders).
                 imageFactory(factory).
                 width(WIDTH).
                 hight(HIGHT).
                 padding(PADDING).
-                lineBreakLimit(0.1d).
+                lineBreakLimit(0.01d).
                 maxImageWidth(MAX_WIDTH).
                 maxImageHight(MAX_HIGHT).
                 selectionListener((x, y, image) -> {
-
+                    System.out.println(image[0].getImagePath());
                 });
 
 
-        canvas.widthProperty().bind(root.widthProperty().subtract(10));
-        canvas.heightProperty().bind(root.heightProperty().subtract(10));
+        canvas.widthProperty().bind(stage.widthProperty().subtract(10));
+        canvas.heightProperty().bind(stage.heightProperty().subtract(10));
+
+
         fpsLabel = new Label("FPS:");
         fpsLabel.setStyle("-fx-font-size: 5em;-fx-text-fill: red;");
         fpsLabel.setOnMouseClicked((event) -> {
             tracker.resetAverageFPS();
         });
-
-        createPerformanceTracker(scene);
-        imageBox.getChildren().add(fpsLabel);
+            //  root.setStyle("-fx-background-color: aqua");
+             // canvas.setStyle("-fx-background-color: red");
+       // createPerformanceTracker(scene);
+       // imageBox.getChildren().add(fpsLabel);
         root.getChildren().addAll(canvas);
-       // root.setCache(true);
-       // root.setCacheHint(CacheHint.SPEED);
+        //root.setCache(true);
+        //root.setCacheHint(CacheHint.SPEED);
 
         //canvas.setCache(true);
        // canvas.setCacheHint(CacheHint.SPEED);

@@ -3,7 +3,6 @@ package org.jacpfx.image.node;
 import com.sun.javafx.perf.PerformanceTracker;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
-import javafx.scene.CacheHint;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -98,14 +97,10 @@ public class NodeApplicationMainSingleWindowFPS extends Application {
         createPerformanceTracker(scene);
         imageBox.getChildren().add(fpsLabel);
         root.getChildren().addAll(container);
-        root.setCache(true);
-        root.setCacheHint(CacheHint.SPEED);
 
-        container.setCache(true);
-        container.setCacheHint(CacheHint.SPEED);
 
-        canvas.setCache(true);
-        canvas.setCacheHint(CacheHint.SPEED);
+       // canvas.setCache(true);
+       // canvas.setCacheHint(CacheHint.SCALE);
 
     }
 

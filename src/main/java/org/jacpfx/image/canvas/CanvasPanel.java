@@ -164,7 +164,6 @@ public class CanvasPanel extends Canvas {
     }
 
 
-
     private void registerChildListener(final GraphicsContext gc) {
         children.addListener((ListChangeListener) change -> containers = paintImages(gc, children));
     }
@@ -180,26 +179,18 @@ public class CanvasPanel extends Canvas {
         if (offsetNew * -1 < currentMaxHight) {
             offset = offsetNew;
             double start = offset * -1;
-
-            if (offset > 0d){
-                offset = 0d;
-               // start = offset;
+            if (offset > 0d) {
+                offset = scrollDeltaY;
             }
-
-
             prepareAndRender(gc, offset, start);
-
         } else {
-             double tmp = lastOffsetEOL;
+            double tmp = lastOffsetEOL;
             lastOffsetEOL = scrollDeltaY;
             // prevent strange value "jumping" with getDeltaY
-            if(tmp/lastOffsetEOL>.5) {
+            if (tmp / lastOffsetEOL > .5) {
                 final double start = offsetNew * -1;
                 prepareAndRender(gc, offsetNew, start);
             }
-
-
-
         }
         handler.consume();
     }
@@ -268,13 +259,12 @@ public class CanvasPanel extends Canvas {
         if (all == null || all.isEmpty()) return Collections.emptyList();
         final List<RowContainer> containers = createContainer(all);
         final double allRowHight = computeMaxRowHight(containers);
-        currentMaxHight = (allRowHight - this.getHeight()) + (paddingProperty.getValue() / 2);
-        System.out.println("max hight: "+currentMaxHight+" allRows:"+allRowHight+"  canvas:"+this.getHeight());
+        final double height = this.getHeight();
         final double currentZoom = zoomFactorProperty.doubleValue();
         if (currentZoom < 1d) offset = offset * currentZoom;
         final double start = offset * -1;
-        final double end = start + this.getHeight() + (this.getHeight() * clippingOffset);
-
+        final double end = start + height + (height * clippingOffset);
+        currentMaxHight = (allRowHight - height) + (paddingProperty.getValue() / 2);
         renderCanvas(containers, gc, start, end, offset);
 
 
@@ -287,12 +277,11 @@ public class CanvasPanel extends Canvas {
 
         //  gc.setFill(Color.GREEN);
         // gc.fillRoundRect(0, 0, getWidth(),getHeight(), 0, 0);
+        // containers.stream().flatMap(container -> container.getImages().stream()).filter(imgElem -> filterImagesVisible(start, end, imgElem));
         containers.forEach(container -> container.
                         getImages().
                         stream().
-                        parallel().
                         filter(imgElem -> filterImagesVisible(start, end, imgElem)).
-                        sequential().
                         forEach(c ->
                                         c.drawImageToCanvas(gc, container.getRowStartHight() + offset)
                         )
@@ -329,7 +318,6 @@ public class CanvasPanel extends Canvas {
         rows.add(row);
         for (final ImageContainer c : all) {
             c.setScaleFactor(maxHight / c.getEndY());
-
             final double tempWidth = c.getScaledX();
             if (i == 0) {
                 currentWidth = tempWidth;
@@ -366,18 +354,13 @@ public class CanvasPanel extends Canvas {
     private List<RowContainer> normalizeRows(final List<RowContainer> rows, final double padding) {
         if (rows.isEmpty()) return rows;
         rows.stream().findFirst().ifPresent(firstRow -> {
+            normalizeWidth(firstRow, padding);
+            handleFirstRow(firstRow, padding);
             // normalize width
-            rows.stream().
+            rows.parallelStream().
                     peek(row -> normalizeWidth(row, padding)).
-                    filter(r ->
-                    {
-                        if (r == firstRow) {
-                            handleFirstRow(firstRow, padding);
-                            return false;
-                        } else {
-                            return true;
-                        }
-                    }).
+                    sequential().
+                    skip(1).
                     reduce(firstRow, (a, b) -> {
                         normalizeHight(b, padding, a.getRowEndHight());
                         return b;
@@ -390,7 +373,7 @@ public class CanvasPanel extends Canvas {
         if (row.getImages().isEmpty()) return;
         final double v = padding / 2;
         row.getImages().forEach(img -> img.setStartY(v));
-        final Optional<ImageContainer> first = Optional.ofNullable(row.getImages().size() > 1 ? row.getImages().get(0) : null);
+        final Optional<ImageContainer> first = getFirstImageInRow(row);
         // all images are normalized, take first and set row hight
         first.ifPresent(firstElement -> {
             row.setRowStartHight(v);
@@ -402,7 +385,7 @@ public class CanvasPanel extends Canvas {
     private void normalizeHight(final RowContainer row, final double padding, final double maxHight) {
         if (row.getImages().isEmpty()) return;
         row.getImages().forEach(img -> img.setStartY(maxHight));
-        final Optional<ImageContainer> first = Optional.ofNullable(row.getImages().size() > 0 ? row.getImages().get(0) : null);
+        final Optional<ImageContainer> first = getFirstImageInRow(row);
 
         // all images are normalized, take first and set row hight
         first.ifPresent(firstElement -> {
@@ -413,6 +396,9 @@ public class CanvasPanel extends Canvas {
 
     }
 
+    private Optional<ImageContainer> getFirstImageInRow(RowContainer row) {
+        return Optional.ofNullable(row.getImages().size() > 0 ? row.getImages().get(0) : null);
+    }
 
     private RowContainer normalizeWidth(final RowContainer row, final double padding) {
         if (row.getImages().isEmpty()) return row;
@@ -420,8 +406,7 @@ public class CanvasPanel extends Canvas {
         final int amount = row.getImages().size();
         final double length = row.getImages().stream().map(ImageContainer::getScaledX).reduce(0d, (a, b) -> a + b);
         final double scaleFactorNew = max / (length + (padding * (amount - 1)));
-        boolean scale = amount >= 1;
-        final Optional<ImageContainer> first = Optional.ofNullable(scale ? row.getImages().get(0) : null);
+        final Optional<ImageContainer> first = getFirstImageInRow(row);
         first.ifPresent(fe -> {
             final ImageContainer firstElement = handleFirstImage(fe, scaleFactorNew);
             row.getImages().
