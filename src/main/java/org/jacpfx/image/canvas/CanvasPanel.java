@@ -7,6 +7,7 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.input.ScrollEvent;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public class CanvasPanel extends Canvas {
 
     private double offset = 0d;
     private double lastOffset = 0d;
+    private double lastOffsetEOL = 0d;
     private double currentMaxHight = 0d;
     private final double clippingOffset = 0.9d;
 
@@ -54,7 +56,7 @@ public class CanvasPanel extends Canvas {
         this.selectionListener = selectionListener;
 
         addImages(maxHight, maxWidth, imageFolder, factory);
-        registerScroll();
+        registerScroll(this.getGraphicsContext2D());
         registerZoom();
         registerScale(this.getGraphicsContext2D());
         registerMaxHightListener(this.getGraphicsContext2D());
@@ -62,7 +64,6 @@ public class CanvasPanel extends Canvas {
         registerPaddingListener(this.getGraphicsContext2D());
         registerChildListener(this.getGraphicsContext2D());
         registerLineBreakThresholdProperty(this.getGraphicsContext2D());
-        registerScrollProperty(this.getGraphicsContext2D());
         registerMouseClickListener(selectionListener);
 
     }
@@ -162,36 +163,51 @@ public class CanvasPanel extends Canvas {
         );
     }
 
-    private void registerScrollProperty(final GraphicsContext gc) {
-        scrollProperty.addListener((observableValue, oldScrollDeltaY, newsScrollDeltaY) -> {
-            lastOffset = offset;
-            final double scrollDeltaY = newsScrollDeltaY.doubleValue();
-            final double offsetNew = lastOffset + scrollDeltaY;
-            if (offsetNew * -1 < currentMaxHight)
-                offset = offsetNew;
 
-            final double start = offset * -1;
-
-            if (offset > 0d)
-                offset = 0d;
-
-            final double height = this.getHeight();
-            final double end = start + height + (height * clippingOffset);
-            renderCanvas(this.containers, gc, start, end, offset);
-
-        });
-
-    }
 
     private void registerChildListener(final GraphicsContext gc) {
         children.addListener((ListChangeListener) change -> containers = paintImages(gc, children));
     }
 
-    private void registerScroll() {
-        this.setOnScroll(handler -> {
-            scrollProperty.set(handler.getDeltaY());
-            handler.consume();
-        });
+    private void registerScroll(final GraphicsContext gc) {
+        this.setOnScroll(handler -> canvasScroll(gc, handler));
+    }
+
+    private void canvasScroll(GraphicsContext gc, ScrollEvent handler) {
+        lastOffset = offset;
+        final double scrollDeltaY = handler.getDeltaY();
+        double offsetNew = lastOffset + scrollDeltaY;
+        if (offsetNew * -1 < currentMaxHight) {
+            offset = offsetNew;
+            double start = offset * -1;
+
+            if (offset > 0d){
+                offset = 0d;
+               // start = offset;
+            }
+
+
+            prepareAndRender(gc, offset, start);
+
+        } else {
+             double tmp = lastOffsetEOL;
+            lastOffsetEOL = scrollDeltaY;
+            // prevent strange value "jumping" with getDeltaY
+            if(tmp/lastOffsetEOL>.5) {
+                final double start = offsetNew * -1;
+                prepareAndRender(gc, offsetNew, start);
+            }
+
+
+
+        }
+        handler.consume();
+    }
+
+    private void prepareAndRender(GraphicsContext gc, double offsetNew, double start) {
+        final double height = this.getHeight();
+        final double end = start + height + (height * clippingOffset);
+        renderCanvas(this.containers, gc, start, end, offsetNew);
     }
 
     private void registerZoom() {
@@ -253,6 +269,7 @@ public class CanvasPanel extends Canvas {
         final List<RowContainer> containers = createContainer(all);
         final double allRowHight = computeMaxRowHight(containers);
         currentMaxHight = (allRowHight - this.getHeight()) + (paddingProperty.getValue() / 2);
+        System.out.println("max hight: "+currentMaxHight+" allRows:"+allRowHight+"  canvas:"+this.getHeight());
         final double currentZoom = zoomFactorProperty.doubleValue();
         if (currentZoom < 1d) offset = offset * currentZoom;
         final double start = offset * -1;
@@ -385,7 +402,7 @@ public class CanvasPanel extends Canvas {
     private void normalizeHight(final RowContainer row, final double padding, final double maxHight) {
         if (row.getImages().isEmpty()) return;
         row.getImages().forEach(img -> img.setStartY(maxHight));
-        final Optional<ImageContainer> first = Optional.ofNullable(row.getImages().size() > 1 ? row.getImages().get(0) : null);
+        final Optional<ImageContainer> first = Optional.ofNullable(row.getImages().size() > 0 ? row.getImages().get(0) : null);
 
         // all images are normalized, take first and set row hight
         first.ifPresent(firstElement -> {
