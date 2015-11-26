@@ -94,7 +94,7 @@ public class ImageContainer implements Cloneable {
 
             try {
                 final Map.Entry<Double, Double> entry = factory.getImageSize(imagePath, maxHight);
-                endX = entry.getKey() ;
+                endX = entry.getKey();
                 endY = entry.getValue();
                 this.landsScape = endX > endY;
             } catch (IOException e) {
@@ -111,44 +111,56 @@ public class ImageContainer implements Cloneable {
 
             try {
                 final Image img = factory.createImage(imagePath, maxWidth, maxHight);
-                img.progressProperty().addListener((ov, oldVal, newVal) -> {
-                    if (newVal.doubleValue() >= 1.0) {
-                        final Image image = factory.postProcess(img,maxHight,maxWidth);
-                        gc.drawImage(image, getStartX(), lastDrawingStartPosition, getScaledX(), getScaledY());
-                        imageRef = new SoftReference<Image>(image);
-
-                    }
-
-                });
-                if (img.getProgress() >= 1.0) {
-                    gc.save();
-                    gc.drawImage(img, getStartX(), lastDrawingStartPosition, getScaledX(), getScaledY());
-                    gc.restore();
-                    imageRef = new SoftReference<Image>(img);
-                }
-            } catch (Exception
-                    e) {
+                drawAsync(gc, img);
+                drawSync(gc, img);
+            } catch (Exception e) {
                 e.printStackTrace();
             }
-            if(imageRef.get() == null)imageRef = new SoftReference<Image>(new Rectangle(getScaledX(), getScaledY()).snapshot(new SnapshotParameters(), null));
+            // TODO move placeholder creation to factory
+            if (imageRef.get() == null)
+                imageRef = new SoftReference<Image>(new Rectangle(getScaledX(), getScaledY()).snapshot(new SnapshotParameters(), null));
         }
         gc.drawImage(imageRef.get(), getStartX(), start, getScaledX(), getScaledY());
     }
 
+    private void drawSync(GraphicsContext gc, Image img) {
+        if (img.getProgress() >= 1.0) {
+            drawImageWhenFinished(gc, img);
+        }
+    }
 
+    private void drawAsync(GraphicsContext gc, Image img) {
+        img.progressProperty().addListener((ov, oldVal, newVal) -> {
+            if (newVal.doubleValue() >= 1.0) {
+                drawImageWhenFinished(gc, img);
+            }
+
+        });
+    }
+
+    private void drawImageWhenFinished(final GraphicsContext gc, final Image img) {
+        final Image image = factory.postProcess(img, maxHight, maxWidth);
+        gc.drawImage(image, getStartX(), lastDrawingStartPosition, getScaledX(), getScaledY());
+        imageRef = new SoftReference<Image>(image);
+    }
+
+
+    // TODO move operation to ImageFactory!!
     public void drawSelectedImageOnConvas(GraphicsContext gc) {
-        if(!selected){
-            imageRefOrig =  new SoftReference<Image>(imageRef.get());
+        if (!selected) {
+            imageRefOrig = new SoftReference<Image>(imageRef.get());
+            ////
             ImageView view = new ImageView(imageRef.get());
             view.setEffect(new DropShadow(20, 10, 10, Color.GRAY));
-            final Image imageEffect = view.snapshot(null,null);
+            final Image imageEffect = view.snapshot(null, null);
+            //
             gc.drawImage(imageEffect, getStartX(), lastDrawingStartPosition, getScaledX(), getScaledY());
             imageRef = new SoftReference<Image>(imageEffect);
             selected = true;
         } else {
             imageRef = new SoftReference<Image>(imageRefOrig.get());
-            drawImageToCanvas(gc,lastDrawingStartPosition);
-            imageRefOrig =  new SoftReference<Image>(null);
+            drawImageToCanvas(gc, lastDrawingStartPosition);
+            imageRefOrig = new SoftReference<Image>(null);
             selected = false;
         }
 

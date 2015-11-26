@@ -202,7 +202,6 @@ public class CanvasPanel extends Canvas {
     }
 
     private void registerZoom() {
-        // Todo change to zoomListener
         final AtomicBoolean skip = new AtomicBoolean(true);
         final AtomicReference<Double> lastFactor = new AtomicReference<>(1d);
         this.setOnZoom(handler -> {
@@ -274,10 +273,6 @@ public class CanvasPanel extends Canvas {
     private void renderCanvas(final List<RowContainer> containers, final GraphicsContext gc, final double start, final double end, final double offset) {
 
         gc.clearRect(0, 0, getWidth(), getHeight());
-
-        //  gc.setFill(Color.GREEN);
-        // gc.fillRoundRect(0, 0, getWidth(),getHeight(), 0, 0);
-        // containers.stream().flatMap(container -> container.getImages().stream()).filter(imgElem -> filterImagesVisible(start, end, imgElem));
         containers.forEach(container -> container.
                         getImages().
                         stream().
@@ -295,7 +290,7 @@ public class CanvasPanel extends Canvas {
 
 
     private List<RowContainer> getLines(final double padding, final double maxHight, final List<ImageContainer> all) {
-        final List<RowContainer> rows = createRows(this.widthProperty().doubleValue(), maxHight, all);
+        final List<RowContainer> rows = createRows(this.getWidth(), maxHight, all);
         return normalizeRows(rows, padding);
 
     }
