@@ -1,7 +1,5 @@
 package org.jacpfx.image.node;
 
-import com.sun.javafx.perf.PerformanceTracker;
-import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -40,7 +38,6 @@ public class NodeApplicationMainSingleWindowFPS extends Application {
     private static final int WIDTH = 710;
     private static final double PADDING = 5;
     private Label fpsLabel;
-    private PerformanceTracker tracker;
 
     private AtomicLong counter = new AtomicLong(0);
 
@@ -88,13 +85,11 @@ public class NodeApplicationMainSingleWindowFPS extends Application {
         container.setFitToWidth(true);
         fpsLabel = new Label("FPS:");
         fpsLabel.setOnMouseClicked((event) -> {
-            tracker.resetAverageFPS();
         });
         fpsLabel.setStyle("-fx-font-size: 5em;-fx-text-fill: red;");
 
         canvas.setPrefHeight(HIGHT);
         canvas.setPrefWidth(WIDTH);
-        createPerformanceTracker(scene);
         imageBox.getChildren().add(fpsLabel);
         root.getChildren().addAll(container);
 
@@ -104,30 +99,6 @@ public class NodeApplicationMainSingleWindowFPS extends Application {
 
     }
 
-    public void createPerformanceTracker(Scene scene) {
-        tracker = PerformanceTracker.getSceneTracker(scene);
-        AnimationTimer frameRateMeter = new AnimationTimer() {
-
-            @Override
-            public void handle(long now) {
-
-                float fps = getFPS();
-                fpsLabel.setText(String.format("Current fps: %.0f fps", fps));
-
-            }
-        };
-
-        frameRateMeter.start();
-    }
-
-    private float getFPS() {
-        float fps = tracker.getAverageFPS();
-        if(counter.incrementAndGet()%100==0) {
-            tracker.resetAverageFPS();
-            counter.set(0);
-        }
-        return fps;
-    }
 
     private List<Path> getSubfolders(Path root) {
         final List<Path> roots = new ArrayList<>();

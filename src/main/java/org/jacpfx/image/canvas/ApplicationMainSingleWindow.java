@@ -1,7 +1,5 @@
 package org.jacpfx.image.canvas;
 
-import com.sun.javafx.perf.PerformanceTracker;
-import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -37,14 +35,13 @@ public class ApplicationMainSingleWindow extends Application {
     private static final int WIDTH = 790;
     private static final double PADDING = 5;
     private Label fpsLabel;
-    private PerformanceTracker tracker;
 
     @Override
     public void start(Stage stage) throws Exception {
         System.setProperty("javafx.animation.fullspeed", "true");
         long startTime = System.currentTimeMillis();
 
-        Path rootFolder = FileSystems.getDefault().getPath("/Users/amo/Pictures/April_Mai/");
+        Path rootFolder = FileSystems.getDefault().getPath("/Users/amo/Pictures/andydd_mila-schulfotos-2016/");
         final List<Path> subfolders = getSubfolders(rootFolder).parallelStream().filter(file -> file.toString().endsWith("jpg")).sequential().collect(Collectors.toList());
 
         VBox main = new VBox();
@@ -87,7 +84,6 @@ public class ApplicationMainSingleWindow extends Application {
         fpsLabel.setStyle("-fx-font-size: 1em;-fx-text-fill: white;");
 
 
-        createPerformanceTracker(scene);
         root.getChildren().addAll(canvas, fpsLabel);
 
 
@@ -95,30 +91,7 @@ public class ApplicationMainSingleWindow extends Application {
 
     }
 
-    public void createPerformanceTracker(Scene scene)
-    {
-        tracker = PerformanceTracker.getSceneTracker(scene);
-        AnimationTimer frameRateMeter = new AnimationTimer()
-        {
 
-            @Override
-            public void handle(long now)
-            {
-                float fps = getFPS();
-                fpsLabel.setText(String.format("Current frame rate: %.0f fps", fps));
-
-            }
-        };
-
-        frameRateMeter.start();
-    }
-
-    private float getFPS()
-    {
-        float fps = tracker.getAverageFPS();
-        tracker.resetAverageFPS();
-        return fps;
-    }
 
     private List<Path> getSubfolders(Path root) {
         final List<Path> roots = new ArrayList<>();
