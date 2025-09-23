@@ -41,7 +41,7 @@ public class ApplicationMainWithSelectionWindow extends Application {
     public void start(Stage stage) throws Exception {
         long startTime = System.currentTimeMillis();
 
-        Path rootFolder = FileSystems.getDefault().getPath("/Users/amo/Pictures/April_Mai/");
+        Path rootFolder = FileSystems.getDefault().getPath("/Users/amo/Pictures/InterlakenSeptember25/");
         final List<Path> subfolders = getSubfolders(rootFolder).parallelStream().filter(file -> file.toString().endsWith("jpg")).sequential().collect(Collectors.toList());
 
         VBox main = new VBox();

@@ -1,0 +1,17 @@
+[
+    {
+        "name": "com.sun.glass.ui.*"
+    },
+    {
+        "name": "com.sun.javafx.*"
+    },
+    {
+        "name": "com.sun.prism.*"
+    },
+    {
+        "name": "javafx.*"
+    },
+    {
+        "name": "org.jacpfx.image.canvas.*"
+    }
+]

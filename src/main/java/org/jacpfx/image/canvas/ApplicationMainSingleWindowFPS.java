@@ -44,7 +44,7 @@ public class ApplicationMainSingleWindowFPS extends Application {
         System.setProperty("javafx.animation.fullspeed", "true");
         long startTime = System.currentTimeMillis();
 
-        Path rootFolder = FileSystems.getDefault().getPath("/Users/amo/Pictures/demo/");
+        Path rootFolder = FileSystems.getDefault().getPath("/Users/amo/Pictures/InterlakenSeptember25/");
         final List<Path> subfolders = getSubfolders(rootFolder).parallelStream().filter(file -> file.toString().endsWith("jpg")).sequential().collect(Collectors.toList());
 
         VBox main = new VBox();

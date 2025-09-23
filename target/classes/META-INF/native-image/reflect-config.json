@@ -1,0 +1,138 @@
+[
+    {
+        "name": "javafx.application.Application",
+        "methods": [
+            {
+                "name": "<init>",
+                "parameterTypes": []
+            }
+        ]
+    },
+    {
+        "name": "org.jacpfx.image.canvas.ApplicationMainSingleWindow",
+        "methods": [
+            {
+                "name": "<init>",
+                "parameterTypes": []
+            }
+        ]
+    },
+    {
+        "name": "javafx.scene.canvas.Canvas",
+        "methods": [
+            {
+                "name": "<init>",
+                "parameterTypes": []
+            },
+            {
+                "name": "<init>",
+                "parameterTypes": [
+                    "double",
+                    "double"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "javafx.scene.image.Image",
+        "methods": [
+            {
+                "name": "<init>",
+                "parameterTypes": [
+                    "java.lang.String"
+                ]
+            },
+            {
+                "name": "<init>",
+                "parameterTypes": [
+                    "java.lang.String",
+                    "double",
+                    "double",
+                    "boolean",
+                    "boolean"
+                ]
+            },
+            {
+                "name": "<init>",
+                "parameterTypes": [
+                    "java.lang.String",
+                    "double",
+                    "double",
+                    "boolean",
+                    "boolean",
+                    "boolean"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "javafx.scene.image.ImageView",
+        "methods": [
+            {
+                "name": "<init>",
+                "parameterTypes": []
+            },
+            {
+                "name": "<init>",
+                "parameterTypes": [
+                    "javafx.scene.image.Image"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "javafx.scene.layout.StackPane",
+        "methods": [
+            {
+                "name": "<init>",
+                "parameterTypes": []
+            }
+        ]
+    },
+    {
+        "name": "javafx.scene.layout.VBox",
+        "methods": [
+            {
+                "name": "<init>",
+                "parameterTypes": []
+            }
+        ]
+    },
+    {
+        "name": "javafx.scene.control.Label",
+        "methods": [
+            {
+                "name": "<init>",
+                "parameterTypes": []
+            },
+            {
+                "name": "<init>",
+                "parameterTypes": [
+                    "java.lang.String"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "javafx.stage.Stage",
+        "methods": [
+            {
+                "name": "<init>",
+                "parameterTypes": []
+            }
+        ]
+    },
+    {
+        "name": "javafx.scene.Scene",
+        "methods": [
+            {
+                "name": "<init>",
+                "parameterTypes": [
+                    "javafx.scene.Parent",
+                    "double",
+                    "double"
+                ]
+            }
+        ]
+    }
+]
