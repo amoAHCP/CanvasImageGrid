@@ -9,7 +9,7 @@
 *.ear
 .idea
 .vscode
-.target
+*.target
 *.iml
 
 
