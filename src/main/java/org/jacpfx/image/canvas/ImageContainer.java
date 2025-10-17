@@ -17,6 +17,7 @@ import java.util.Map;
  * Created by amo on 11.04.14.
  */
 public class ImageContainer implements Cloneable {
+
     /**
      * start point x
      */
@@ -117,8 +118,9 @@ public class ImageContainer implements Cloneable {
                 e.printStackTrace();
             }
             // TODO move placeholder creation to factory
-            if (imageRef.get() == null)
+            if (imageRef.get() == null) {
                 imageRef = new SoftReference<Image>(new Rectangle(getScaledX(), getScaledY()).snapshot(new SnapshotParameters(), null));
+            }
         }
         gc.drawImage(imageRef.get(), getStartX(), start, getScaledX(), getScaledY());
     }
@@ -143,7 +145,6 @@ public class ImageContainer implements Cloneable {
         gc.drawImage(image, getStartX(), lastDrawingStartPosition, getScaledX(), getScaledY());
         imageRef = new SoftReference<Image>(image);
     }
-
 
     // TODO move operation to ImageFactory!!
     public void drawSelectedImageOnConvas(GraphicsContext gc) {
@@ -182,7 +183,6 @@ public class ImageContainer implements Cloneable {
         this.startY = startY;
     }
 
-
     public double getEndY() {
         return endY;
     }
@@ -190,7 +190,6 @@ public class ImageContainer implements Cloneable {
     public double getEndX() {
         return endX;
     }
-
 
     public double getScaleFactor() {
         return scaleFactor;
@@ -228,21 +227,21 @@ public class ImageContainer implements Cloneable {
 
     @Override
     public String toString() {
-        return "ImageContainer{" +
-                "startX=" + startX +
-                ", startY=" + startY +
-                ", endX=" + endX +
-                ", endY=" + endY +
-                ", scaledX=" + scaledX +
-                ", scaledY=" + scaledY +
-                ", landsScape=" + landsScape +
-                ", scaleFactor=" + scaleFactor +
-                ", imagePath=" + imagePath +
-                ", factory=" + factory +
-                ", maxHight=" + maxHight +
-                ", maxWidth=" + maxWidth +
-                ", position=" + position +
-                '}';
+        return "ImageContainer{"
+                + "startX=" + startX
+                + ", startY=" + startY
+                + ", endX=" + endX
+                + ", endY=" + endY
+                + ", scaledX=" + scaledX
+                + ", scaledY=" + scaledY
+                + ", landsScape=" + landsScape
+                + ", scaleFactor=" + scaleFactor
+                + ", imagePath=" + imagePath
+                + ", factory=" + factory
+                + ", maxHight=" + maxHight
+                + ", maxWidth=" + maxWidth
+                + ", position=" + position
+                + '}';
     }
 
     public ImageContainer resetStart() {
@@ -253,6 +252,23 @@ public class ImageContainer implements Cloneable {
 
     public void clearImageRef() {
         imageRef.clear();
+    }
+
+    public Image getImage() {
+        if (imageRef != null) {
+            Image cached = imageRef.get();
+            if (cached != null) {
+                return cached;
+            }
+        }
+        try {
+            final Image img = factory.createImage(imagePath, maxWidth, maxHight);
+            imageRef = new SoftReference<>(img);
+            return img;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public Object clone() {

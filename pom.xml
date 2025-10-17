@@ -8,29 +8,29 @@
     <name>CanvasImageGrid</name>
     <url>http://maven.apache.org</url>
     <licenses>
-      <license>
-        <name>The Apache Software License, Version 2.0</name>
-        <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-        <distribution>repo</distribution>
-      </license>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
     </licenses>
     <developers>
-      <developer>
-        <id>amo</id>
-        <name>Andy Moncsek</name>
-        <email>amo.ahcp@gmail.com</email>
-      </developer>
+        <developer>
+            <id>amo</id>
+            <name>Andy Moncsek</name>
+            <email>amo.ahcp@gmail.com</email>
+        </developer>
     </developers>
     <scm>
-      <connection>scm:git:git@github.com:amoAHCP/CanvasImageGrid.git</connection>
-      <developerConnection>scm:git:git@github.com:amoAHCP/CanvasImageGrid.git</developerConnection>
-      <url>git@github.com:amoAHCP/CanvasImageGrid.git</url>
-      <tag>CanvasImageGrid</tag>
+        <connection>scm:git:git@github.com:amoAHCP/CanvasImageGrid.git</connection>
+        <developerConnection>scm:git:git@github.com:amoAHCP/CanvasImageGrid.git</developerConnection>
+        <url>git@github.com:amoAHCP/CanvasImageGrid.git</url>
+        <tag>CanvasImageGrid</tag>
     </scm>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>21</maven.compiler.source>
-    <maven.compiler.target>21</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
         <javafx.version>21.0.4</javafx.version>
         <junit.jupiter.version>5.10.2</junit.jupiter.version>
         <mainClass>org.jacpfx.image.canvas.ApplicationMainSingleWindow</mainClass>
@@ -64,6 +64,18 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.testfx</groupId>
+            <artifactId>testfx-core</artifactId>
+            <version>4.0.16-alpha</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.testfx</groupId>
+            <artifactId>testfx-junit5</artifactId>
+            <version>4.0.16-alpha</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>com.guigarage</groupId>
             <artifactId>flatter</artifactId>
             <version>0.7</version>
@@ -72,6 +84,14 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.5</version>
+                <configuration>
+                    <argLine>--add-exports javafx.graphics/com.sun.javafx.application=ALL-UNNAMED</argLine>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
