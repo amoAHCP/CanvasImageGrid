@@ -29,10 +29,10 @@
     </scm>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
-        <javafx.version>21.0.4</javafx.version>
-        <junit.jupiter.version>5.10.2</junit.jupiter.version>
+        <maven.compiler.source>24</maven.compiler.source>
+        <maven.compiler.target>24</maven.compiler.target>
+        <javafx.version>24</javafx.version>
+        <junit.jupiter.version>5.11.3</junit.jupiter.version>
         <mainClass>org.jacpfx.image.canvas.ApplicationMainSingleWindow</mainClass>
     </properties>
 
@@ -97,7 +97,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.13.0</version>
                 <configuration>
-                    <release>21</release>
+                    <release>24</release>
                 </configuration>
             </plugin>
             <plugin>

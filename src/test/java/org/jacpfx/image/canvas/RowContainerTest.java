@@ -14,7 +14,7 @@ public class RowContainerTest {
         RowContainer rowContainer = new RowContainer();
         assertTrue(rowContainer.getImages().isEmpty(), "A new RowContainer should have no images.");
 
-        ImageContainer imageContainer = new ImageContainer(Paths.get(""), new DefaultImageFactory(), 200, 200);
+        ImageContainer imageContainer = new ImageContainer(Paths.get("src/test/resources/images/blue.png"), new DefaultImageFactory(), 200, 200);
         rowContainer.add(imageContainer);
 
         assertEquals(1, rowContainer.getImages().size(), "RowContainer should have one image after adding one.");

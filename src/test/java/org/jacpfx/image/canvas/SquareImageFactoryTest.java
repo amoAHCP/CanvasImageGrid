@@ -28,9 +28,22 @@ class SquareImageFactoryTest extends ApplicationTest {
     void should_create_square_image() {
         try {
             Image image = SQUARE_IMAGE_FACTORY.createImage(RED_IMAGE_PATH, 200, 150);
-            Image processedImage = SQUARE_IMAGE_FACTORY.postProcess(image, 150, 200);
-            assertNotNull(processedImage);
-            assertEquals(processedImage.getWidth(), processedImage.getHeight(), "Processed image should be a square");
+            final Image[] processedImage = new Image[1];
+
+            // postProcess muss auf dem JavaFX Application Thread laufen
+            javafx.application.Platform.runLater(() -> {
+                try {
+                    processedImage[0] = SQUARE_IMAGE_FACTORY.postProcess(image, 150, 200);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
+
+            // Warte, bis der JavaFX Thread fertig ist
+            Thread.sleep(500);
+
+            assertNotNull(processedImage[0]);
+            assertEquals(processedImage[0].getWidth(), processedImage[0].getHeight(), "Processed image should be a square");
         } catch (Exception e) {
             fail("Image creation and processing should not fail.", e);
         }

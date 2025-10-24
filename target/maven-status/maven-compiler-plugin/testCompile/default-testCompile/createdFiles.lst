@@ -1,0 +1,6 @@
+org/jacpfx/image/canvas/SquareImageFactoryTest.class
+org/jacpfx/image/canvas/ImageContainerTest.class
+org/jacpfx/image/canvas/RowContainerTest.class
+org/jacpfx/image/canvas/ImageMetadataTest.class
+org/jacpfx/image/canvas/DefaultImageFactoryTest.class
+org/jacpfx/image/canvas/CanvasPanelTest.class

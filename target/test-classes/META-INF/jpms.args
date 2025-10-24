@@ -1,0 +1,4 @@
+--patch-module
+canvasImageGrid=_
+--add-reads
+canvasImageGrid=ALL-UNNAMED
