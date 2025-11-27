@@ -31,7 +31,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>24</maven.compiler.source>
         <maven.compiler.target>24</maven.compiler.target>
-        <javafx.version>24</javafx.version>
+        <javafx.version>25</javafx.version>
         <junit.jupiter.version>5.11.3</junit.jupiter.version>
         <mainClass>org.jacpfx.image.canvas.ApplicationMainSingleWindow</mainClass>
     </properties>
@@ -87,7 +87,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.2.5</version>
+                <version>3.5.4</version>
                 <configuration>
                     <argLine>--add-exports javafx.graphics/com.sun.javafx.application=ALL-UNNAMED</argLine>
                 </configuration>
@@ -95,10 +95,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.13.0</version>
-                <configuration>
-                    <release>24</release>
-                </configuration>
+                <version>3.14.1</version>
             </plugin>
             <plugin>
                 <groupId>org.openjfx</groupId>
@@ -118,7 +115,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.5.1</version>
+                <version>3.6.1</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -145,10 +142,10 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
+          <!-- <plugin>
                 <groupId>org.graalvm.buildtools</groupId>
                 <artifactId>native-maven-plugin</artifactId>
-                <version>0.9.28</version>
+                <version>0.10.3</version>
                 <extensions>true</extensions>
                 <executions>
                     <execution>
@@ -163,19 +160,25 @@
                     <imageName>CanvasImageGrid</imageName>
                     <mainClass>${mainClass}</mainClass>
                     <buildArgs>
-                        <buildArg>--no-fallback</buildArg>
-                        <buildArg>--install-exit-handlers</buildArg>
+                        <buildArg>&#45;&#45;no-fallback</buildArg>
+                        <buildArg>&#45;&#45;install-exit-handlers</buildArg>
                         <buildArg>-H:+ReportExceptionStackTraces</buildArg>
                         <buildArg>-H:+UnlockExperimentalVMOptions</buildArg>
                         <buildArg>-H:ConfigurationFileDirectories=src/main/resources/META-INF/native-image/</buildArg>
                     </buildArgs>
                 </configuration>
-            </plugin>
+            </plugin>-->
         </plugins>
     </build>
 
     <profiles>
         <profile>
+            <id>regular</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <!--<profile>
             <id>native</id>
             <dependencies>
                 <dependency>
@@ -197,6 +200,6 @@
                     <classifier>mac</classifier>
                 </dependency>
             </dependencies>
-        </profile>
+        </profile>-->
     </profiles>
 </project>
