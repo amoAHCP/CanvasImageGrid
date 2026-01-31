@@ -49,7 +49,9 @@ public interface ImageFactory {
     }
 
     default double getTargetHight(double maxHight) {
-        return maxHight * 2;
+        // Reduced from maxHight * 2 to just maxHight to lower memory consumption
+        // Images are scaled to fit the display area, 2x was excessive
+        return maxHight;
     }
 
     default double getTargetWidth(ImageMetadata metadata, double maxHight) {

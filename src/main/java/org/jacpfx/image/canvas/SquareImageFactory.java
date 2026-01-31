@@ -16,7 +16,9 @@ public class SquareImageFactory implements ImageFactory {
     @Override
     public Image createImage(Path imagePath, double maxWidth, double maxHight) throws Exception {
         try (InputStream is = Files.newInputStream(imagePath)) {
-            return new Image(is, 0d, maxHight * 2, true, false);
+            // Load at actual display resolution instead of 2x to reduce memory consumption
+            // Enable background loading for better performance
+            return new Image(is, 0d, maxHight, true, true);
         }
     }
 

@@ -1,138 +1,161 @@
 [
     {
         "name": "javafx.application.Application",
-        "methods": [
-            {
-                "name": "<init>",
-                "parameterTypes": []
-            }
-        ]
+        "allDeclaredConstructors": true,
+        "allPublicConstructors": true,
+        "allDeclaredMethods": true,
+        "allPublicMethods": true
     },
     {
         "name": "org.jacpfx.image.canvas.ApplicationMainSingleWindow",
-        "methods": [
-            {
-                "name": "<init>",
-                "parameterTypes": []
-            }
-        ]
+        "allDeclaredConstructors": true,
+        "allPublicConstructors": true,
+        "allDeclaredMethods": true,
+        "allPublicMethods": true
+    },
+    {
+        "name": "org.jacpfx.image.canvas.ApplicationMainNative",
+        "allDeclaredConstructors": true,
+        "allPublicConstructors": true,
+        "allDeclaredMethods": true,
+        "allPublicMethods": true
     },
     {
         "name": "javafx.scene.canvas.Canvas",
-        "methods": [
-            {
-                "name": "<init>",
-                "parameterTypes": []
-            },
-            {
-                "name": "<init>",
-                "parameterTypes": [
-                    "double",
-                    "double"
-                ]
-            }
-        ]
+        "allDeclaredConstructors": true,
+        "allPublicConstructors": true,
+        "allDeclaredMethods": true,
+        "allPublicMethods": true
     },
     {
         "name": "javafx.scene.image.Image",
-        "methods": [
-            {
-                "name": "<init>",
-                "parameterTypes": [
-                    "java.lang.String"
-                ]
-            },
-            {
-                "name": "<init>",
-                "parameterTypes": [
-                    "java.lang.String",
-                    "double",
-                    "double",
-                    "boolean",
-                    "boolean"
-                ]
-            },
-            {
-                "name": "<init>",
-                "parameterTypes": [
-                    "java.lang.String",
-                    "double",
-                    "double",
-                    "boolean",
-                    "boolean",
-                    "boolean"
-                ]
-            }
-        ]
+        "allDeclaredConstructors": true,
+        "allPublicConstructors": true,
+        "allDeclaredMethods": true,
+        "allPublicMethods": true
     },
     {
         "name": "javafx.scene.image.ImageView",
-        "methods": [
-            {
-                "name": "<init>",
-                "parameterTypes": []
-            },
-            {
-                "name": "<init>",
-                "parameterTypes": [
-                    "javafx.scene.image.Image"
-                ]
-            }
-        ]
+        "allDeclaredConstructors": true,
+        "allPublicConstructors": true
     },
     {
         "name": "javafx.scene.layout.StackPane",
-        "methods": [
-            {
-                "name": "<init>",
-                "parameterTypes": []
-            }
-        ]
+        "allDeclaredConstructors": true,
+        "allPublicConstructors": true
     },
     {
         "name": "javafx.scene.layout.VBox",
-        "methods": [
-            {
-                "name": "<init>",
-                "parameterTypes": []
-            }
-        ]
+        "allDeclaredConstructors": true,
+        "allPublicConstructors": true
     },
     {
         "name": "javafx.scene.control.Label",
-        "methods": [
-            {
-                "name": "<init>",
-                "parameterTypes": []
-            },
-            {
-                "name": "<init>",
-                "parameterTypes": [
-                    "java.lang.String"
-                ]
-            }
-        ]
-    },
-    {
-        "name": "javafx.stage.Stage",
-        "methods": [
-            {
-                "name": "<init>",
-                "parameterTypes": []
-            }
-        ]
+        "allDeclaredConstructors": true,
+        "allPublicConstructors": true
     },
     {
         "name": "javafx.scene.Scene",
-        "methods": [
-            {
-                "name": "<init>",
-                "parameterTypes": [
-                    "javafx.scene.Parent",
-                    "double",
-                    "double"
-                ]
-            }
-        ]
+        "allDeclaredConstructors": true,
+        "allPublicConstructors": true
+    },
+    {
+        "name": "javafx.stage.Stage",
+        "allDeclaredConstructors": true,
+        "allPublicConstructors": true
+    },
+    {
+        "name": "com.sun.glass.ui.mac.MacApplication",
+        "allDeclaredConstructors": true,
+        "allPublicConstructors": true,
+        "allDeclaredMethods": true,
+        "allPublicMethods": true
+    },
+    {
+        "name": "com.sun.glass.ui.mac.MacPlatformFactory",
+        "allDeclaredConstructors": true,
+        "allPublicConstructors": true
+    },
+    {
+        "name": "com.sun.prism.es2.MacGLFactory",
+        "allDeclaredConstructors": true,
+        "allPublicConstructors": true
+    },
+    {
+        "name": "com.sun.scenario.effect.impl.es2.ES2ShaderSource",
+        "allDeclaredConstructors": true,
+        "allPublicConstructors": true
+    },
+    {
+        "name": "com.sun.javafx.tk.quantum.QuantumToolkit",
+        "allDeclaredConstructors": true,
+        "allPublicConstructors": true,
+        "allDeclaredMethods": true,
+        "allPublicMethods": true
+    },
+    {
+        "name": "com.sun.glass.ui.mac.MacPlatform",
+        "allDeclaredConstructors": true,
+        "allPublicConstructors": true,
+        "allDeclaredMethods": true,
+        "allPublicMethods": true
+    },
+    {
+        "name": "com.sun.glass.ui.Accessible",
+        "allDeclaredConstructors": true,
+        "allPublicConstructors": true
+    },
+    {
+        "name": "com.sun.prism.es2.MacGLContext",
+        "allDeclaredConstructors": true,
+        "allPublicConstructors": true
+    },
+    {
+        "name": "com.sun.prism.es2.MacGLDrawable",
+        "allDeclaredConstructors": true,
+        "allPublicConstructors": true
+    },
+    {
+        "name": "com.sun.prism.es2.MacGLPixelFormat",
+        "allDeclaredConstructors": true,
+        "allPublicConstructors": true
+    },
+    {
+        "name": "com.sun.prism.es2.ES2Pipeline",
+        "allDeclaredConstructors": true,
+        "allPublicConstructors": true,
+        "allDeclaredMethods": true,
+        "allPublicMethods": true
+    },
+    {
+        "name": "com.sun.prism.sw.SWPipeline",
+        "allDeclaredConstructors": true,
+        "allPublicConstructors": true,
+        "allDeclaredMethods": true,
+        "allPublicMethods": true
+    },
+    {
+        "name": "com.sun.prism.GraphicsPipeline",
+        "allDeclaredConstructors": true,
+        "allPublicConstructors": true,
+        "allDeclaredMethods": true,
+        "allPublicMethods": true
+    },
+    {
+        "name": "com.sun.scenario.effect.impl.Renderer",
+        "allDeclaredConstructors": true,
+        "allPublicConstructors": true,
+        "allDeclaredMethods": true,
+        "allPublicMethods": true
+    },
+    {
+        "name": "com.sun.javafx.font.MacFontFinder",
+        "allDeclaredConstructors": true,
+        "allPublicConstructors": true
+    },
+    {
+        "name": "com.sun.javafx.font.coretext.CTFactory",
+        "allDeclaredConstructors": true,
+        "allPublicConstructors": true
     }
 ]

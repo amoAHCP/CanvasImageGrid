@@ -1,0 +1,64 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------------< org.jacpfx:CanvasImageGrid >---------------------
+[INFO] Building CanvasImageGrid 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ CanvasImageGrid ---
+[INFO] Deleting /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target
+[INFO] 
+[INFO] ---------------------< org.jacpfx:CanvasImageGrid >---------------------
+[INFO] Building CanvasImageGrid 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- gluonfx-maven-plugin:1.0.24:build (default-cli) @ CanvasImageGrid ---
+[WARN] Maven will be executed in interactive mode, but no input stream has been configured for this MavenInvoker instance.
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------------< org.jacpfx:CanvasImageGrid >---------------------
+[INFO] Building CanvasImageGrid 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> gluonfx-maven-plugin:1.0.24:compile (default-cli) > process-classes @ CanvasImageGrid >>>
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ CanvasImageGrid ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 6 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.14.1:compile (default-compile) @ CanvasImageGrid ---
+[WARNING] Can't extract module name from javafx-graphics-25-mac-aarch64.jar: Unsupported major.minor version 67.0
+[WARNING] Can't extract module name from javafx-base-25-mac-aarch64.jar: Unsupported major.minor version 67.0
+[WARNING] Can't extract module name from javafx-media-25-mac-aarch64.jar: Unsupported major.minor version 67.0
+[WARNING] Can't extract module name from javafx-controls-25-mac-aarch64.jar: Unsupported major.minor version 67.0
+[WARNING] Can't extract module name from javafx-swing-25-mac-aarch64.jar: Unsupported major.minor version 67.0
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 19 source files with javac [debug target 24] to target/classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.399 s
+[INFO] Finished at: 2026-01-31T21:32:43+01:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.14.1:compile (default-compile) on project CanvasImageGrid: Fatal error compiling: Fehler: Ungültiges Zielrelease: 24 -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.657 s
+[INFO] Finished at: 2026-01-31T21:32:43+01:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal com.gluonhq:gluonfx-maven-plugin:1.0.24:build (default-cli) on project CanvasImageGrid: Error, gluonfx:build failed -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException

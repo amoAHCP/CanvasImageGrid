@@ -1,8 +1,11 @@
 /Users/amo/Documents/development/JavaFX/CanvasImageGrid/src/main/java/module-info.java
+/Users/amo/Documents/development/JavaFX/CanvasImageGrid/src/main/java/org/jacpfx/image/canvas/ApplicationMainNative.java
 /Users/amo/Documents/development/JavaFX/CanvasImageGrid/src/main/java/org/jacpfx/image/canvas/ApplicationMainSingleWindow.java
 /Users/amo/Documents/development/JavaFX/CanvasImageGrid/src/main/java/org/jacpfx/image/canvas/ApplicationMainSingleWindowFPS.java
 /Users/amo/Documents/development/JavaFX/CanvasImageGrid/src/main/java/org/jacpfx/image/canvas/ApplicationMainWithSelectionWindow.java
+/Users/amo/Documents/development/JavaFX/CanvasImageGrid/src/main/java/org/jacpfx/image/canvas/CachedImageFactory.java
 /Users/amo/Documents/development/JavaFX/CanvasImageGrid/src/main/java/org/jacpfx/image/canvas/CanvasPanel.java
+/Users/amo/Documents/development/JavaFX/CanvasImageGrid/src/main/java/org/jacpfx/image/canvas/ConfigurableResolutionImageFactory.java
 /Users/amo/Documents/development/JavaFX/CanvasImageGrid/src/main/java/org/jacpfx/image/canvas/DefaultImageFactory.java
 /Users/amo/Documents/development/JavaFX/CanvasImageGrid/src/main/java/org/jacpfx/image/canvas/ImageContainer.java
 /Users/amo/Documents/development/JavaFX/CanvasImageGrid/src/main/java/org/jacpfx/image/canvas/ImageFactory.java
@@ -10,6 +13,7 @@
 /Users/amo/Documents/development/JavaFX/CanvasImageGrid/src/main/java/org/jacpfx/image/canvas/RowContainer.java
 /Users/amo/Documents/development/JavaFX/CanvasImageGrid/src/main/java/org/jacpfx/image/canvas/SelectionListener.java
 /Users/amo/Documents/development/JavaFX/CanvasImageGrid/src/main/java/org/jacpfx/image/canvas/SquareImageFactory.java
+/Users/amo/Documents/development/JavaFX/CanvasImageGrid/src/main/java/org/jacpfx/image/canvas/TwoTierImageFactory.java
 /Users/amo/Documents/development/JavaFX/CanvasImageGrid/src/main/java/org/jacpfx/image/canvas/WritableImageDemo.java
 /Users/amo/Documents/development/JavaFX/CanvasImageGrid/src/main/java/org/jacpfx/image/node/ImageNodeContainer.java
 /Users/amo/Documents/development/JavaFX/CanvasImageGrid/src/main/java/org/jacpfx/image/node/NodeApplicationMainSingleWindowFPS.java

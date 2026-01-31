@@ -1,35 +1,68 @@
-[
-    {
-        "glob": "**/*.png"
-    },
-    {
-        "glob": "**/*.jpg"
-    },
-    {
-        "glob": "**/*.jpeg"
-    },
-    {
-        "glob": "**/*.gif"
-    },
-    {
-        "glob": "**/*.bmp"
-    },
-    {
-        "glob": "**/*.tiff"
-    },
-    {
-        "glob": "**/*.fxml"
-    },
-    {
-        "glob": "**/*.css"
-    },
-    {
-        "glob": "**/*.properties"
-    },
-    {
-        "glob": "**/*.ttf"
-    },
-    {
-        "glob": "**/*.otf"
-    }
-]
+{
+  "resources": {
+    "includes": [
+      {
+        "pattern": ".*\\.png"
+      },
+      {
+        "pattern": ".*\\.jpg"
+      },
+      {
+        "pattern": ".*\\.jpeg"
+      },
+      {
+        "pattern": ".*\\.gif"
+      },
+      {
+        "pattern": ".*\\.bmp"
+      },
+      {
+        "pattern": ".*\\.tiff"
+      },
+      {
+        "pattern": ".*\\.fxml"
+      },
+      {
+        "pattern": ".*\\.css"
+      },
+      {
+        "pattern": ".*\\.properties"
+      },
+      {
+        "pattern": ".*\\.ttf"
+      },
+      {
+        "pattern": ".*\\.otf"
+      },
+      {
+        "pattern": ".*\\.dylib"
+      },
+      {
+        "pattern": ".*\\.so"
+      },
+      {
+        "pattern": ".*\\.dll"
+      },
+      {
+        "pattern": ".*\\.glsl"
+      },
+      {
+        "pattern": ".*\\.frag"
+      },
+      {
+        "pattern": ".*\\.vert"
+      },
+      {
+        "pattern": "com/sun/prism/.*"
+      },
+      {
+        "pattern": "com/sun/javafx/.*"
+      },
+      {
+        "pattern": "com/sun/glass/.*"
+      }
+    ]
+  },
+  "bundles": []
+}
+

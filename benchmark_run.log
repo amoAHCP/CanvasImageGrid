@@ -1,0 +1,46 @@
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::staticFieldBase has been called by com.google.inject.internal.aop.HiddenClassDefiner (file:/opt/homebrew/Cellar/maven/3.9.11/libexec/lib/guice-5.1.0-classes.jar)
+WARNING: Please consider reporting this to the maintainers of class com.google.inject.internal.aop.HiddenClassDefiner
+WARNING: sun.misc.Unsafe::staticFieldBase will be removed in a future release
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------------< org.jacpfx:CanvasImageGrid >---------------------
+[INFO] Building CanvasImageGrid 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- exec:3.6.2:java (default-cli) @ CanvasImageGrid ---
+==========================================
+CanvasImageGrid Performance Benchmark Suite
+==========================================
+Timestamp: 20251127_214528
+Results will be saved to: target/benchmark-results/all_benchmarks_20251127_214528
+
+# JMH version: 1.37
+# VM version: JDK 25.0.1, OpenJDK 64-Bit Server VM, 25.0.1+8-LTS
+# VM invoker: /Users/amo/.sdkman/candidates/java/25.0.1.fx-zulu/zulu-25.jdk/Contents/Home/bin/java
+# VM options: -Xms2g -Xmx4g -XX:+UseG1GC -XX:InitiatingHeapOccupancyPercent=30 -XX:+ParallelRefProcEnabled -Dprism.verbose=false --add-exports javafx.graphics/com.sun.javafx.application=ALL-UNNAMED
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, 2 s each
+# Measurement: 5 iterations, 3 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: org.jacpfx.image.benchmark.CanvasPanelLayoutBenchmark.batchImageContainerCreationLargeSet
+
+# Run progress: 0.00% complete, ETA 00:05:15
+# Fork: N/A, test runs in the host VM
+# *** WARNING: Non-forked runs may silently omit JVM options, mess up profilers, disable compiler hints, etc. ***
+# *** WARNING: Use non-forked runs only for debugging purposes, not for actual performance runs. ***
+# Warmup Iteration   1: WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by com.sun.glass.utils.NativeLibLoader in module javafx.graphics (jrt:/javafx.graphics)
+WARNING: Use --enable-native-access=javafx.graphics to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+2.206 ms/op
+# Warmup Iteration   2: 2.188 ms/op
+# Warmup Iteration   3: 2.183 ms/op
+Iteration   1: 2.162 ms/op
+Iteration   2: 2.157 ms/op
+Iteration   3: 2.183 ms/op
+Iteration   4: 

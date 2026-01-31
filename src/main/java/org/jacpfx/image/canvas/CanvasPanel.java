@@ -38,6 +38,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
@@ -63,6 +66,10 @@ public class CanvasPanel extends Canvas {
 
     private List<RowContainer> containers = Collections.emptyList();
     private final ObservableList<ImageContainer> children = FXCollections.observableList(new ArrayList<>());
+
+    // Bounded thread pool for controlled parallel image processing
+    private static final ExecutorService IMAGE_LOADER_EXECUTOR =
+            Executors.newFixedThreadPool(Math.max(2, Runtime.getRuntime().availableProcessors()));
 
     private SelectionListener selectionListener = (x, y, images) -> {
     };
@@ -150,7 +157,9 @@ public class CanvasPanel extends Canvas {
     }
 
     private void addImages(double maxHight, double maxWidth, List<Path> imageFolder, ImageFactory factory) {
-        final List<ImageContainer> all = imageFolder.parallelStream()
+        // Use sequential stream - metadata extraction is I/O bound and already fast with ImageMetadata
+        // Parallel image loading happens in ImageContainer via background loading
+        final List<ImageContainer> all = imageFolder.stream()
                 .map(path -> getConatiner(path, factory, maxHight, maxWidth)).collect(Collectors.toList());
         getChildren().addAll(all);
     }
@@ -366,8 +375,9 @@ public class CanvasPanel extends Canvas {
         rows.stream().findFirst().ifPresent(firstRow -> {
             normalizeWidth(firstRow, padding);
             handleFirstRow(firstRow, padding);
-            // normalize width
-            rows.parallelStream().peek(row -> normalizeWidth(row, padding)).sequential().skip(1).reduce(firstRow,
+            // normalize width - sequential is faster for this cheap computation
+            rows.stream().skip(1).forEach(row -> normalizeWidth(row, padding));
+            rows.stream().skip(1).reduce(firstRow,
                     (a, b) -> {
                         normalizeHight(b, padding, a.getRowEndHight());
                         return b;

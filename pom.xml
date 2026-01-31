@@ -29,12 +29,13 @@
     </scm>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>24</maven.compiler.source>
-        <maven.compiler.target>24</maven.compiler.target>
-        <javafx.version>25</javafx.version>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <javafx.version>21</javafx.version>
         <junit.jupiter.version>5.11.3</junit.jupiter.version>
         <jmh.version>1.37</jmh.version>
         <mainClass>org.jacpfx.image.canvas.ApplicationMainSingleWindow</mainClass>
+        <gluonfx.target>host</gluonfx.target>
     </properties>
 
     <dependencies>
@@ -170,6 +171,31 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <!-- Gluon Client Plugin for JavaFX Native Images -->
+            <plugin>
+                <groupId>com.gluonhq</groupId>
+                <artifactId>gluonfx-maven-plugin</artifactId>
+                <version>1.0.24</version>
+                <configuration>
+                    <target>${gluonfx.target}</target>
+                    <mainClass>org.jacpfx.image.canvas.ApplicationMainNative</mainClass>
+                    <verbose>true</verbose>
+                    <attachList>
+                        <list>display</list>
+                        <list>lifecycle</list>
+                        <list>statusbar</list>
+                        <list>storage</list>
+                    </attachList>
+                    <reflectionList>
+                        <list>org.jacpfx.image.canvas.ApplicationMainNative</list>
+                        <list>org.jacpfx.image.canvas.CanvasPanel</list>
+                        <list>org.jacpfx.image.canvas.ImageContainer</list>
+                        <list>org.jacpfx.image.canvas.RowContainer</list>
+                        <list>org.jacpfx.image.canvas.DefaultImageFactory</list>
+                        <list>org.jacpfx.image.canvas.SquareImageFactory</list>
+                    </reflectionList>
+                </configuration>
             </plugin>
           <!-- <plugin>
                 <groupId>org.graalvm.buildtools</groupId>

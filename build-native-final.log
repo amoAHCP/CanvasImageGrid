@@ -1,0 +1,338 @@
+==========================================
+GraalVM Native Image Build for CanvasImageGrid
+==========================================
+
+Using: native-image 25.0.1 2025-10-21
+GraalVM Runtime Environment GraalVM CE 25.0.1+8.1 (build 25.0.1+8-jvmci-b01)
+Substrate VM GraalVM CE 25.0.1+8.1 (build 25.0.1+8, serial gc)
+
+Step 1: Building shaded JAR...
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------------< org.jacpfx:CanvasImageGrid >---------------------
+[INFO] Building CanvasImageGrid 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ CanvasImageGrid ---
+[INFO] Deleting /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ CanvasImageGrid ---
+[INFO] Copying 6 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ CanvasImageGrid ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 19 source files with javac [debug target 24 module-path] to target/classes
+[WARNING] Systemmodulpfad ist nicht zusammen mit -source 24 festgelegt
+  Wenn Sie den Speicherort der Systemmodule nicht festlegen, kann dies zu Klassendateien führen, die auf JDK 24 nicht ausgeführt werden können
+    --release 24 wird anstelle von -source 24 -target 24 empfohlen, weil dadurch der Speicherort der Systemmodule automatisch festgelegt wird
+[INFO] /Users/amo/Documents/development/JavaFX/CanvasImageGrid/src/main/java/org/jacpfx/image/canvas/CanvasPanel.java: Einige Eingabedateien verwenden nicht geprüfte oder unsichere Vorgänge.
+[INFO] /Users/amo/Documents/development/JavaFX/CanvasImageGrid/src/main/java/org/jacpfx/image/canvas/CanvasPanel.java: Wiederholen Sie die Kompilierung mit -Xlint:unchecked, um Details zu erhalten.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ CanvasImageGrid ---
+[INFO] Copying 5 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ CanvasImageGrid ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 12 source files with javac [debug target 24 module-path] to target/test-classes
+[WARNING] Systemmodulpfad ist nicht zusammen mit -source 24 festgelegt
+  Wenn Sie den Speicherort der Systemmodule nicht festlegen, kann dies zu Klassendateien führen, die auf JDK 24 nicht ausgeführt werden können
+    --release 24 wird anstelle von -source 24 -target 24 empfohlen, weil dadurch der Speicherort der Systemmodule automatisch festgelegt wird
+[INFO] 
+[INFO] --- surefire:3.5.4:test (default-test) @ CanvasImageGrid ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.4.1:jar (default-jar) @ CanvasImageGrid ---
+[INFO] Building jar: /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/CanvasImageGrid-1.0-SNAPSHOT.jar
+[INFO] 
+[INFO] --- shade:3.6.1:shade (default) @ CanvasImageGrid ---
+[INFO] Dependency-reduced POM written at: /Users/amo/Documents/development/JavaFX/CanvasImageGrid/dependency-reduced-pom.xml
+[WARNING] Discovered module-info.class. Shading will break its strong encapsulation.
+[WARNING] Discovered module-info.class. Shading will break its strong encapsulation.
+[WARNING] Discovered module-info.class. Shading will break its strong encapsulation.
+[WARNING] Discovered module-info.class. Shading will break its strong encapsulation.
+[WARNING] Discovered module-info.class. Shading will break its strong encapsulation.
+[WARNING] Discovered module-info.class. Shading will break its strong encapsulation.
+[WARNING] CanvasImageGrid-1.0-SNAPSHOT.jar, flatter-0.7.jar, javafx-base-25-mac-aarch64.jar, javafx-base-25.jar, javafx-controls-25-mac-aarch64.jar, javafx-controls-25.jar, javafx-graphics-25-mac-aarch64.jar, javafx-graphics-25.jar, javafx-media-25-mac-aarch64.jar, javafx-media-25.jar, javafx-swing-25-mac-aarch64.jar, javafx-swing-25.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/MANIFEST.MF
+[WARNING] maven-shade-plugin has detected that some files are
+[WARNING] present in two or more JARs. When this happens, only one
+[WARNING] single version of the file is copied to the uber jar.
+[WARNING] Usually this is not harmful and you can skip these warnings,
+[WARNING] otherwise try to manually exclude artifacts based on
+[WARNING] mvn dependency:tree -Ddetail=true and the above output.
+[WARNING] See https://maven.apache.org/plugins/maven-shade-plugin/
+[INFO] Replacing original artifact with shaded artifact.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.617 s
+[INFO] Finished at: 2026-01-31T21:04:01+01:00
+[INFO] ------------------------------------------------------------------------
+
+Step 2: Creating native image...
+This may take 5-10 minutes...
+
+Apply jar:file:///Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/CanvasImageGrid-1.0-SNAPSHOT.jar!/META-INF/native-image/native-image.properties
+Warning: Using a deprecated option --install-exit-handlers from 'META-INF/native-image/native-image.properties' in 'file:///Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/CanvasImageGrid-1.0-SNAPSHOT.jar'. --install-exit-handlers is enabled by default for executables and it can likely be removed. To use this option for the shared libraries, please use -H:+InstallExitHandlers.
+Apply jar:file:///Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/CanvasImageGrid-1.0-SNAPSHOT.jar!/META-INF/native-image/jni-config.json
+Apply jar:file:///Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/CanvasImageGrid-1.0-SNAPSHOT.jar!/META-INF/native-image/reflect-config.json
+Apply jar:file:///Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/CanvasImageGrid-1.0-SNAPSHOT.jar!/META-INF/native-image/resource-config.json
+Apply jar:file:///Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/CanvasImageGrid-1.0-SNAPSHOT.jar!/META-INF/native-image/proxy-config.json
+Apply jar:file:///Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/CanvasImageGrid-1.0-SNAPSHOT.jar!/META-INF/native-image/serialization-config.json
+Warning: The option '-H:EnableURLProtocols=http,https,file,jar' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: The option '-H:+JNI' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: The option '-H:JNIConfigurationFiles=src/main/resources/META-INF/native-image/jni-config.json' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: The option '-H:ResourceConfigurationFiles=src/main/resources/META-INF/native-image/resource-config.json' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: The option '-H:+UseServiceLoaderFeature' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: The option '-H:IncludeResources=.*\.png$|.*\.jpg$|.*\.jpeg$|.*\.gif$|.*\.bmp$|.*\.properties$' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: The option '-H:ReflectionConfigurationFiles=src/main/resources/META-INF/native-image/reflect-config.json' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: The option '-H:+AllowVMInspection' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: The option '-H:Name=target/CanvasImageGrid' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: Please re-evaluate whether any experimental option is required, and either remove or unlock it. The build output lists all active experimental options, including where they come from and possible alternatives. If you think an experimental option should be considered as stable, please file an issue.
+Apply jar:file:///Users/amo/.sdkman/candidates/java/25.0.1-graalce/lib/svm/library-support.jar!/META-INF/native-image/com.oracle.svm/thirdparty/native-image.properties
+Apply jar:file:///Users/amo/.sdkman/candidates/java/25.0.1-graalce/lib/svm/library-support.jar!/META-INF/native-image/com.oracle.svm/polyglot/native-image.properties
+Executing [
+DRIVER_TEMP_DIR_ENV_VARIABLE=/var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/driverRoot-4674163831115417400 \
+HOME=/Users/amo \
+LANG=C.UTF-8 \
+LC_CTYPE=UTF-8 \
+'PATH=/Users/amo/.local/bin:/Users/amo/.sdkman/candidates/java/current/bin:/Users/amo/bin:/usr/local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/opt/pmk/env/global/bin:/Library/Apple/usr/bin:/Applications/VMware Fusion.app/Contents/Public:/Users/amo/Library/Application Support/Coursier/bin:/Users/amo/.lmstudio/bin' \
+PWD=/Users/amo/Documents/development/JavaFX/CanvasImageGrid \
+USE_NATIVE_IMAGE_JAVA_PLATFORM_MODULE_SYSTEM=true \
+/Users/amo/.sdkman/candidates/java/25.0.1-graalce/bin/java \
+-XX:+UnlockExperimentalVMOptions \
+-XX:+EnableJVMCI \
+-Dtruffle.TrustAllTruffleRuntimeProviders=true \
+-Dtruffle.TruffleRuntime=com.oracle.truffle.api.impl.DefaultTruffleRuntime \
+-Dgraalvm.ForcePolyglotInvalid=true \
+-Dgraalvm.locatorDisabled=true \
+--add-exports=java.base/com.sun.crypto.provider=org.graalvm.nativeimage.builder \
+--add-exports=java.base/jdk.internal.access=org.graalvm.nativeimage.builder \
+--add-exports=java.base/jdk.internal.event=org.graalvm.nativeimage.builder \
+--add-exports=java.base/jdk.internal.foreign=org.graalvm.nativeimage.builder \
+--add-exports=java.base/jdk.internal.loader=org.graalvm.nativeimage.builder \
+--add-exports=java.base/jdk.internal.logger=org.graalvm.nativeimage.builder \
+--add-exports=java.base/jdk.internal.misc=jdk.graal.compiler,org.graalvm.nativeimage.builder,org.graalvm.nativeimage.objectfile,org.graalvm.nativeimage.pointsto \
+--add-exports=java.base/jdk.internal.module=org.graalvm.nativeimage.base,org.graalvm.nativeimage.builder \
+--add-exports=java.base/jdk.internal.perf=org.graalvm.nativeimage.builder \
+--add-exports=java.base/jdk.internal.platform=org.graalvm.nativeimage.builder \
+--add-exports=java.base/jdk.internal.ref=org.graalvm.nativeimage.builder,org.graalvm.nativeimage.objectfile \
+--add-exports=java.base/jdk.internal.reflect=org.graalvm.nativeimage.builder \
+--add-exports=java.base/jdk.internal.util=org.graalvm.nativeimage.builder \
+--add-exports=java.base/jdk.internal.vm.annotation=org.graalvm.nativeimage.builder \
+--add-exports=java.base/jdk.internal.vm=org.graalvm.nativeimage.builder \
+--add-exports=java.base/jdk.internal=org.graalvm.nativeimage.builder \
+--add-exports=java.base/sun.invoke.util=org.graalvm.nativeimage.builder \
+--add-exports=java.base/sun.net.www=org.graalvm.nativeimage.builder \
+--add-exports=java.base/sun.net=org.graalvm.nativeimage.builder \
+--add-exports=java.base/sun.nio.ch=org.graalvm.nativeimage.builder,org.graalvm.nativeimage.objectfile \
+--add-exports=java.base/sun.reflect.annotation=org.graalvm.nativeimage.builder \
+--add-exports=java.base/sun.reflect.generics.factory=org.graalvm.nativeimage.builder \
+--add-exports=java.base/sun.reflect.generics.reflectiveObjects=org.graalvm.nativeimage.builder \
+--add-exports=java.base/sun.reflect.generics.repository=org.graalvm.nativeimage.builder \
+--add-exports=java.base/sun.reflect.generics.scope=org.graalvm.nativeimage.builder \
+--add-exports=java.base/sun.reflect.generics.tree=org.graalvm.nativeimage.builder \
+--add-exports=java.base/sun.security.jca=org.graalvm.nativeimage.builder \
+--add-exports=java.base/sun.security.provider=org.graalvm.nativeimage.builder \
+--add-exports=java.base/sun.security.rsa=org.graalvm.nativeimage.builder \
+--add-exports=java.base/sun.security.ssl=org.graalvm.nativeimage.builder \
+--add-exports=java.base/sun.security.util=org.graalvm.nativeimage.builder \
+--add-exports=java.base/sun.security.x509=org.graalvm.nativeimage.builder \
+--add-exports=java.base/sun.text.spi=org.graalvm.nativeimage.builder \
+--add-exports=java.base/sun.util.calendar=org.graalvm.nativeimage.builder \
+--add-exports=java.base/sun.util.cldr=org.graalvm.nativeimage.builder \
+--add-exports=java.base/sun.util.locale.provider=org.graalvm.nativeimage.builder \
+--add-exports=java.base/sun.util.locale=org.graalvm.nativeimage.builder \
+--add-exports=java.base/sun.util.resources=org.graalvm.nativeimage.builder \
+--add-exports=java.base/sun.util=org.graalvm.nativeimage.builder \
+--add-exports=java.management/com.sun.jmx.mbeanserver=org.graalvm.nativeimage.builder \
+--add-exports=java.management/sun.management=org.graalvm.nativeimage.builder,org.graalvm.nativeimage.pointsto \
+--add-exports=jdk.internal.vm.ci/jdk.vm.ci.aarch64=jdk.graal.compiler,org.graalvm.nativeimage.builder,org.graalvm.nativeimage.objectfile \
+--add-exports=jdk.internal.vm.ci/jdk.vm.ci.amd64=jdk.graal.compiler,org.graalvm.nativeimage.builder,org.graalvm.nativeimage.objectfile \
+--add-exports=jdk.internal.vm.ci/jdk.vm.ci.code.site=jdk.graal.compiler,org.graalvm.nativeimage.builder \
+--add-exports=jdk.internal.vm.ci/jdk.vm.ci.code.stack=jdk.graal.compiler,org.graalvm.nativeimage.builder \
+--add-exports=jdk.internal.vm.ci/jdk.vm.ci.code=jdk.graal.compiler,org.graalvm.nativeimage.builder,org.graalvm.nativeimage.objectfile,org.graalvm.nativeimage.pointsto,org.graalvm.truffle.compiler \
+--add-exports=jdk.internal.vm.ci/jdk.vm.ci.common=jdk.graal.compiler,org.graalvm.nativeimage.builder,org.graalvm.nativeimage.pointsto \
+--add-exports=jdk.internal.vm.ci/jdk.vm.ci.hotspot.aarch64=jdk.graal.compiler \
+--add-exports=jdk.internal.vm.ci/jdk.vm.ci.hotspot.amd64=jdk.graal.compiler \
+--add-exports=jdk.internal.vm.ci/jdk.vm.ci.hotspot.riscv64=jdk.graal.compiler \
+--add-exports=jdk.internal.vm.ci/jdk.vm.ci.hotspot=jdk.graal.compiler,org.graalvm.nativeimage.builder \
+--add-exports=jdk.internal.vm.ci/jdk.vm.ci.meta=jdk.graal.compiler,org.graalvm.nativeimage.base,org.graalvm.nativeimage.builder,org.graalvm.nativeimage.configure,org.graalvm.nativeimage.objectfile,org.graalvm.nativeimage.pointsto,org.graalvm.truffle.compiler \
+--add-exports=jdk.internal.vm.ci/jdk.vm.ci.riscv64=jdk.graal.compiler,org.graalvm.nativeimage.builder \
+--add-exports=jdk.internal.vm.ci/jdk.vm.ci.runtime=jdk.graal.compiler,org.graalvm.nativeimage.builder,org.graalvm.nativeimage.pointsto \
+--add-exports=jdk.internal.vm.ci/jdk.vm.ci.services=jdk.graal.compiler,org.graalvm.nativeimage.builder \
+--add-exports=jdk.jfr/jdk.jfr.events=org.graalvm.nativeimage.builder \
+--add-exports=jdk.jfr/jdk.jfr.internal.event=org.graalvm.nativeimage.builder \
+--add-exports=jdk.jfr/jdk.jfr.internal.jfc=org.graalvm.nativeimage.builder \
+--add-exports=jdk.jfr/jdk.jfr.internal=org.graalvm.nativeimage.builder \
+--add-exports=jdk.management/com.sun.management.internal=org.graalvm.nativeimage.builder \
+-XX:+UseJVMCINativeLibrary \
+-Xss10m \
+-XX:+UseParallelGC \
+-XX:MaxRAMPercentage=36.45210266113281 \
+'-Dsvm.build.memoryUsageReasonText=using available memory' \
+-XX:GCTimeRatio=9 \
+-XX:+ExitOnOutOfMemoryError \
+-Djava.awt.headless=true \
+'-Dorg.graalvm.vendor=GraalVM Community' \
+-Dorg.graalvm.vendorurl=https://www.graalvm.org/ \
+'-Dorg.graalvm.vendorversion=GraalVM CE 25.0.1+8.1' \
+-Dorg.graalvm.version=25.0.1 \
+-Dcom.oracle.graalvm.isaot=true \
+-Djava.system.class.loader=com.oracle.svm.hosted.NativeImageSystemClassLoader \
+-Dorg.graalvm.nativeimage.imagecode=buildtime \
+-Xshare:off \
+-Djdk.internal.lambda.disableEagerInitialization=true \
+-Djdk.internal.lambda.eagerlyInitialize=false \
+-Djava.lang.invoke.InnerClassLambdaMetafactory.initializeLambdas=false \
+-Djava.lang.invoke.MethodHandle.DONT_INLINE_THRESHOLD=-1 \
+-Djava.lang.invoke.MethodHandle.PROFILE_GWT=false \
+--enable-preview \
+--add-modules=ALL-DEFAULT \
+--enable-native-access=org.graalvm.nativeimage.objectfile,org.graalvm.nativeimage.configure,org.graalvm.nativeimage.builder,org.graalvm.nativeimage.base,org.graalvm.espresso.shared.svm,org.graalvm.nativeimage.pointsto,org.graalvm.nativeimage.shaded.capnproto,org.graalvm.nativeimage.foreign \
+--module-path \
+/Users/amo/.sdkman/candidates/java/25.0.1-graalce/lib/svm/builder/svm.jar:/Users/amo/.sdkman/candidates/java/25.0.1-graalce/lib/svm/builder/espresso-svm.jar:/Users/amo/.sdkman/candidates/java/25.0.1-graalce/lib/svm/builder/native-image-base.jar:/Users/amo/.sdkman/candidates/java/25.0.1-graalce/lib/svm/builder/objectfile.jar:/Users/amo/.sdkman/candidates/java/25.0.1-graalce/lib/svm/builder/svm-foreign.jar:/Users/amo/.sdkman/candidates/java/25.0.1-graalce/lib/svm/builder/svm-configure.jar:/Users/amo/.sdkman/candidates/java/25.0.1-graalce/lib/svm/builder/svm-capnproto-runtime.jar:/Users/amo/.sdkman/candidates/java/25.0.1-graalce/lib/svm/builder/pointsto.jar \
+-Dsvm.modulesupport.addedModules=java.rmi,java.sql,org.graalvm.collections,jdk.jdi,java.logging,java.xml.crypto,java.transaction.xa,java.xml,jdk.jfr,jdk.internal.vm.ci,java.datatransfer,org.graalvm.truffle.compiler,jdk.internal.md,java.desktop,java.naming,jdk.internal.ed,java.prefs,java.net.http,jdk.compiler,java.security.sasl,jdk.internal.opt,org.graalvm.nativeimage,jdk.zipfs,jdk.attach,java.base,jdk.management.agent,org.graalvm.word,jdk.internal.le,java.management,java.sql.rowset,jdk.unsupported,jdk.jlink,jdk.jdwp.agent,jdk.internal.jvmstat,java.instrument,java.security.jgss,jdk.management,java.compiler,java.scripting,jdk.graal.compiler,jdk.jdeps,java.management.rmi \
+--add-modules=java.rmi,java.sql,org.graalvm.collections,jdk.jdi,java.logging,java.xml.crypto,java.transaction.xa,java.xml,jdk.jfr,jdk.internal.vm.ci,java.datatransfer,org.graalvm.truffle.compiler,jdk.internal.md,java.desktop,java.naming,jdk.internal.ed,java.prefs,java.net.http,jdk.compiler,java.security.sasl,jdk.internal.opt,org.graalvm.nativeimage,jdk.zipfs,jdk.attach,java.base,jdk.management.agent,org.graalvm.word,jdk.internal.le,java.management,java.sql.rowset,jdk.unsupported,jdk.jlink,jdk.jdwp.agent,jdk.internal.jvmstat,java.instrument,java.security.jgss,jdk.management,java.compiler,java.scripting,jdk.graal.compiler,jdk.jdeps,java.management.rmi \
+--module \
+org.graalvm.nativeimage.builder/com.oracle.svm.hosted.NativeImageGeneratorRunner \
+-keepalive \
+/var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/driverRoot-4674163831115417400/.native_image.alive \
+-imagecp \
+/Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/CanvasImageGrid-1.0-SNAPSHOT.jar \
+-imagemp \
+/Users/amo/.sdkman/candidates/java/25.0.1-graalce/lib/svm/library-support.jar \
+-H:CLibraryPath=/Users/amo/.sdkman/candidates/java/25.0.1-graalce/lib/svm/clibraries/darwin-aarch64,/Users/amo/.sdkman/candidates/java/25.0.1-graalce/lib/svm/clibraries \
+-H:Path@driver=/Users/amo/Documents/development/JavaFX/CanvasImageGrid/target \
+-H:FallbackThreshold@user+api=0 \
+-H:+ReportExceptionStackTraces@user \
+-H:+AddAllCharsets@user \
+-H:EnableURLProtocols@user=http,https,file,jar \
+-H:+JNI@user \
+-H:+UseServiceLoaderFeature@user \
+'-H:IncludeResources@user=.*\.png$|.*\.jpg$|.*\.jpeg$|.*\.gif$|.*\.bmp$|.*\.properties$' \
+-H:ConfigurationFileDirectories@user=/Users/amo/Documents/development/JavaFX/CanvasImageGrid/src/main/resources/META-INF/native-image \
+-H:ClassInitialization@user+api=org.jacpfx.image.canvas:build_time \
+-H:ClassInitialization@user+api=com.sun.glass.ui:run_time \
+-H:ClassInitialization@user+api=com.sun.prism:run_time \
+-H:ClassInitialization@user+api=com.sun.javafx.application:run_time \
+-H:ClassInitialization@user+api=javafx.application:run_time \
+-H:ClassInitialization@user+api=javafx.scene.text.Font:run_time \
+-H:ClassInitialization@user+api=javafx.scene.media:run_time \
+-H:ReflectionConfigurationFiles@user=/Users/amo/Documents/development/JavaFX/CanvasImageGrid/src/main/resources/META-INF/native-image/reflect-config.json \
+-H:ResourceConfigurationFiles@user=/Users/amo/Documents/development/JavaFX/CanvasImageGrid/src/main/resources/META-INF/native-image/resource-config.json \
+-H:JNIConfigurationFiles@user=/Users/amo/Documents/development/JavaFX/CanvasImageGrid/src/main/resources/META-INF/native-image/jni-config.json \
+'-H:Name@manifest from file:///Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/CanvasImageGrid-1.0-SNAPSHOT.jar=CanvasImageGrid-1.0-SNAPSHOT' \
+'-H:Class@manifest from file:///Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/CanvasImageGrid-1.0-SNAPSHOT.jar=org.jacpfx.image.canvas.ApplicationMainSingleWindow' \
+'-H:FallbackThreshold@jar:file:///Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/CanvasImageGrid-1.0-SNAPSHOT.jar!/META-INF/native-image/native-image.properties+api=0' \
+'-H:+InstallExitHandlers@jar:file:///Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/CanvasImageGrid-1.0-SNAPSHOT.jar!/META-INF/native-image/native-image.properties+api' \
+'-H:+ReportExceptionStackTraces@jar:file:///Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/CanvasImageGrid-1.0-SNAPSHOT.jar!/META-INF/native-image/native-image.properties' \
+'-H:+AddAllCharsets@jar:file:///Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/CanvasImageGrid-1.0-SNAPSHOT.jar!/META-INF/native-image/native-image.properties' \
+'-H:EnableURLProtocols@jar:file:///Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/CanvasImageGrid-1.0-SNAPSHOT.jar!/META-INF/native-image/native-image.properties=http,https,file,jar' \
+'-H:+JNI@jar:file:///Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/CanvasImageGrid-1.0-SNAPSHOT.jar!/META-INF/native-image/native-image.properties' \
+'-H:+UseServiceLoaderFeature@jar:file:///Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/CanvasImageGrid-1.0-SNAPSHOT.jar!/META-INF/native-image/native-image.properties' \
+'-H:+AllowVMInspection@jar:file:///Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/CanvasImageGrid-1.0-SNAPSHOT.jar!/META-INF/native-image/native-image.properties' \
+'-H:ClassInitialization@jar:file:///Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/CanvasImageGrid-1.0-SNAPSHOT.jar!/META-INF/native-image/native-image.properties+api=com.sun.javafx.application:run_time' \
+'-H:ClassInitialization@jar:file:///Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/CanvasImageGrid-1.0-SNAPSHOT.jar!/META-INF/native-image/native-image.properties+api=com.sun.glass.ui:run_time' \
+'-H:ClassInitialization@jar:file:///Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/CanvasImageGrid-1.0-SNAPSHOT.jar!/META-INF/native-image/native-image.properties+api=javafx.application:run_time' \
+'-H:ClassInitialization@jar:file:///Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/CanvasImageGrid-1.0-SNAPSHOT.jar!/META-INF/native-image/native-image.properties+api=javafx.scene.media:run_time' \
+'-H:ClassInitialization@jar:file:///Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/CanvasImageGrid-1.0-SNAPSHOT.jar!/META-INF/native-image/native-image.properties+api=javafx.scene.text.Font:run_time' \
+'-H:JNIConfigurationResources@jar:file:///Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/CanvasImageGrid-1.0-SNAPSHOT.jar!/META-INF/native-image/jni-config.json+api=META-INF/native-image/jni-config.json' \
+'-H:ReflectionConfigurationResources@jar:file:///Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/CanvasImageGrid-1.0-SNAPSHOT.jar!/META-INF/native-image/reflect-config.json+api=META-INF/native-image/reflect-config.json' \
+'-H:ResourceConfigurationResources@jar:file:///Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/CanvasImageGrid-1.0-SNAPSHOT.jar!/META-INF/native-image/resource-config.json+api=META-INF/native-image/resource-config.json' \
+'-H:DynamicProxyConfigurationResources@jar:file:///Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/CanvasImageGrid-1.0-SNAPSHOT.jar!/META-INF/native-image/proxy-config.json+api=META-INF/native-image/proxy-config.json' \
+'-H:SerializationConfigurationResources@jar:file:///Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/CanvasImageGrid-1.0-SNAPSHOT.jar!/META-INF/native-image/serialization-config.json+api=META-INF/native-image/serialization-config.json' \
+-H:Name@user=CanvasImageGrid \
+-H:Class@user=org.jacpfx.image.canvas.ApplicationMainNative \
+-H:ImageBuildID@driver=e27df8fa-3f52-3ff3-58c2-1a003b9c7c32 \
+'-H:Features@jar:file:///Users/amo/.sdkman/candidates/java/25.0.1-graalce/lib/svm/library-support.jar!/META-INF/native-image/com.oracle.svm/thirdparty/native-image.properties+api=com.oracle.svm.thirdparty.gson.GsonFeature' \
+'-H:Features@jar:file:///Users/amo/.sdkman/candidates/java/25.0.1-graalce/lib/svm/library-support.jar!/META-INF/native-image/com.oracle.svm/polyglot/native-image.properties+api=com.oracle.svm.polyglot.groovy.GroovyIndyInterfaceFeature,com.oracle.svm.polyglot.scala.ScalaFeature'
+]
+Warning: Option 'AllowVMInspection' is deprecated and might be removed in a future release: Please use '--enable-monitoring'. Please refer to the GraalVM release notes.
+Warning: Option 'DynamicProxyConfigurationResources' is deprecated and might be removed in a future release: This can be caused by a proxy-config.json file in your META-INF directory. Consider including proxy configuration in the reflection section of reachability-metadata.md instead.. Please refer to the GraalVM release notes.
+========================================================================================================================
+GraalVM Native Image: Generating 'CanvasImageGrid' (executable)...
+========================================================================================================================
+For detailed information and explanations on the build output, visit:
+https://github.com/oracle/graal/blob/master/docs/reference-manual/native-image/BuildOutput.md
+------------------------------------------------------------------------------------------------------------------------
+Warning: The URL protocol file is enabled by default. The option --enable-url-protocols=file is not needed.
+Warning: The URL protocol file is enabled by default. The option --enable-url-protocols=file is not needed.
+[1/8] Initializing...                                                                                    (6.1s @ 0.23GB)
+ Java version: 25.0.1+8, vendor version: GraalVM CE 25.0.1+8.1
+ Graal compiler: optimization level: 2, target machine: armv8.1-a
+ C compiler: cc (apple, arm64, 17.0.0)
+ Garbage collector: Serial GC (max heap size: 80% of RAM)
+ 1 user-specific feature(s):
+ - com.oracle.svm.thirdparty.gson.GsonFeature
+------------------------------------------------------------------------------------------------------------------------
+ 9 experimental option(s) unlocked:
+ - '-H:Name' (alternative API option(s): -o CanvasImageGrid; origin(s): command line)
+ - '-H:+JNI' (origin(s): 'META-INF/native-image/native-image.properties' in 'file:///Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/CanvasImageGrid-1.0-SNAPSHOT.jar')
+ - '-H:EnableURLProtocols' (alternative API option(s): --enable-http, --enable-https, --enable-url-protocols=file, --enable-url-protocols=jar, --enable-http, --enable-https, --enable-url-protocols=file, --enable-url-protocols=jar; origin(s): command line, 'META-INF/native-image/native-image.properties' in 'file:///Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/CanvasImageGrid-1.0-SNAPSHOT.jar')
+ - '-H:+UseServiceLoaderFeature' (origin(s): 'META-INF/native-image/native-image.properties' in 'file:///Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/CanvasImageGrid-1.0-SNAPSHOT.jar')
+ - '-H:ReflectionConfigurationFiles': Use a reflect-config.json in your META-INF/native-image/<groupID>/<artifactID> directory instead. (origin(s): command line)
+ - '-H:ResourceConfigurationFiles': Use a resource-config.json in your META-INF/native-image/<groupID>/<artifactID> directory instead. (origin(s): command line)
+ - '-H:JNIConfigurationFiles': Use a jni-config.json in your META-INF/native-image/<groupID>/<artifactID> directory instead. (origin(s): command line)
+ - '-H:IncludeResources': Use a resource-config.json in your META-INF/native-image/<groupID>/<artifactID> directory instead. (origin(s): command line)
+ - '-H:+AllowVMInspection' (origin(s): 'META-INF/native-image/native-image.properties' in 'file:///Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/CanvasImageGrid-1.0-SNAPSHOT.jar')
+------------------------------------------------------------------------------------------------------------------------
+Build resources:
+ - 11.14GB of memory (32.4% of system memory, using available memory)
+ - 10 thread(s) (100.0% of 10 available processor(s), determined at start)
+[2/8] Performing analysis...  [*****]                                                                   (12.7s @ 1.17GB)
+   10’513 types,  13’961 fields, and  48’916 methods found reachable
+    3’335 types,     494 fields, and   4’495 methods registered for reflection
+       69 types,      66 fields, and      63 methods registered for JNI access
+        0 downcalls and 0 upcalls registered for foreign access
+        6 native libraries: -framework CoreServices, -framework Foundation, dl, m, pthread, z
+[3/8] Building universe...                                                                               (1.7s @ 1.19GB)
+[4/8] Parsing methods...      [*]                                                                        (1.0s @ 1.33GB)
+[5/8] Inlining methods...     [***]                                                                      (0.8s @ 1.44GB)
+[6/8] Compiling methods...    [***]                                                                     (11.2s @ 1.20GB)
+[7/8] Laying out methods...   [**]                                                                       (3.9s @ 1.48GB)
+[8/8] Creating image...       [**]                                                                       (2.9s @ 1.74GB)
+  22.09MB (36.29%) for code area:    32’122 compilation units
+  38.01MB (62.45%) for image heap:  316’685 objects and 1’624 resources
+ 765.31kB ( 1.26%) for other data
+  60.86MB in total image size, 60.86MB in total file size
+------------------------------------------------------------------------------------------------------------------------
+Top 10 origins of code area:                                Top 10 object types in image heap:
+  13.15MB java.base                                            7.84MB byte[] for general heap data
+   2.19MB svm.jar (Native Image)                               6.29MB byte[] for code metadata
+   1.20MB CanvasImageGrid-1.0-SNAPSHOT.jar                     4.96MB byte[] for java.lang.String
+   1.13MB jdk.jfr                                              4.62MB char[]
+   1.11MB java.management                                      2.78MB java.lang.String
+ 536.27kB java.security.jgss                                   2.19MB com.oracle.svm.core.hub.DynamicHubCompanion
+ 454.36kB java.rmi                                             1.47MB java.lang.Class
+ 368.30kB jdk.proxy1                                         559.39kB java.util.HashMap$Node
+ 333.44kB jdk.charsets                                       526.93kB java.lang.String[]
+ 240.72kB java.management.rmi                                468.79kB java.lang.Object[]
+   1.19MB for 21 more packages                                 6.31MB for 2756 more object types
+------------------------------------------------------------------------------------------------------------------------
+Recommendations:
+ FUTR: Use '--future-defaults=all' to prepare for future releases.
+ HEAP: Set max heap for improved and more predictable memory usage.
+ CPU:  Enable more CPU features with '-march=native' for improved performance.
+------------------------------------------------------------------------------------------------------------------------
+                        3.1s (7.2% of total time) in 703 GCs | Peak RSS: 2.58GB | CPU load: 5.83
+------------------------------------------------------------------------------------------------------------------------
+Build artifacts:
+ /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/CanvasImageGrid (executable)
+========================================================================================================================
+Finished generating 'CanvasImageGrid' in 42.2s.
+
+==========================================
+✅ SUCCESS! Native executable created
+==========================================
+
+Location: target/CanvasImageGrid
+Size:  58M
+
+To run:
+  ./target/CanvasImageGrid <image-directory>
+
+Example:
+  ./target/CanvasImageGrid ~/Pictures
+

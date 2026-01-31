@@ -19,6 +19,12 @@ import java.util.Map;
 public class ImageContainer implements Cloneable {
 
     /**
+     * Shared placeholder image for all unloaded images to reduce memory allocation
+     * Lazily initialized on first use
+     */
+    private static volatile Image SHARED_PLACEHOLDER = null;
+
+    /**
      * start point x
      */
     private double startX;
@@ -117,12 +123,33 @@ public class ImageContainer implements Cloneable {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            // TODO move placeholder creation to factory
+            // Use shared placeholder if image not loaded yet
             if (imageRef.get() == null) {
-                imageRef = new SoftReference<Image>(new Rectangle(getScaledX(), getScaledY()).snapshot(new SnapshotParameters(), null));
+                imageRef = new SoftReference<Image>(getSharedPlaceholder());
             }
         }
         gc.drawImage(imageRef.get(), getStartX(), start, getScaledX(), getScaledY());
+    }
+
+    /**
+     * Get or create the shared placeholder image using lazy initialization
+     */
+    private static Image getSharedPlaceholder() {
+        if (SHARED_PLACEHOLDER == null) {
+            synchronized (ImageContainer.class) {
+                if (SHARED_PLACEHOLDER == null) {
+                    SHARED_PLACEHOLDER = createPlaceholderImage();
+                }
+            }
+        }
+        return SHARED_PLACEHOLDER;
+    }
+
+    /**
+     * Create a simple shared placeholder image
+     */
+    private static Image createPlaceholderImage() {
+        return new Rectangle(100, 100, Color.LIGHTGRAY).snapshot(new SnapshotParameters(), null);
     }
 
     private void drawSync(GraphicsContext gc, Image img) {

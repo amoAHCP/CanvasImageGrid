@@ -29,8 +29,8 @@ class DefaultImageFactoryTest extends ApplicationTest {
         try {
             Image image = DEFAULT_IMAGE_FACTORY.createImage(RED_IMAGE_PATH, 200, 150);
             assertNotNull(image);
-            // Default factory loads image with 2x maxHight
-            assertEquals(300, image.getHeight(), "Image height should be 2 * maxHight");
+            // Updated to 1x maxHeight for better memory efficiency
+            assertEquals(150, image.getHeight(), "Image height should match maxHight");
         } catch (Exception e) {
             fail("Image creation should not fail.", e);
         }

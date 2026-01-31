@@ -38,6 +38,15 @@
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.14.1</version>
+        <configuration>
+          <annotationProcessorPaths>
+            <path>
+              <groupId>org.openjdk.jmh</groupId>
+              <artifactId>jmh-generator-annprocess</artifactId>
+              <version>${jmh.version}</version>
+            </path>
+          </annotationProcessorPaths>
+        </configuration>
       </plugin>
       <plugin>
         <groupId>org.openjfx</groupId>
@@ -82,6 +91,30 @@
             </configuration>
           </execution>
         </executions>
+      </plugin>
+      <plugin>
+        <groupId>com.gluonhq</groupId>
+        <artifactId>gluonfx-maven-plugin</artifactId>
+        <version>1.0.24</version>
+        <configuration>
+          <target>${gluonfx.target}</target>
+          <mainClass>org.jacpfx.image.canvas.ApplicationMainNative</mainClass>
+          <verbose>true</verbose>
+          <attachList>
+            <list>display</list>
+            <list>lifecycle</list>
+            <list>statusbar</list>
+            <list>storage</list>
+          </attachList>
+          <reflectionList>
+            <list>org.jacpfx.image.canvas.ApplicationMainNative</list>
+            <list>org.jacpfx.image.canvas.CanvasPanel</list>
+            <list>org.jacpfx.image.canvas.ImageContainer</list>
+            <list>org.jacpfx.image.canvas.RowContainer</list>
+            <list>org.jacpfx.image.canvas.DefaultImageFactory</list>
+            <list>org.jacpfx.image.canvas.SquareImageFactory</list>
+          </reflectionList>
+        </configuration>
       </plugin>
     </plugins>
   </build>
@@ -133,13 +166,37 @@
       <version>4.0.16-alpha</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.openjdk.jmh</groupId>
+      <artifactId>jmh-core</artifactId>
+      <version>1.37</version>
+      <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <artifactId>jopt-simple</artifactId>
+          <groupId>net.sf.jopt-simple</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>commons-math3</artifactId>
+          <groupId>org.apache.commons</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.openjdk.jmh</groupId>
+      <artifactId>jmh-generator-annprocess</artifactId>
+      <version>1.37</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
   <properties>
-    <maven.compiler.target>24</maven.compiler.target>
+    <jmh.version>1.37</jmh.version>
     <mainClass>org.jacpfx.image.canvas.ApplicationMainSingleWindow</mainClass>
-    <maven.compiler.source>24</maven.compiler.source>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <javafx.version>25</javafx.version>
+    <maven.compiler.source>21</maven.compiler.source>
+    <gluonfx.target>host</gluonfx.target>
     <junit.jupiter.version>5.11.3</junit.jupiter.version>
+    <maven.compiler.target>21</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <javafx.version>21</javafx.version>
   </properties>
 </project>

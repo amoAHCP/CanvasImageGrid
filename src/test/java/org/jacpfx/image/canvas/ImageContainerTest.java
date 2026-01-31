@@ -35,7 +35,7 @@ public class ImageContainerTest extends ApplicationTest {
         ImageContainer container = new ImageContainer(RED_IMAGE_PATH, DEFAULT_IMAGE_FACTORY, 200, 200);
         Image image = container.getImage();
         assertNotNull(image);
-        // The default factory creates images with height maxHight*2
-        assertEquals(400, image.getHeight());
+        // Updated to 1x maxHeight for better memory efficiency
+        assertEquals(200, image.getHeight());
     }
 }

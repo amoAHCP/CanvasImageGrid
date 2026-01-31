@@ -1,0 +1,489 @@
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by org.fusesource.jansi.internal.JansiLoader in an unnamed module (file:/Users/amo/.sdkman/candidates/maven/current/lib/jansi-2.4.0.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by com.google.common.util.concurrent.AbstractFuture$UnsafeAtomicHelper (file:/Users/amo/.sdkman/candidates/maven/current/lib/guava-25.1-android.jar)
+WARNING: Please consider reporting this to the maintainers of class com.google.common.util.concurrent.AbstractFuture$UnsafeAtomicHelper
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------------< org.jacpfx:CanvasImageGrid >---------------------
+[INFO] Building CanvasImageGrid 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ CanvasImageGrid ---
+[INFO] Deleting /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target
+[INFO] 
+[INFO] ---------------------< org.jacpfx:CanvasImageGrid >---------------------
+[INFO] Building CanvasImageGrid 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- gluonfx-maven-plugin:1.0.24:build (default-cli) @ CanvasImageGrid ---
+[WARN] Maven will be executed in interactive mode, but no input stream has been configured for this MavenInvoker instance.
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by org.fusesource.jansi.internal.JansiLoader in an unnamed module (file:/Users/amo/.sdkman/candidates/maven/3.8.8/lib/jansi-2.4.0.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by com.google.common.util.concurrent.AbstractFuture$UnsafeAtomicHelper (file:/Users/amo/.sdkman/candidates/maven/3.8.8/lib/guava-25.1-android.jar)
+WARNING: Please consider reporting this to the maintainers of class com.google.common.util.concurrent.AbstractFuture$UnsafeAtomicHelper
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------------< org.jacpfx:CanvasImageGrid >---------------------
+[INFO] Building CanvasImageGrid 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> gluonfx-maven-plugin:1.0.24:compile (default-cli) > process-classes @ CanvasImageGrid >>>
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ CanvasImageGrid ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 6 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.14.1:compile (default-compile) @ CanvasImageGrid ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 19 source files with javac [debug target 24 module-path] to target/classes
+[WARNING] Systemmodulpfad ist nicht zusammen mit -source 24 festgelegt
+  Wenn Sie den Speicherort der Systemmodule nicht festlegen, kann dies zu Klassendateien führen, die auf JDK 24 nicht ausgeführt werden können
+    --release 24 wird anstelle von -source 24 -target 24 empfohlen, weil dadurch der Speicherort der Systemmodule automatisch festgelegt wird
+[INFO] /Users/amo/Documents/development/JavaFX/CanvasImageGrid/src/main/java/org/jacpfx/image/canvas/CanvasPanel.java: Einige Eingabedateien verwenden nicht geprüfte oder unsichere Vorgänge.
+[INFO] /Users/amo/Documents/development/JavaFX/CanvasImageGrid/src/main/java/org/jacpfx/image/canvas/CanvasPanel.java: Wiederholen Sie die Kompilierung mit -Xlint:unchecked, um Details zu erhalten.
+[INFO] 
+[INFO] <<< gluonfx-maven-plugin:1.0.24:compile (default-cli) < process-classes @ CanvasImageGrid <<<
+[INFO] 
+[INFO] 
+[INFO] --- gluonfx-maven-plugin:1.0.24:compile (default-cli) @ CanvasImageGrid ---
+Jan. 31, 2026 9:28:01 PM com.gluonhq.substrate.util.Logger logInfo
+INFORMATION: Substrate is tested with the Gluon's GraalVM build which you can find at https://github.com/gluonhq/graal/releases.
+While you can still use other GraalVM builds, there is no guarantee that these will work properly with Substrate
+Configuration: ProjectConfiguration{graalPath='/Users/amo/.sdkman/candidates/java/25.0.1-graalce', javaStaticSdkVersion='24-2', javafxStaticSdkVersion='24-ea+7.1', javaVersion=25.0.1, graalVersion=25.0.1, useJNI=true, useJavaFX=true, usePrismSW=false, enableCheckHash=true, targetTriplet=aarch64-apple-darwin, hostTriplet=aarch64-apple-darwin, backend='null', bundlesList=[], resourcesList=[], reflectionList=[org.jacpfx.image.canvas.ApplicationMainNative, org.jacpfx.image.canvas.CanvasPanel, org.jacpfx.image.canvas.ImageContainer, org.jacpfx.image.canvas.RowContainer, org.jacpfx.image.canvas.DefaultImageFactory, org.jacpfx.image.canvas.SquareImageFactory], jniList=[], initBuildTimeList=[], runtimeArgsList=[], releaseSymbolsList=null, appName='CanvasImageGrid', releaseConfiguration='ReleaseConfiguration{packageType=null, description='', vendor='null', version='null', macAppStore=false, macSigningUserName=null, macAppCategory=null, bundleName='null', bundleVersion='null', bundleShortVersion='null', providedSigningIdentity='null', providedProvisioningProfile='null', skipSigning=false, simulatorDevice='null', appLabel='null', versionCode='null', versionName='null', providedKeyStorePath='null', providedKeyStorePassword='null', providedKeyAlias='null', providedKeyAliasPassword='null'}', mainClassName='org.jacpfx.image.canvas.ApplicationMainNative', classpath='/Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes:/Users/amo/.m2/repository/com/guigarage/flatter/0.7/flatter-0.7.jar:/Users/amo/.m2/repository/org/openjfx/javafx-base/25/javafx-base-25-mac-aarch64.jar:/Users/amo/.m2/repository/org/openjfx/javafx-base/25/javafx-base-25.jar:/Users/amo/.m2/repository/org/openjfx/javafx-controls/25/javafx-controls-25-mac-aarch64.jar:/Users/amo/.m2/repository/org/openjfx/javafx-controls/25/javafx-controls-25.jar:/Users/amo/.m2/repository/org/openjfx/javafx-graphics/25/javafx-graphics-25-mac-aarch64.jar:/Users/amo/.m2/repository/org/openjfx/javafx-graphics/25/javafx-graphics-25.jar:/Users/amo/.m2/repository/org/openjfx/javafx-media/25/javafx-media-25-mac-aarch64.jar:/Users/amo/.m2/repository/org/openjfx/javafx-media/25/javafx-media-25.jar:/Users/amo/.m2/repository/org/openjfx/javafx-swing/25/javafx-swing-25-mac-aarch64.jar:/Users/amo/.m2/repository/org/openjfx/javafx-swing/25/javafx-swing-25.jar'}
+[Sa. Jan. 31 21:28:01 MEZ 2026][INFORMATION] ==================== COMPILE TASK ====================
+             _______  ___      __   __  _______  __    _
+            |       ||   |    |  | |  ||       ||  |  | |
+            |    ___||   |    |  | |  ||   _   ||   |_| |
+            |   | __ |   |    |  |_|  ||  | |  ||       |
+            |   ||  ||   |___ |       ||  |_|  ||  _    |
+            |   |_| ||       ||       ||       || | |   |
+            |_______||_______||_______||_______||_|  |__|
+
+    Access to the latest docs, tips and tricks and more info on
+    how to get support? Register your usage of Gluon Substrate now at
+
+    https://gluonhq.com/activate
+
+
+
+[Sa. Jan. 31 21:28:02 MEZ 2026][INFORMATION] We will now compile your code for aarch64-apple-darwin. This may take some time.
+[Sa. Jan. 31 21:28:02 MEZ 2026][FEIN] Processing JavaStatic dependencies at /Users/amo/.gluon/substrate/javaStaticSdk/24-2/darwin-aarch64/lib
+[Sa. Jan. 31 21:28:02 MEZ 2026][FEIN] Processing JavaFXStatic dependencies at /Users/amo/.gluon/substrate/javafxStaticSdk/24-ea+7.1/darwin-aarch64/sdk/lib
+[Sa. Jan. 31 21:28:02 MEZ 2026][INFORMATION] sysroot path not found and will be downloaded.
+[Sa. Jan. 31 21:28:02 MEZ 2026][INFORMATION] Downloading Java Static Libs...
+[Sa. Jan. 31 21:28:02 MEZ 2026][FEIN] Processing zip file: url = https://github.com/gluonhq/vmone/releases/download/gvm-24-2/vmone-macos-aarch64.zip, zip = /Users/amo/.gluon/substrate/gvm-24-2/vmone-macos-aarch64.zip, subDir = javaStaticSdk, levels = [24-2, darwin-aarch64], md5 = javaStaticSdk-darwin-aarch64.md5
+[Sa. Jan. 31 21:28:02 MEZ 2026][FEIN] download from link: https://github.com/gluonhq/vmone/releases/download/gvm-24-2/vmone-macos-aarch64.zip
+[Sa. Jan. 31 21:28:03 MEZ 2026][FEIN] download from location succeeded
+[Sa. Jan. 31 21:28:03 MEZ 2026][INFORMATION] Java static libs downloaded successfully
+[Sa. Jan. 31 21:28:03 MEZ 2026][INFORMATION] Downloading JavaFX static libs...
+[Sa. Jan. 31 21:28:03 MEZ 2026][FEIN] Processing zip file: url = https://download2.gluonhq.com/substrate/javafxstaticsdk/openjfx-24-ea+7.1-darwin-aarch64-static.zip, zip = /Users/amo/.gluon/substrate/openjfx-24-ea+7.1-darwin-aarch64-static.zip, subDir = javafxStaticSdk, levels = [24-ea+7.1, darwin-aarch64], md5 = javafxStaticSdk-darwin-aarch64.md5
+
+Download progress: 0.01 / 76.59M
+Download progress: 7.66 / 76.59M
+Download progress: 15.32 / 76.59M
+Download progress: 22.98 / 76.59M
+Download progress: 30.64 / 76.59M
+Download progress: 38.30 / 76.59M
+Download progress: 45.96 / 76.59M
+Download progress: 53.62 / 76.59M
+Download progress: 61.28 / 76.59M
+Download progress: 68.94 / 76.59M
+Download progress: 76.59 / 76.59M
+[Sa. Jan. 31 21:28:13 MEZ 2026][INFORMATION] JavaFX static libs downloaded successfully
+[Sa. Jan. 31 21:28:13 MEZ 2026][INFORMATION] Downloading sysroot zip...
+[Sa. Jan. 31 21:28:13 MEZ 2026][FEIN] Processing zip file: url = https://download2.gluonhq.com/substrate/sysroot/aarch64sysroot-20210424.zip, zip = /Users/amo/.gluon/substrate/aarch64sysroot.zip, subDir = sysroot, levels = [], md5 = sysroot-.md5
+
+Download progress: 0.01 / 62.36M
+Download progress: 6.24 / 62.36M
+Download progress: 12.48 / 62.36M
+Download progress: 18.71 / 62.36M
+Download progress: 24.95 / 62.36M
+Download progress: 31.18 / 62.36M
+Download progress: 37.42 / 62.36M
+Download progress: 43.66 / 62.36M
+Download progress: 49.89 / 62.36M
+Download progress: 56.12 / 62.36M
+Download progress: 62.36 / 62.36M
+[Sa. Jan. 31 21:28:22 MEZ 2026][INFORMATION] Sysroot zip downloaded successfully
+[Sa. Jan. 31 21:28:22 MEZ 2026][FEIN] Setup dependencies done
+[Sa. Jan. 31 21:28:22 MEZ 2026][FEIN] Extracting native libs to: /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/gluonfx/aarch64-darwin/gvm/lib
+[Sa. Jan. 31 21:28:22 MEZ 2026][FEIN] Looking for resource: /native/macosx/AppDelegate.m
+[Sa. Jan. 31 21:28:22 MEZ 2026][FEIN] Looking for resource: /native/macosx/launcher.c
+[Sa. Jan. 31 21:28:22 MEZ 2026][FEIN] PB Command for compile-additional-sources: gcc -c -DGVM_VERBOSE -DSUBSTRATE -mmacosx-version-min=12 -I/Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/gluonfx/aarch64-darwin/gvm/CanvasImageGrid AppDelegate.m launcher.c
+[Sa. Jan. 31 21:28:22 MEZ 2026][FEIN] Start process compile-additional-sources...
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Result for compile-additional-sources: 0
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/CanvasPanel$PaddingBuilder.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/org/jacpfx/image/canvas/CanvasPanel$PaddingBuilder.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/WritableImageDemo$1.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/org/jacpfx/image/canvas/WritableImageDemo$1.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/DefaultImageFactory.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/org/jacpfx/image/canvas/DefaultImageFactory.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/CanvasPanel$ImagePathBuilder.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/org/jacpfx/image/canvas/CanvasPanel$ImagePathBuilder.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/ApplicationMainWithSelectionWindow.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/org/jacpfx/image/canvas/ApplicationMainWithSelectionWindow.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/ApplicationMainSingleWindowFPS.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/org/jacpfx/image/canvas/ApplicationMainSingleWindowFPS.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/SquareImageFactory.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/org/jacpfx/image/canvas/SquareImageFactory.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/ImageMetadata.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/org/jacpfx/image/canvas/ImageMetadata.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/ApplicationMainSingleWindow.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/org/jacpfx/image/canvas/ApplicationMainSingleWindow.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/CanvasPanel$HightBuilder.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/org/jacpfx/image/canvas/CanvasPanel$HightBuilder.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/SelectionListener.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/org/jacpfx/image/canvas/SelectionListener.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/CanvasPanel$MaxImageHightBuilder.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/org/jacpfx/image/canvas/CanvasPanel$MaxImageHightBuilder.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/ImageContainer.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/org/jacpfx/image/canvas/ImageContainer.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/CanvasPanel$WidthBuilder.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/org/jacpfx/image/canvas/CanvasPanel$WidthBuilder.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/ApplicationMainNative.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/org/jacpfx/image/canvas/ApplicationMainNative.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/CanvasPanel$LineBreakLimitBuilder.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/org/jacpfx/image/canvas/CanvasPanel$LineBreakLimitBuilder.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/WritableImageDemo.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/org/jacpfx/image/canvas/WritableImageDemo.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/CanvasPanel$MaxImageWidthBuilder.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/org/jacpfx/image/canvas/CanvasPanel$MaxImageWidthBuilder.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/CanvasPanel$FactoryBuilder.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/org/jacpfx/image/canvas/CanvasPanel$FactoryBuilder.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/ImageFactory$1.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/org/jacpfx/image/canvas/ImageFactory$1.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/RowContainer.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/org/jacpfx/image/canvas/RowContainer.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/ImageFactory.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/org/jacpfx/image/canvas/ImageFactory.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/SquareImageFactory$1.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/org/jacpfx/image/canvas/SquareImageFactory$1.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/CanvasPanel$SelectionListenerBuilder.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/org/jacpfx/image/canvas/CanvasPanel$SelectionListenerBuilder.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/CanvasPanel.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/org/jacpfx/image/canvas/CanvasPanel.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/node/NodeSelectionListener.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/org/jacpfx/image/node/NodeSelectionListener.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/node/ImageNodeContainer.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/org/jacpfx/image/node/ImageNodeContainer.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/node/NodePanel$HightBuilder.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/org/jacpfx/image/node/NodePanel$HightBuilder.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/node/NodePanel$MaxImageHightBuilder.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/org/jacpfx/image/node/NodePanel$MaxImageHightBuilder.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/node/NodePanel$PaddingBuilder.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/org/jacpfx/image/node/NodePanel$PaddingBuilder.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/node/NodePanel.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/org/jacpfx/image/node/NodePanel.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/node/NodePanel$LineBreakLimitBuilder.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/org/jacpfx/image/node/NodePanel$LineBreakLimitBuilder.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/node/NodePanel$ImagePathBuilder.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/org/jacpfx/image/node/NodePanel$ImagePathBuilder.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/node/RowNodeContainer.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/org/jacpfx/image/node/RowNodeContainer.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/node/NodeApplicationMainSingleWindowFPS.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/org/jacpfx/image/node/NodeApplicationMainSingleWindowFPS.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/node/NodePanel$FactoryBuilder.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/org/jacpfx/image/node/NodePanel$FactoryBuilder.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/node/NodePanel$WidthBuilder.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/org/jacpfx/image/node/NodePanel$WidthBuilder.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/node/NodePanel$SelectionListenerBuilder.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/org/jacpfx/image/node/NodePanel$SelectionListenerBuilder.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/node/NodePanel$MaxImageWidthBuilder.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/org/jacpfx/image/node/NodePanel$MaxImageWidthBuilder.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/META-INF/native-image/native-image.properties to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/META-INF/native-image/native-image.properties
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/META-INF/native-image/resource-config.json to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/META-INF/native-image/resource-config.json
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/META-INF/native-image/serialization-config.json to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/META-INF/native-image/serialization-config.json
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/META-INF/native-image/reflect-config.json to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/META-INF/native-image/reflect-config.json
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/META-INF/native-image/jni-config.json to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/META-INF/native-image/jni-config.json
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/META-INF/native-image/proxy-config.json to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/META-INF/native-image/proxy-config.json
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/module-info.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/module-info.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] PB Command for jar: /Users/amo/.sdkman/candidates/java/25.0.1-graalce/bin/jar cf /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/classes.jar -C /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416 .
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Start process jar...
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Result for jar: 0
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Scanning for init build time files
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Scanning /Users/amo/.m2/repository/com/guigarage/flatter/0.7/flatter-0.7.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Scanning /Users/amo/.gluon/substrate/javafxStaticSdk/24-ea+7.1/darwin-aarch64/sdk/lib/javafx.base.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Scanning /Users/amo/.gluon/substrate/javafxStaticSdk/24-ea+7.1/darwin-aarch64/sdk/lib/javafx.controls.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Scanning /Users/amo/.gluon/substrate/javafxStaticSdk/24-ea+7.1/darwin-aarch64/sdk/lib/javafx.graphics.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Scanning /Users/amo/.gluon/substrate/javafxStaticSdk/24-ea+7.1/darwin-aarch64/sdk/lib/javafx.media.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Scanning /Users/amo/.m2/repository/org/openjfx/javafx-swing/25/javafx-swing-25-mac-aarch64.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Scanning /Users/amo/.m2/repository/org/openjfx/javafx-swing/25/javafx-swing-25.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Scanning /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/classes.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Scanning for reflection files
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Scanning /Users/amo/.m2/repository/com/guigarage/flatter/0.7/flatter-0.7.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Scanning /Users/amo/.gluon/substrate/javafxStaticSdk/24-ea+7.1/darwin-aarch64/sdk/lib/javafx.base.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Adding classes from /Users/amo/.gluon/substrate/javafxStaticSdk/24-ea+7.1/darwin-aarch64/sdk/lib/javafx.base.jar::META-INF/substrate/config/reflectionconfig.json
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Scanning /Users/amo/.gluon/substrate/javafxStaticSdk/24-ea+7.1/darwin-aarch64/sdk/lib/javafx.controls.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Adding classes from /Users/amo/.gluon/substrate/javafxStaticSdk/24-ea+7.1/darwin-aarch64/sdk/lib/javafx.controls.jar::META-INF/substrate/config/reflectionconfig.json
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Scanning /Users/amo/.gluon/substrate/javafxStaticSdk/24-ea+7.1/darwin-aarch64/sdk/lib/javafx.graphics.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Adding classes from /Users/amo/.gluon/substrate/javafxStaticSdk/24-ea+7.1/darwin-aarch64/sdk/lib/javafx.graphics.jar::META-INF/substrate/config/reflectionconfig-aarch64-darwin.json
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Adding classes from /Users/amo/.gluon/substrate/javafxStaticSdk/24-ea+7.1/darwin-aarch64/sdk/lib/javafx.graphics.jar::META-INF/substrate/config/reflectionconfig.json
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Scanning /Users/amo/.gluon/substrate/javafxStaticSdk/24-ea+7.1/darwin-aarch64/sdk/lib/javafx.media.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Scanning /Users/amo/.m2/repository/org/openjfx/javafx-swing/25/javafx-swing-25-mac-aarch64.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Scanning /Users/amo/.m2/repository/org/openjfx/javafx-swing/25/javafx-swing-25.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Scanning /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/classes.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Scanning for JNI files
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Scanning /Users/amo/.m2/repository/com/guigarage/flatter/0.7/flatter-0.7.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Scanning /Users/amo/.gluon/substrate/javafxStaticSdk/24-ea+7.1/darwin-aarch64/sdk/lib/javafx.base.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Scanning /Users/amo/.gluon/substrate/javafxStaticSdk/24-ea+7.1/darwin-aarch64/sdk/lib/javafx.controls.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Scanning /Users/amo/.gluon/substrate/javafxStaticSdk/24-ea+7.1/darwin-aarch64/sdk/lib/javafx.graphics.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Adding classes from /Users/amo/.gluon/substrate/javafxStaticSdk/24-ea+7.1/darwin-aarch64/sdk/lib/javafx.graphics.jar::META-INF/substrate/config/jniconfig-aarch64-darwin.json
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Adding classes from /Users/amo/.gluon/substrate/javafxStaticSdk/24-ea+7.1/darwin-aarch64/sdk/lib/javafx.graphics.jar::META-INF/substrate/config/jniconfig.json
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Scanning /Users/amo/.gluon/substrate/javafxStaticSdk/24-ea+7.1/darwin-aarch64/sdk/lib/javafx.media.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Scanning /Users/amo/.m2/repository/org/openjfx/javafx-swing/25/javafx-swing-25-mac-aarch64.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Scanning /Users/amo/.m2/repository/org/openjfx/javafx-swing/25/javafx-swing-25.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Scanning /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/classes.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Scanning for resource files
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Scanning /Users/amo/.m2/repository/com/guigarage/flatter/0.7/flatter-0.7.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Scanning /Users/amo/.gluon/substrate/javafxStaticSdk/24-ea+7.1/darwin-aarch64/sdk/lib/javafx.base.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Scanning /Users/amo/.gluon/substrate/javafxStaticSdk/24-ea+7.1/darwin-aarch64/sdk/lib/javafx.controls.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Scanning /Users/amo/.gluon/substrate/javafxStaticSdk/24-ea+7.1/darwin-aarch64/sdk/lib/javafx.graphics.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Scanning /Users/amo/.gluon/substrate/javafxStaticSdk/24-ea+7.1/darwin-aarch64/sdk/lib/javafx.media.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Scanning /Users/amo/.m2/repository/org/openjfx/javafx-swing/25/javafx-swing-25-mac-aarch64.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Scanning /Users/amo/.m2/repository/org/openjfx/javafx-swing/25/javafx-swing-25.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Scanning /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes16816953257573713416/classes.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/CanvasPanel$PaddingBuilder.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/org/jacpfx/image/canvas/CanvasPanel$PaddingBuilder.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/WritableImageDemo$1.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/org/jacpfx/image/canvas/WritableImageDemo$1.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/DefaultImageFactory.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/org/jacpfx/image/canvas/DefaultImageFactory.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/CanvasPanel$ImagePathBuilder.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/org/jacpfx/image/canvas/CanvasPanel$ImagePathBuilder.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/ApplicationMainWithSelectionWindow.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/org/jacpfx/image/canvas/ApplicationMainWithSelectionWindow.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/ApplicationMainSingleWindowFPS.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/org/jacpfx/image/canvas/ApplicationMainSingleWindowFPS.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/SquareImageFactory.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/org/jacpfx/image/canvas/SquareImageFactory.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/ImageMetadata.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/org/jacpfx/image/canvas/ImageMetadata.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/ApplicationMainSingleWindow.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/org/jacpfx/image/canvas/ApplicationMainSingleWindow.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/CanvasPanel$HightBuilder.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/org/jacpfx/image/canvas/CanvasPanel$HightBuilder.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/SelectionListener.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/org/jacpfx/image/canvas/SelectionListener.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/CanvasPanel$MaxImageHightBuilder.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/org/jacpfx/image/canvas/CanvasPanel$MaxImageHightBuilder.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/ImageContainer.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/org/jacpfx/image/canvas/ImageContainer.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/CanvasPanel$WidthBuilder.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/org/jacpfx/image/canvas/CanvasPanel$WidthBuilder.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/ApplicationMainNative.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/org/jacpfx/image/canvas/ApplicationMainNative.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/CanvasPanel$LineBreakLimitBuilder.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/org/jacpfx/image/canvas/CanvasPanel$LineBreakLimitBuilder.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/WritableImageDemo.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/org/jacpfx/image/canvas/WritableImageDemo.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/CanvasPanel$MaxImageWidthBuilder.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/org/jacpfx/image/canvas/CanvasPanel$MaxImageWidthBuilder.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/CanvasPanel$FactoryBuilder.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/org/jacpfx/image/canvas/CanvasPanel$FactoryBuilder.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/ImageFactory$1.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/org/jacpfx/image/canvas/ImageFactory$1.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/RowContainer.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/org/jacpfx/image/canvas/RowContainer.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/ImageFactory.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/org/jacpfx/image/canvas/ImageFactory.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/SquareImageFactory$1.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/org/jacpfx/image/canvas/SquareImageFactory$1.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/CanvasPanel$SelectionListenerBuilder.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/org/jacpfx/image/canvas/CanvasPanel$SelectionListenerBuilder.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/canvas/CanvasPanel.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/org/jacpfx/image/canvas/CanvasPanel.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/node/NodeSelectionListener.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/org/jacpfx/image/node/NodeSelectionListener.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/node/ImageNodeContainer.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/org/jacpfx/image/node/ImageNodeContainer.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/node/NodePanel$HightBuilder.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/org/jacpfx/image/node/NodePanel$HightBuilder.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/node/NodePanel$MaxImageHightBuilder.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/org/jacpfx/image/node/NodePanel$MaxImageHightBuilder.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/node/NodePanel$PaddingBuilder.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/org/jacpfx/image/node/NodePanel$PaddingBuilder.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/node/NodePanel.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/org/jacpfx/image/node/NodePanel.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/node/NodePanel$LineBreakLimitBuilder.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/org/jacpfx/image/node/NodePanel$LineBreakLimitBuilder.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/node/NodePanel$ImagePathBuilder.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/org/jacpfx/image/node/NodePanel$ImagePathBuilder.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/node/RowNodeContainer.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/org/jacpfx/image/node/RowNodeContainer.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/node/NodeApplicationMainSingleWindowFPS.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/org/jacpfx/image/node/NodeApplicationMainSingleWindowFPS.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/node/NodePanel$FactoryBuilder.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/org/jacpfx/image/node/NodePanel$FactoryBuilder.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/node/NodePanel$WidthBuilder.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/org/jacpfx/image/node/NodePanel$WidthBuilder.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/node/NodePanel$SelectionListenerBuilder.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/org/jacpfx/image/node/NodePanel$SelectionListenerBuilder.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/org/jacpfx/image/node/NodePanel$MaxImageWidthBuilder.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/org/jacpfx/image/node/NodePanel$MaxImageWidthBuilder.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/META-INF/native-image/native-image.properties to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/META-INF/native-image/native-image.properties
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/META-INF/native-image/resource-config.json to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/META-INF/native-image/resource-config.json
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/META-INF/native-image/serialization-config.json to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/META-INF/native-image/serialization-config.json
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/META-INF/native-image/reflect-config.json to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/META-INF/native-image/reflect-config.json
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/META-INF/native-image/jni-config.json to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/META-INF/native-image/jni-config.json
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/META-INF/native-image/proxy-config.json to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/META-INF/native-image/proxy-config.json
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/module-info.class to /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/module-info.class
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] PB Command for jar: /Users/amo/.sdkman/candidates/java/25.0.1-graalce/bin/jar cf /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/classes.jar -C /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185 .
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Start process jar...
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Result for jar: 0
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Scanning for resource bundles
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Scanning /Users/amo/.m2/repository/com/guigarage/flatter/0.7/flatter-0.7.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Scanning /Users/amo/.gluon/substrate/javafxStaticSdk/24-ea+7.1/darwin-aarch64/sdk/lib/javafx.base.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Scanning /Users/amo/.gluon/substrate/javafxStaticSdk/24-ea+7.1/darwin-aarch64/sdk/lib/javafx.controls.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Adding classes from /Users/amo/.gluon/substrate/javafxStaticSdk/24-ea+7.1/darwin-aarch64/sdk/lib/javafx.controls.jar::META-INF/substrate/config/resourcebundles
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Scanning /Users/amo/.gluon/substrate/javafxStaticSdk/24-ea+7.1/darwin-aarch64/sdk/lib/javafx.graphics.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Adding classes from /Users/amo/.gluon/substrate/javafxStaticSdk/24-ea+7.1/darwin-aarch64/sdk/lib/javafx.graphics.jar::META-INF/substrate/config/resourcebundles
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Scanning /Users/amo/.gluon/substrate/javafxStaticSdk/24-ea+7.1/darwin-aarch64/sdk/lib/javafx.media.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Adding classes from /Users/amo/.gluon/substrate/javafxStaticSdk/24-ea+7.1/darwin-aarch64/sdk/lib/javafx.media.jar::META-INF/substrate/config/resourcebundles
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Scanning /Users/amo/.m2/repository/org/openjfx/javafx-swing/25/javafx-swing-25-mac-aarch64.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Scanning /Users/amo/.m2/repository/org/openjfx/javafx-swing/25/javafx-swing-25.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Scanning /var/folders/st/r7nfjvzs0w382b95tw3mdc_w0000gn/T/classes4007677765684775185/classes.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/.m2/repository/com/guigarage/flatter/0.7/flatter-0.7.jar to /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/gluonfx/aarch64-darwin/gvm/tmp/deps/flatter-0.7.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/.gluon/substrate/javafxStaticSdk/24-ea+7.1/darwin-aarch64/sdk/lib/javafx.base.jar to /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/gluonfx/aarch64-darwin/gvm/tmp/deps/javafx.base.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/.gluon/substrate/javafxStaticSdk/24-ea+7.1/darwin-aarch64/sdk/lib/javafx.controls.jar to /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/gluonfx/aarch64-darwin/gvm/tmp/deps/javafx.controls.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/.gluon/substrate/javafxStaticSdk/24-ea+7.1/darwin-aarch64/sdk/lib/javafx.graphics.jar to /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/gluonfx/aarch64-darwin/gvm/tmp/deps/javafx.graphics.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/.gluon/substrate/javafxStaticSdk/24-ea+7.1/darwin-aarch64/sdk/lib/javafx.media.jar to /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/gluonfx/aarch64-darwin/gvm/tmp/deps/javafx.media.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/.m2/repository/org/openjfx/javafx-swing/25/javafx-swing-25-mac-aarch64.jar to /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/gluonfx/aarch64-darwin/gvm/tmp/deps/javafx-swing-25-mac-aarch64.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Copied resource /Users/amo/.m2/repository/org/openjfx/javafx-swing/25/javafx-swing-25.jar to /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/gluonfx/aarch64-darwin/gvm/tmp/deps/javafx-swing-25.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Class-Path manifest entry for pathing jar: ../../../../classes deps/flatter-0.7.jar deps/javafx.base.jar deps/javafx.controls.jar deps/javafx.graphics.jar deps/javafx.media.jar deps/javafx-swing-25-mac-aarch64.jar deps/javafx-swing-25.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Pathing jar created at /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/gluonfx/aarch64-darwin/gvm/tmp/classpathJar.jar
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] PB Command for compile: /Users/amo/.sdkman/candidates/java/25.0.1-graalce/bin/native-image -Djdk.internal.lambda.eagerlyInitialize=false --no-server -H:+SharedLibrary -H:+AddAllCharsets -H:+ReportExceptionStackTraces -H:-DeadlockWatchdogExitOnTimeout -H:DeadlockWatchdogInterval=0 -H:+RemoveSaturatedTypeFlows -H:+ExitAfterRelocatableImageWrite -H:TempDirectory=/Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/gluonfx/aarch64-darwin/gvm/tmp -H:EnableURLProtocols=http,https -H:+PrintAnalysisCallTree -H:Log=registerResource: -H:ReflectionConfigurationFiles=/Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/gluonfx/aarch64-darwin/gvm/reflectionconfig-aarch64-darwin.json -H:JNIConfigurationFiles=/Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/gluonfx/aarch64-darwin/gvm/jniconfig-aarch64-darwin.json -H:ResourceConfigurationFiles=/Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/gluonfx/aarch64-darwin/gvm/resourceconfig-aarch64-darwin.json -H:IncludeResourceBundles=com/sun/javafx/scene/control/skin/resources/controls,com/sun/javafx/scene/control/skin/resources/controls-nt,com.sun.javafx.tk.quantum.QuantumMessagesBundle,com.apple.Cocoa,com.sun.media.jfxmedia.MediaErrors -Dsvm.platform=org.graalvm.nativeimage.Platform$MACOS_AARCH64 -cp /Users/amo/.m2/repository/com/gluonhq/substrate/0.0.64/substrate-0.0.64.jar:/Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/gluonfx/aarch64-darwin/gvm/tmp/classpathJar.jar org.jacpfx.image.canvas.ApplicationMainNative
+[Sa. Jan. 31 21:28:23 MEZ 2026][FEIN] Start process compile...
+[Sa. Jan. 31 21:28:23 MEZ 2026][INFORMATION] [SUB] Warning: Ignoring server-mode native-image argument --no-server.
+[Sa. Jan. 31 21:28:23 MEZ 2026][INFORMATION] [SUB] Warning: Using a deprecated option --install-exit-handlers from 'META-INF/native-image/native-image.properties' in 'file:///Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/'. --install-exit-handlers is enabled by default for executables and it can likely be removed. To use this option for the shared libraries, please use -H:+InstallExitHandlers.
+[Sa. Jan. 31 21:28:23 MEZ 2026][INFORMATION] [SUB] Warning: The option '-H:+JNI' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+[Sa. Jan. 31 21:28:23 MEZ 2026][INFORMATION] [SUB] Warning: The option '-H:JNIConfigurationFiles=/Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/gluonfx/aarch64-darwin/gvm/jniconfig-aarch64-darwin.json' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+[Sa. Jan. 31 21:28:23 MEZ 2026][INFORMATION] [SUB] Warning: The option '-H:-DeadlockWatchdogExitOnTimeout' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+[Sa. Jan. 31 21:28:23 MEZ 2026][INFORMATION] [SUB] Warning: The option '-H:DeadlockWatchdogInterval=0' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+[Sa. Jan. 31 21:28:23 MEZ 2026][INFORMATION] [SUB] Warning: The option '-H:+AllowVMInspection' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+[Sa. Jan. 31 21:28:23 MEZ 2026][INFORMATION] [SUB] Warning: The option '-H:+RemoveSaturatedTypeFlows' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+[Sa. Jan. 31 21:28:23 MEZ 2026][INFORMATION] [SUB] Warning: The option '-H:TempDirectory=/Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/gluonfx/aarch64-darwin/gvm/tmp' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+[Sa. Jan. 31 21:28:23 MEZ 2026][INFORMATION] [SUB] Warning: The option '-H:EnableURLProtocols=http,https,file,jar' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+[Sa. Jan. 31 21:28:23 MEZ 2026][INFORMATION] [SUB] Warning: The option '-H:+PrintAnalysisCallTree' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+[Sa. Jan. 31 21:28:23 MEZ 2026][INFORMATION] [SUB] Warning: The option '-H:Log=registerResource:' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+[Sa. Jan. 31 21:28:23 MEZ 2026][INFORMATION] [SUB] Warning: The option '-H:ResourceConfigurationFiles=/Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/gluonfx/aarch64-darwin/gvm/resourceconfig-aarch64-darwin.json' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+[Sa. Jan. 31 21:28:23 MEZ 2026][INFORMATION] [SUB] Warning: The option '-H:+UseServiceLoaderFeature' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+[Sa. Jan. 31 21:28:23 MEZ 2026][INFORMATION] [SUB] Warning: The option '-H:+ExitAfterRelocatableImageWrite' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+[Sa. Jan. 31 21:28:23 MEZ 2026][INFORMATION] [SUB] Warning: The option '-H:EnableURLProtocols=http,https' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+[Sa. Jan. 31 21:28:23 MEZ 2026][INFORMATION] [SUB] Warning: The option '-H:+SharedLibrary' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+[Sa. Jan. 31 21:28:23 MEZ 2026][INFORMATION] [SUB] Warning: The option '-H:ReflectionConfigurationFiles=/Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/gluonfx/aarch64-darwin/gvm/reflectionconfig-aarch64-darwin.json' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+[Sa. Jan. 31 21:28:23 MEZ 2026][INFORMATION] [SUB] Warning: The option '-H:IncludeResourceBundles=com/sun/javafx/scene/control/skin/resources/controls,com/sun/javafx/scene/control/skin/resources/controls-nt,com.sun.javafx.tk.quantum.QuantumMessagesBundle,com.apple.Cocoa,com.sun.media.jfxmedia.MediaErrors' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+[Sa. Jan. 31 21:28:23 MEZ 2026][INFORMATION] [SUB] Warning: Please re-evaluate whether any experimental option is required, and either remove or unlock it. The build output lists all active experimental options, including where they come from and possible alternatives. If you think an experimental option should be considered as stable, please file an issue.
+[Sa. Jan. 31 21:28:24 MEZ 2026][INFORMATION] [SUB] Warning: Option 'AllowVMInspection' is deprecated and might be removed in a future release: Please use '--enable-monitoring'. Please refer to the GraalVM release notes.
+[Sa. Jan. 31 21:28:24 MEZ 2026][INFORMATION] [SUB] Warning: Option 'DynamicProxyConfigurationResources' is deprecated and might be removed in a future release: This can be caused by a proxy-config.json file in your META-INF directory. Consider including proxy configuration in the reflection section of reachability-metadata.md instead.. Please refer to the GraalVM release notes.
+[Sa. Jan. 31 21:28:25 MEZ 2026][INFORMATION] [SUB] ========================================================================================================================
+[Sa. Jan. 31 21:28:25 MEZ 2026][INFORMATION] [SUB] GraalVM Native Image: Generating 'org.jacpfx.image.canvas.applicationmainnative.dylib' (shared library)...
+[Sa. Jan. 31 21:28:25 MEZ 2026][INFORMATION] [SUB] ========================================================================================================================
+[Sa. Jan. 31 21:28:25 MEZ 2026][INFORMATION] [SUB] For detailed information and explanations on the build output, visit:
+[Sa. Jan. 31 21:28:25 MEZ 2026][INFORMATION] [SUB] https://github.com/oracle/graal/blob/master/docs/reference-manual/native-image/BuildOutput.md
+[Sa. Jan. 31 21:28:25 MEZ 2026][INFORMATION] [SUB] ------------------------------------------------------------------------------------------------------------------------
+[Sa. Jan. 31 21:28:29 MEZ 2026][INFORMATION] [SUB] Warning: The URL protocol file is enabled by default. The option --enable-url-protocols=file is not needed.
+[Sa. Jan. 31 21:28:30 MEZ 2026][INFORMATION] [SUB] [1/8] Initializing...                                                                                    (6.3s @ 0.14GB)
+[Sa. Jan. 31 21:28:30 MEZ 2026][INFORMATION] [SUB]  Java version: 25.0.1+8, vendor version: GraalVM CE 25.0.1+8.1
+[Sa. Jan. 31 21:28:30 MEZ 2026][INFORMATION] [SUB]  Graal compiler: optimization level: 2, target machine: armv8.1-a
+[Sa. Jan. 31 21:28:30 MEZ 2026][INFORMATION] [SUB]  C compiler: cc (apple, arm64, 17.0.0)
+[Sa. Jan. 31 21:28:30 MEZ 2026][INFORMATION] [SUB]  Garbage collector: Serial GC (max heap size: 80% of RAM)
+[Sa. Jan. 31 21:28:30 MEZ 2026][INFORMATION] [SUB]  1 user-specific feature(s):
+[Sa. Jan. 31 21:28:30 MEZ 2026][INFORMATION] [SUB]  - com.oracle.svm.thirdparty.gson.GsonFeature
+[Sa. Jan. 31 21:28:30 MEZ 2026][INFORMATION] [SUB] ------------------------------------------------------------------------------------------------------------------------
+[Sa. Jan. 31 21:28:30 MEZ 2026][INFORMATION] [SUB]  16 experimental option(s) unlocked:
+[Sa. Jan. 31 21:28:30 MEZ 2026][INFORMATION] [SUB]  - '-H:+JNI' (origin(s): 'META-INF/native-image/native-image.properties' in 'file:///Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/')
+[Sa. Jan. 31 21:28:30 MEZ 2026][INFORMATION] [SUB]  - '-H:DeadlockWatchdogInterval' (origin(s): command line)
+[Sa. Jan. 31 21:28:30 MEZ 2026][INFORMATION] [SUB]  - '-H:-DeadlockWatchdogExitOnTimeout' (origin(s): command line)
+[Sa. Jan. 31 21:28:30 MEZ 2026][INFORMATION] [SUB]  - '-H:ReflectionConfigurationFiles': Use a reflect-config.json in your META-INF/native-image/<groupID>/<artifactID> directory instead. (origin(s): command line)
+[Sa. Jan. 31 21:28:30 MEZ 2026][INFORMATION] [SUB]  - '-H:ResourceConfigurationFiles': Use a resource-config.json in your META-INF/native-image/<groupID>/<artifactID> directory instead. (origin(s): command line)
+[Sa. Jan. 31 21:28:30 MEZ 2026][INFORMATION] [SUB]  - '-H:JNIConfigurationFiles': Use a jni-config.json in your META-INF/native-image/<groupID>/<artifactID> directory instead. (origin(s): command line)
+[Sa. Jan. 31 21:28:30 MEZ 2026][INFORMATION] [SUB]  - '-H:+AllowVMInspection' (origin(s): 'META-INF/native-image/native-image.properties' in 'file:///Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/')
+[Sa. Jan. 31 21:28:30 MEZ 2026][INFORMATION] [SUB]  - '-H:+RemoveSaturatedTypeFlows' (origin(s): command line)
+[Sa. Jan. 31 21:28:30 MEZ 2026][INFORMATION] [SUB]  - '-H:+PrintAnalysisCallTree' (origin(s): command line)
+[Sa. Jan. 31 21:28:30 MEZ 2026][INFORMATION] [SUB]  - '-H:EnableURLProtocols' (alternative API option(s): --enable-http, --enable-https, --enable-http, --enable-https, --enable-url-protocols=file, --enable-url-protocols=jar; origin(s): command line, 'META-INF/native-image/native-image.properties' in 'file:///Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/')
+[Sa. Jan. 31 21:28:30 MEZ 2026][INFORMATION] [SUB]  - '-H:+UseServiceLoaderFeature' (origin(s): 'META-INF/native-image/native-image.properties' in 'file:///Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes/')
+[Sa. Jan. 31 21:28:30 MEZ 2026][INFORMATION] [SUB]  - '-H:+ExitAfterRelocatableImageWrite' (origin(s): command line)
+[Sa. Jan. 31 21:28:30 MEZ 2026][INFORMATION] [SUB]  - '-H:Log' (origin(s): command line)
+[Sa. Jan. 31 21:28:30 MEZ 2026][INFORMATION] [SUB]  - '-H:IncludeResourceBundles' (origin(s): command line)
+[Sa. Jan. 31 21:28:30 MEZ 2026][INFORMATION] [SUB]  - '-H:+SharedLibrary' (alternative API option(s): --shared; origin(s): command line)
+[Sa. Jan. 31 21:28:30 MEZ 2026][INFORMATION] [SUB]  - '-H:TempDirectory' (origin(s): command line)
+[Sa. Jan. 31 21:28:30 MEZ 2026][INFORMATION] [SUB] ------------------------------------------------------------------------------------------------------------------------
+[Sa. Jan. 31 21:28:30 MEZ 2026][INFORMATION] [SUB] Build resources:
+[Sa. Jan. 31 21:28:30 MEZ 2026][INFORMATION] [SUB]  - 12.81GB of memory (37.3% of system memory, using available memory)
+[Sa. Jan. 31 21:28:30 MEZ 2026][INFORMATION] [SUB]  - 10 thread(s) (100.0% of 10 available processor(s), determined at start)
+[Sa. Jan. 31 21:28:52 MEZ 2026][INFORMATION] [SUB] [2/8] Performing analysis...  [******]                                                                  (20.0s @ 1.58GB)
+[Sa. Jan. 31 21:28:52 MEZ 2026][INFORMATION] [SUB]    14’663 types,  23’272 fields, and  72’062 methods found reachable
+[Sa. Jan. 31 21:28:52 MEZ 2026][INFORMATION] [SUB]     4’358 types,     548 fields, and   5’603 methods registered for reflection
+[Sa. Jan. 31 21:28:52 MEZ 2026][INFORMATION] [SUB]       134 types,     127 fields, and     234 methods registered for JNI access
+[Sa. Jan. 31 21:28:52 MEZ 2026][INFORMATION] [SUB]         0 downcalls and 0 upcalls registered for foreign access
+[Sa. Jan. 31 21:28:52 MEZ 2026][INFORMATION] [SUB]         6 native libraries: -framework CoreServices, -framework Foundation, dl, m, pthread, z
+[Sa. Jan. 31 21:28:53 MEZ 2026][INFORMATION] [SUB] # Printing call tree to: /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/gluonfx/aarch64-darwin/gvm/CanvasImageGrid/reports/call_tree_org.jacpfx.image.canvas.applicationmainnative_20260131_212853.txt
+[Sa. Jan. 31 21:28:55 MEZ 2026][INFORMATION] [SUB] # Printing list of used methods to: /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/gluonfx/aarch64-darwin/gvm/CanvasImageGrid/reports/used_methods_org.jacpfx.image.canvas.applicationmainnative_20260131_212855.txt
+[Sa. Jan. 31 21:28:55 MEZ 2026][INFORMATION] [SUB] # Printing list of used classes to: /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/gluonfx/aarch64-darwin/gvm/CanvasImageGrid/reports/used_classes_org.jacpfx.image.canvas.applicationmainnative_20260131_212855.txt
+[Sa. Jan. 31 21:28:55 MEZ 2026][INFORMATION] [SUB] # Printing list of used packages to: /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/gluonfx/aarch64-darwin/gvm/CanvasImageGrid/reports/used_packages_org.jacpfx.image.canvas.applicationmainnative_20260131_212855.txt
+[Sa. Jan. 31 21:28:58 MEZ 2026][INFORMATION] [SUB] [3/8] Building universe...                                                                               (3.3s @ 1.78GB)
+[Sa. Jan. 31 21:29:00 MEZ 2026][INFORMATION] [SUB] [4/8] Parsing methods...      [*]                                                                        (1.6s @ 1.94GB)
+[Sa. Jan. 31 21:29:01 MEZ 2026][INFORMATION] [SUB] [5/8] Inlining methods...     [***]                                                                      (1.1s @ 2.18GB)
+[Sa. Jan. 31 21:29:17 MEZ 2026][INFORMATION] [SUB] [6/8] Compiling methods...    [****]                                                                    (15.8s @ 1.88GB)
+[Sa. Jan. 31 21:29:23 MEZ 2026][INFORMATION] [SUB] [7/8] Laying out methods...   [***]                                                                      (5.6s @ 2.26GB)
+[Sa. Jan. 31 21:29:27 MEZ 2026][INFORMATION] [SUB] 
+[Sa. Jan. 31 21:29:27 MEZ 2026][INFORMATION] [SUB] ------------------------------------------------------------------------------------------------------------------------
+[Sa. Jan. 31 21:29:27 MEZ 2026][INFORMATION] [SUB]                        4.8s (7.6% of total time) in 1007 GCs | Peak RSS: 3.62GB | CPU load: 5.72
+[Sa. Jan. 31 21:29:27 MEZ 2026][INFORMATION] [SUB] ------------------------------------------------------------------------------------------------------------------------
+[Sa. Jan. 31 21:29:27 MEZ 2026][INFORMATION] [SUB] Build artifacts:
+[Sa. Jan. 31 21:29:27 MEZ 2026][INFORMATION] [SUB]  /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/gluonfx/aarch64-darwin/gvm/CanvasImageGrid/graal_isolate.h (c_header)
+[Sa. Jan. 31 21:29:27 MEZ 2026][INFORMATION] [SUB]  /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/gluonfx/aarch64-darwin/gvm/CanvasImageGrid/graal_isolate_dynamic.h (c_header)
+[Sa. Jan. 31 21:29:27 MEZ 2026][INFORMATION] [SUB]  /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/gluonfx/aarch64-darwin/gvm/CanvasImageGrid/org.jacpfx.image.canvas.applicationmainnative.h (c_header)
+[Sa. Jan. 31 21:29:27 MEZ 2026][INFORMATION] [SUB]  /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/gluonfx/aarch64-darwin/gvm/CanvasImageGrid/org.jacpfx.image.canvas.applicationmainnative_dynamic.h (c_header)
+[Sa. Jan. 31 21:29:27 MEZ 2026][INFORMATION] [SUB] ========================================================================================================================
+[Sa. Jan. 31 21:29:27 MEZ 2026][INFORMATION] [SUB] Finished generating 'org.jacpfx.image.canvas.applicationmainnative' in 1m 2s.
+[Sa. Jan. 31 21:29:27 MEZ 2026][FEIN] Result for compile: 0
+[Sa. Jan. 31 21:29:27 MEZ 2026][FEIN] Logging process [compile] to file: /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/gluonfx/log/process-compile-1769891367760.log
+[INFO] 
+[INFO] --- gluonfx-maven-plugin:1.0.24:link (default-cli) @ CanvasImageGrid ---
+[Sa. Jan. 31 21:29:27 MEZ 2026][FEIN] Checking execution permissions for /Users/amo/.sdkman/candidates/java/25.0.1-graalce
+[Sa. Jan. 31 21:29:27 MEZ 2026][FEIN] PB Command for check xattr: xattr /Users/amo/.sdkman/candidates/java/25.0.1-graalce
+[Sa. Jan. 31 21:29:27 MEZ 2026][FEIN] Start process check xattr...
+[Sa. Jan. 31 21:29:27 MEZ 2026][FEIN] [SUB] com.apple.provenance
+[Sa. Jan. 31 21:29:27 MEZ 2026][FEIN] Result for check xattr: 0
+[Sa. Jan. 31 21:29:27 MEZ 2026][FEIN] PB Command for check version: /Users/amo/.sdkman/candidates/java/25.0.1-graalce/bin/java -version
+[Sa. Jan. 31 21:29:27 MEZ 2026][FEIN] Start process check version...
+[Sa. Jan. 31 21:29:27 MEZ 2026][FEIN] [SUB] openjdk version "25.0.1" 2025-10-21
+[Sa. Jan. 31 21:29:27 MEZ 2026][FEIN] [SUB] OpenJDK Runtime Environment GraalVM CE 25.0.1+8.1 (build 25.0.1+8-jvmci-b01)
+[Sa. Jan. 31 21:29:27 MEZ 2026][FEIN] [SUB] OpenJDK 64-Bit Server VM GraalVM CE 25.0.1+8.1 (build 25.0.1+8-jvmci-b01, mixed mode, sharing)
+[Sa. Jan. 31 21:29:27 MEZ 2026][FEIN] Result for check version: 0
+[Sa. Jan. 31 21:29:27 MEZ 2026][INFORMATION] Substrate is tested with the Gluon's GraalVM build which you can find at https://github.com/gluonhq/graal/releases.
+While you can still use other GraalVM builds, there is no guarantee that these will work properly with Substrate
+Configuration: ProjectConfiguration{graalPath='/Users/amo/.sdkman/candidates/java/25.0.1-graalce', javaStaticSdkVersion='24-2', javafxStaticSdkVersion='24-ea+7.1', javaVersion=25.0.1, graalVersion=25.0.1, useJNI=true, useJavaFX=true, usePrismSW=false, enableCheckHash=true, targetTriplet=aarch64-apple-darwin, hostTriplet=aarch64-apple-darwin, backend='null', bundlesList=[], resourcesList=[], reflectionList=[org.jacpfx.image.canvas.ApplicationMainNative, org.jacpfx.image.canvas.CanvasPanel, org.jacpfx.image.canvas.ImageContainer, org.jacpfx.image.canvas.RowContainer, org.jacpfx.image.canvas.DefaultImageFactory, org.jacpfx.image.canvas.SquareImageFactory], jniList=[], initBuildTimeList=[], runtimeArgsList=[], releaseSymbolsList=null, appName='CanvasImageGrid', releaseConfiguration='ReleaseConfiguration{packageType=null, description='', vendor='null', version='null', macAppStore=false, macSigningUserName=null, macAppCategory=null, bundleName='null', bundleVersion='null', bundleShortVersion='null', providedSigningIdentity='null', providedProvisioningProfile='null', skipSigning=false, simulatorDevice='null', appLabel='null', versionCode='null', versionName='null', providedKeyStorePath='null', providedKeyStorePassword='null', providedKeyAlias='null', providedKeyAliasPassword='null'}', mainClassName='org.jacpfx.image.canvas.ApplicationMainNative', classpath='/Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/classes:/Users/amo/.m2/repository/com/guigarage/flatter/0.7/flatter-0.7.jar:/Users/amo/.m2/repository/org/openjfx/javafx-base/25/javafx-base-25-mac-aarch64.jar:/Users/amo/.m2/repository/org/openjfx/javafx-base/25/javafx-base-25.jar:/Users/amo/.m2/repository/org/openjfx/javafx-controls/25/javafx-controls-25-mac-aarch64.jar:/Users/amo/.m2/repository/org/openjfx/javafx-controls/25/javafx-controls-25.jar:/Users/amo/.m2/repository/org/openjfx/javafx-graphics/25/javafx-graphics-25-mac-aarch64.jar:/Users/amo/.m2/repository/org/openjfx/javafx-graphics/25/javafx-graphics-25.jar:/Users/amo/.m2/repository/org/openjfx/javafx-media/25/javafx-media-25-mac-aarch64.jar:/Users/amo/.m2/repository/org/openjfx/javafx-media/25/javafx-media-25.jar:/Users/amo/.m2/repository/org/openjfx/javafx-swing/25/javafx-swing-25-mac-aarch64.jar:/Users/amo/.m2/repository/org/openjfx/javafx-swing/25/javafx-swing-25.jar'}
+[Sa. Jan. 31 21:29:27 MEZ 2026][INFORMATION] ==================== LINK TASK ====================
+[Sa. Jan. 31 21:29:27 MEZ 2026][FEIN] Looking for resource: /native/macosx/AppDelegate.m
+[Sa. Jan. 31 21:29:27 MEZ 2026][FEIN] Looking for resource: /native/macosx/launcher.c
+[Sa. Jan. 31 21:29:27 MEZ 2026][FEIN] PB Command for compile-additional-sources: gcc -c -DGVM_VERBOSE -DSUBSTRATE -mmacosx-version-min=12 -I/Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/gluonfx/aarch64-darwin/gvm/CanvasImageGrid AppDelegate.m launcher.c
+[Sa. Jan. 31 21:29:27 MEZ 2026][FEIN] Start process compile-additional-sources...
+[Sa. Jan. 31 21:29:28 MEZ 2026][FEIN] Result for compile-additional-sources: 0
+[Sa. Jan. 31 21:29:28 MEZ 2026][FEIN] PB Command for link: gcc /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/gluonfx/aarch64-darwin/gvm/CanvasImageGrid/AppDelegate.o /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/gluonfx/aarch64-darwin/gvm/CanvasImageGrid/launcher.o /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/gluonfx/aarch64-darwin/gvm/tmp/SVM-1769891305608/org.jacpfx.image.canvas.applicationmainnative.o -lvmone -lpthread -lz -ldl -lstdc++ -mmacosx-version-min=12 -lobjc -Wl,-framework,Foundation -Wl,-framework,AppKit -Wl,-framework,ApplicationServices -Wl,-framework,OpenGL -Wl,-framework,QuartzCore -Wl,-framework,Security -Wl,-framework,Accelerate -Wl,-framework,Cocoa -Wl,-framework,Carbon -Wl,-force_load,/Users/amo/.gluon/substrate/javafxStaticSdk/24-ea+7.1/darwin-aarch64/sdk/lib/libglass.a -Wl,-force_load,/Users/amo/.gluon/substrate/javafxStaticSdk/24-ea+7.1/darwin-aarch64/sdk/lib/libjavafx_font.a -Wl,-force_load,/Users/amo/.gluon/substrate/javafxStaticSdk/24-ea+7.1/darwin-aarch64/sdk/lib/libjavafx_iio.a -Wl,-force_load,/Users/amo/.gluon/substrate/javafxStaticSdk/24-ea+7.1/darwin-aarch64/sdk/lib/libprism_es2.a -o /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/gluonfx/aarch64-darwin/CanvasImageGrid -L/Users/amo/.gluon/substrate/javafxStaticSdk/24-ea+7.1/darwin-aarch64/sdk/lib -L/Users/amo/.gluon/substrate/javaStaticSdk/24-2/darwin-aarch64/lib
+[Sa. Jan. 31 21:29:28 MEZ 2026][FEIN] Start process link...
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB] ld: warning: no platform load command found in '/Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/gluonfx/aarch64-darwin/gvm/tmp/SVM-1769891305608/org.jacpfx.image.canvas.applicationmainnative.o', assuming: macOS
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB] ld: warning: object file (/Users/amo/.gluon/substrate/javaStaticSdk/24-2/darwin-aarch64/lib/libvmone.a[791](JvmFuncs.o)) was built for newer 'macOS' version (14.0) than being linked (12.0)
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB] ld: warning: object file (/Users/amo/.gluon/substrate/javaStaticSdk/24-2/darwin-aarch64/lib/libvmone.a[792](cSunMiscSignal.o)) was built for newer 'macOS' version (14.0) than being linked (12.0)
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB] ld: warning: object file (/Users/amo/.gluon/substrate/javaStaticSdk/24-2/darwin-aarch64/lib/libvmone.a[794](cpuid.o)) was built for newer 'macOS' version (14.0) than being linked (12.0)
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB] ld: warning: object file (/Users/amo/.gluon/substrate/javaStaticSdk/24-2/darwin-aarch64/lib/libvmone.a[796](dummy.o)) was built for newer 'macOS' version (14.0) than being linked (12.0)
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB] ld: warning: object file (/Users/amo/.gluon/substrate/javaStaticSdk/24-2/darwin-aarch64/lib/libvmone.a[801](jio.o)) was built for newer 'macOS' version (14.0) than being linked (12.0)
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB] ld: warning: object file (/Users/amo/.gluon/substrate/javaStaticSdk/24-2/darwin-aarch64/lib/libvmone.a[803](svmTimeZone.o)) was built for newer 'macOS' version (14.0) than being linked (12.0)
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB] ld: warning: object file (/Users/amo/.gluon/substrate/javaStaticSdk/24-2/darwin-aarch64/lib/libvmone.a[804](varargs_helper.o)) was built for newer 'macOS' version (14.0) than being linked (12.0)
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB] ld: warning: object file (/Users/amo/.gluon/substrate/javaStaticSdk/24-2/darwin-aarch64/lib/libvmone.a[805](foundation.o)) was built for newer 'macOS' version (14.0) than being linked (12.0)
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB] Undefined symbols for architecture arm64:
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB]   "_JVM_GetManagement", referenced from:
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB]       _JNI_OnLoad_management_ext in libvmone.a[630](management_ext.o)
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB]       _JNI_OnLoad_dynamic_management_ext in libvmone.a[630](management_ext.o)
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB]   "_JVM_InitAgentProperties", referenced from:
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB]       _Java_jdk_internal_vm_VMSupport_initAgentProperties in libvmone.a[377](VMSupport.o)
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB]   "_JVM_InitStackTraceElement", referenced from:
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB]       _Java_java_lang_StackTraceElement_initStackTraceElement in libvmone.a[332](StackTraceElement.o)
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB]   "_JVM_InitStackTraceElementArray", referenced from:
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB]       _Java_java_lang_StackTraceElement_initStackTraceElements in libvmone.a[332](StackTraceElement.o)
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB]   "_Java_java_io_FileInputStream_isRegularFile0", referenced from:
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB]       ___data in org.jacpfx.image.canvas.applicationmainnative.o
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB]   "_Java_jdk_internal_vm_ThreadSnapshot_create", referenced from:
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB]       ___data in org.jacpfx.image.canvas.applicationmainnative.o
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB]   "_Java_sun_nio_ch_UnixFileDispatcherImpl_available0", referenced from:
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB]       ___data in org.jacpfx.image.canvas.applicationmainnative.o
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB]   "_Java_sun_nio_ch_UnixFileDispatcherImpl_isOther0", referenced from:
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB]       ___data in org.jacpfx.image.canvas.applicationmainnative.o
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB]   "_cSunMiscSignal_awaitSemaphore", referenced from:
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB]       ___data in org.jacpfx.image.canvas.applicationmainnative.o
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB]   "_cSunMiscSignal_checkPendingSignal", referenced from:
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB]       ___data in org.jacpfx.image.canvas.applicationmainnative.o
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB]   "_cSunMiscSignal_signalHandlerFunctionPointer", referenced from:
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB]       ___data in org.jacpfx.image.canvas.applicationmainnative.o
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB]   "_cSunMiscSignal_signalSemaphore", referenced from:
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB]       ___data in org.jacpfx.image.canvas.applicationmainnative.o
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB]   "_svm_attach_check_socket_file", referenced from:
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB]       ___data in org.jacpfx.image.canvas.applicationmainnative.o
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB]   "_svm_attach_create_listener", referenced from:
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB]       ___data in org.jacpfx.image.canvas.applicationmainnative.o
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB]   "_svm_attach_is_init_trigger", referenced from:
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB]       ___data in org.jacpfx.image.canvas.applicationmainnative.o
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB]   "_svm_attach_listener_cleanup", referenced from:
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB]       ___data in org.jacpfx.image.canvas.applicationmainnative.o
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB]   "_svm_attach_shutdown_socket", referenced from:
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB]       ___data in org.jacpfx.image.canvas.applicationmainnative.o
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB]   "_svm_attach_startup", referenced from:
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB]       ___data in org.jacpfx.image.canvas.applicationmainnative.o
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB]   "_svm_attach_wait_for_request", referenced from:
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB]       ___data in org.jacpfx.image.canvas.applicationmainnative.o
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB]   "_svm_get_locale", referenced from:
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB]       ___data in org.jacpfx.image.canvas.applicationmainnative.o
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB]   "_svm_initialize_locale", referenced from:
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB]       ___data in org.jacpfx.image.canvas.applicationmainnative.o
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB] ld: symbol(s) not found for architecture arm64
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] [SUB] clang: error: linker command failed with exit code 1 (use -v to see invocation)
+[Sa. Jan. 31 21:29:28 MEZ 2026][FEIN] Result for link: 1
+[Sa. Jan. 31 21:29:28 MEZ 2026][SCHWERWIEGEND] Process link failed with result: 1
+Check the log files under /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/gluonfx/aarch64-darwin/gvm/log
+And please check https://docs.gluonhq.com/ for more information.
+[Sa. Jan. 31 21:29:28 MEZ 2026][INFORMATION] Logging process [link] to file: /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/gluonfx/log/process-link-1769891368468.log
+[Sa. Jan. 31 21:29:28 MEZ 2026][SCHWERWIEGEND] Linking failed.
+Check the log files under /Users/amo/Documents/development/JavaFX/CanvasImageGrid/target/gluonfx/aarch64-darwin/gvm/log
+And please check https://docs.gluonhq.com/ for more information.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:28 min
+[INFO] Finished at: 2026-01-31T21:29:28+01:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal com.gluonhq:gluonfx-maven-plugin:1.0.24:link (default-cli) on project CanvasImageGrid: Linking failed -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:29 min
+[INFO] Finished at: 2026-01-31T21:29:28+01:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal com.gluonhq:gluonfx-maven-plugin:1.0.24:build (default-cli) on project CanvasImageGrid: Error, gluonfx:build failed -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
