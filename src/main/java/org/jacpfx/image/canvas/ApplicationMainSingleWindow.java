@@ -39,7 +39,7 @@ public class ApplicationMainSingleWindow extends Application {
     public void start(Stage stage) throws Exception {
         long startTime = System.currentTimeMillis();
 
-        Path rootFolder = FileSystems.getDefault().getPath("/Users/amo/Pictures/InterlakenSeptember25/");
+        Path rootFolder = FileSystems.getDefault().getPath("/Users/amo/Pictures/MilaPortraitOkt25/");
         final List<Path> subfolders = getSubfolders(rootFolder).parallelStream()
                 .filter(file -> file.toString().endsWith("jpg")).sequential().collect(Collectors.toList());
 

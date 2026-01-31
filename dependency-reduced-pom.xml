@@ -29,11 +29,15 @@
   <build>
     <plugins>
       <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.13.0</version>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.5.4</version>
         <configuration>
-          <release>21</release>
+          <argLine>--add-exports javafx.graphics/com.sun.javafx.application=ALL-UNNAMED</argLine>
         </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.14.1</version>
       </plugin>
       <plugin>
         <groupId>org.openjfx</groupId>
@@ -52,7 +56,7 @@
       </plugin>
       <plugin>
         <artifactId>maven-shade-plugin</artifactId>
-        <version>3.5.1</version>
+        <version>3.6.1</version>
         <executions>
           <execution>
             <phase>package</phase>
@@ -79,64 +83,18 @@
           </execution>
         </executions>
       </plugin>
-      <plugin>
-        <groupId>org.graalvm.buildtools</groupId>
-        <artifactId>native-maven-plugin</artifactId>
-        <version>0.9.28</version>
-        <extensions>true</extensions>
-        <executions>
-          <execution>
-            <id>build-native</id>
-            <phase>package</phase>
-            <goals>
-              <goal>compile-no-fork</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <imageName>CanvasImageGrid</imageName>
-          <mainClass>${mainClass}</mainClass>
-          <buildArgs>
-            <buildArg>--no-fallback</buildArg>
-            <buildArg>--install-exit-handlers</buildArg>
-            <buildArg>-H:+ReportExceptionStackTraces</buildArg>
-            <buildArg>-H:+UnlockExperimentalVMOptions</buildArg>
-            <buildArg>-H:ConfigurationFileDirectories=src/main/resources/META-INF/native-image/</buildArg>
-          </buildArgs>
-        </configuration>
-      </plugin>
     </plugins>
   </build>
   <profiles>
     <profile>
-      <id>native</id>
-      <dependencies>
-        <dependency>
-          <groupId>org.openjfx</groupId>
-          <artifactId>javafx-graphics</artifactId>
-          <version>${javafx.version}</version>
-          <classifier>mac</classifier>
-        </dependency>
-        <dependency>
-          <groupId>org.openjfx</groupId>
-          <artifactId>javafx-base</artifactId>
-          <version>${javafx.version}</version>
-          <classifier>mac</classifier>
-        </dependency>
-        <dependency>
-          <groupId>org.openjfx</groupId>
-          <artifactId>javafx-controls</artifactId>
-          <version>${javafx.version}</version>
-          <classifier>mac</classifier>
-        </dependency>
-      </dependencies>
+      <id>regular</id>
     </profile>
   </profiles>
   <dependencies>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter</artifactId>
-      <version>5.10.2</version>
+      <version>5.11.3</version>
       <scope>test</scope>
       <exclusions>
         <exclusion>
@@ -153,13 +111,35 @@
         </exclusion>
       </exclusions>
     </dependency>
+    <dependency>
+      <groupId>org.testfx</groupId>
+      <artifactId>testfx-core</artifactId>
+      <version>4.0.16-alpha</version>
+      <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <artifactId>hamcrest-core</artifactId>
+          <groupId>org.hamcrest</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>assertj-core</artifactId>
+          <groupId>org.assertj</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.testfx</groupId>
+      <artifactId>testfx-junit5</artifactId>
+      <version>4.0.16-alpha</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
   <properties>
-    <maven.compiler.target>21</maven.compiler.target>
+    <maven.compiler.target>24</maven.compiler.target>
     <mainClass>org.jacpfx.image.canvas.ApplicationMainSingleWindow</mainClass>
-    <maven.compiler.source>21</maven.compiler.source>
+    <maven.compiler.source>24</maven.compiler.source>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <javafx.version>21.0.4</javafx.version>
-    <junit.jupiter.version>5.10.2</junit.jupiter.version>
+    <javafx.version>25</javafx.version>
+    <junit.jupiter.version>5.11.3</junit.jupiter.version>
   </properties>
 </project>

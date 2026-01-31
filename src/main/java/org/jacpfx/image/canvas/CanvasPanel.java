@@ -287,17 +287,21 @@ public class CanvasPanel extends Canvas {
     }
 
     private void renderCanvas(final List<RowContainer> containers, final GraphicsContext gc, final double start,
-            final double end, final double offset) {
+                              final double end, final double offset) {
 
         gc.clearRect(0, 0, getWidth(), getHeight());
-        containers.forEach(
-                container -> container.getImages().stream().filter(imgElem -> filterImagesVisible(start, end, imgElem))
-                        .forEach(c -> c.drawImageToCanvas(gc, container.getRowStartHight() + offset)));
-    }
 
-    private boolean filterImagesVisible(double start, double end, ImageContainer imgElem) {
-        final double tmp = imgElem.getStartY() + imgElem.getScaledY();
-        return tmp > start && tmp < end;
+        for (final RowContainer container : containers) {
+            if (container.getRowEndHight() < start) {
+                continue;
+            }
+            if (container.getRowStartHight() > end) {
+                break;
+            }
+            for (final ImageContainer c : container.getImages()) {
+                c.drawImageToCanvas(gc, container.getRowStartHight() + offset);
+            }
+        }
     }
 
     private List<RowContainer> getLines(final double padding, final double maxHight, final List<ImageContainer> all) {

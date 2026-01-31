@@ -1,3 +1,9 @@
+/Users/amo/Documents/development/JavaFX/CanvasImageGrid/src/test/java/org/jacpfx/image/benchmark/AllBenchmarksRunner.java
+/Users/amo/Documents/development/JavaFX/CanvasImageGrid/src/test/java/org/jacpfx/image/benchmark/BenchmarkBase.java
+/Users/amo/Documents/development/JavaFX/CanvasImageGrid/src/test/java/org/jacpfx/image/benchmark/CanvasPanelLayoutBenchmark.java
+/Users/amo/Documents/development/JavaFX/CanvasImageGrid/src/test/java/org/jacpfx/image/benchmark/ImageContainerBenchmark.java
+/Users/amo/Documents/development/JavaFX/CanvasImageGrid/src/test/java/org/jacpfx/image/benchmark/ImageFactoryBenchmark.java
+/Users/amo/Documents/development/JavaFX/CanvasImageGrid/src/test/java/org/jacpfx/image/benchmark/ImageMetadataBenchmark.java
 /Users/amo/Documents/development/JavaFX/CanvasImageGrid/src/test/java/org/jacpfx/image/canvas/CanvasPanelTest.java
 /Users/amo/Documents/development/JavaFX/CanvasImageGrid/src/test/java/org/jacpfx/image/canvas/DefaultImageFactoryTest.java
 /Users/amo/Documents/development/JavaFX/CanvasImageGrid/src/test/java/org/jacpfx/image/canvas/ImageContainerTest.java
